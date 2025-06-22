@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="7" author="dev">
+        <createIndex indexName="idx_customer_email" tableName="customers">
+            <column name="email"/>
+        </createIndex>
+
+        <createIndex indexName="idx_product_sku" tableName="products">
+            <column name="sku"/>
+        </createIndex>
+
+        <createIndex indexName="idx_order_date" tableName="orders">
+            <column name="order_date"/>
+        </createIndex>
+
+        <createIndex indexName="idx_order_status" tableName="orders">
+            <column name="status"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

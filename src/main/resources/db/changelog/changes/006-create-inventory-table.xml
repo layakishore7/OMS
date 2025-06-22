@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="6" author="dev">
+        <createTable tableName="inventory">
+            <column name="inventory_id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="quantity" type="INT"/>
+            <column name="reason" type="VARCHAR(255)"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="product_id" type="INT">
+                <constraints nullable="false" foreignKeyName="fk_inventory_product" references="products(product_id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

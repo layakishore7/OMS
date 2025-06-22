@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="4" author="dev">
+        <createTable tableName="orders">
+            <column name="order_id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="order_type" type="VARCHAR(50)"/>
+            <column name="status" type="VARCHAR(50)"/>
+            <column name="order_date" type="TIMESTAMP"/>
+            <column name="total" type="DOUBLE"/>
+            <column name="customer_id" type="INT">
+                <constraints nullable="false" foreignKeyName="fk_order_customer" references="customers(customer_id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
