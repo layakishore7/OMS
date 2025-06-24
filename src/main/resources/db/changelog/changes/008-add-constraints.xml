@@ -6,7 +6,20 @@
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
 
     <changeSet id="8" author="dev">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <uniqueConstraintExists tableName="customers" constraintName="uk_customer_email"/>
+            </not>
+        </preConditions>
         <addUniqueConstraint tableName="customers" columnNames="email" constraintName="uk_customer_email"/>
+    </changeSet>
+
+    <changeSet id="9" author="dev">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <uniqueConstraintExists tableName="products" constraintName="uk_product_sku"/>
+            </not>
+        </preConditions>
         <addUniqueConstraint tableName="products" columnNames="sku" constraintName="uk_product_sku"/>
     </changeSet>
 
