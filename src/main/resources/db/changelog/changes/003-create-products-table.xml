@@ -24,6 +24,9 @@
             <column name="price" type="DECIMAL(10,2)">
                 <constraints nullable="false"/>
             </column>
+            <column name="description" type="VARCHAR(100)">
+                <constraints nullable="false" unique="false"/>
+            </column>
             <column name="quantity" type="INT" defaultValue="0">
                 <constraints nullable="false"/>
             </column>
