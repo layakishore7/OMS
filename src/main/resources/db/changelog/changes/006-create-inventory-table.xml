@@ -18,27 +18,15 @@
             <column name="product_id" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="transaction_type" type="VARCHAR(50)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="quantity_change" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="quantity_before" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="quantity_after" type="INT">
+            <column name="quantity" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column name="reason" type="VARCHAR(255)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
-            <column name="reference_id" type="VARCHAR(100)"/>
-            <column name="reference_type" type="VARCHAR(50)"/>
             <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
-            <column name="created_by" type="VARCHAR(100)"/>
         </createTable>
     </changeSet>
 
