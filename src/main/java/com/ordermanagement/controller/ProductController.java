@@ -24,9 +24,17 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
+
+
     @PostMapping("/products")
     public ResponseEntity<ProductResponse> addProduct(@RequestBody ProductRequest request) {
         ProductResponse response = productService.addProduct(request);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/products/{productId}")
+    public ResponseEntity<ProductResponse> getProductById(@PathVariable Integer productId) {
+        ProductResponse response = productService.getProductById(productId);
+        return new ResponseEntity<>(response,HttpStatus.FOUND);
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -53,5 +54,24 @@ public class ProductService {
         return response;
     }
 
+    public ProductResponse getProductById(Integer productId) {
 
+        if (productId == null) {
+            throw new IllegalArgumentException("Product ID cannot be null");
+        }
+
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Product not found with id: " + productId));
+
+        ProductResponse productResponse = new ProductResponse();
+
+        productResponse.setName(product.getName());
+        productResponse.setSku(product.getSku());
+        productResponse.setCategoryId(product.getCategory().getCategoryId());
+        productResponse.setPrice(product.getPrice());
+        productResponse.setStock(product.getQuantity());
+        productResponse.setStatus(product.getStatus());
+
+        return productResponse;
+    }
 }
