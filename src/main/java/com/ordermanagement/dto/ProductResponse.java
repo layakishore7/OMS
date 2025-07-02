@@ -1,11 +1,13 @@
 package com.ordermanagement.dto;
 
+import com.ordermanagement.entity.Category;
 import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class ProductResponse {
+
 
     private String name;
 
@@ -20,5 +22,7 @@ public class ProductResponse {
     private Integer stock;
 
     private Enum status;
+
+    private Category category;
 
 }

@@ -1,6 +1,7 @@
 package com.ordermanagement.dto;
 
 
+import com.ordermanagement.entity.Category;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,8 +19,9 @@ public class ProductRequest {
     private Integer categoryId;
     private Integer price;
     private String description;
-    private Integer quantity;
-    private String status;  // Will map to Enum.ProductStatus
+    private Integer stock;
+    private String status;
+    private Category category;// Will map to Enum.ProductStatus
 
 
 }
