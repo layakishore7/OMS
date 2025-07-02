@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,13 +38,13 @@ public class CategoryService {
         }
     }
 
-    public ResponseEntity<Void> deleteCategory(Integer id) {
+    public void deleteCategory(Integer id) {
         Optional<Category> optionalCategory = categoryRepository.findById(id);
         if (optionalCategory.isPresent()) {
             categoryRepository.delete(optionalCategory.get());
-            return ResponseEntity.noContent().build();
+            ResponseEntity.noContent().build();
         } else {
-            return ResponseEntity.notFound().build();
+            ResponseEntity.notFound().build();
         }
     }
 

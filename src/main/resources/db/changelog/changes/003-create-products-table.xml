@@ -27,9 +27,10 @@
             <column name="description" type="VARCHAR(100)">
                 <constraints nullable="false" unique="false"/>
             </column>
-            <column name="quantity" type="INT" defaultValue="0">
+            <column name="stock" type="INT" defaultValue="0">
                 <constraints nullable="false"/>
             </column>
+
             <column name="status" type="VARCHAR(50)" defaultValue="ACTIVE">
                 <constraints nullable="false"/>
             </column>
