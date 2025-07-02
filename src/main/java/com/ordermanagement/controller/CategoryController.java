@@ -27,7 +27,7 @@ public class CategoryController {
     }
 
     // Update category
-    @PutMapping("categories/{id}")
+    @PutMapping("/categories/{id}")
     public ResponseEntity<Category> updateCategory(
             @PathVariable Integer id,
             @RequestBody Category categoryData
