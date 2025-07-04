@@ -34,7 +34,7 @@ public class CategoryController {
     ) {
         Category updatedCategory = categoryService.updateCategory(
                 id,
-                categoryData.getName(),
+                categoryData.getCategoryName(),
                 categoryData.getDescription()
         );
         return ResponseEntity.ok(updatedCategory);

@@ -30,7 +30,7 @@ public class CategoryService {
         Optional<Category> optionalCategory = categoryRepository.findById(id);
         if (optionalCategory.isPresent()) {
             Category category = optionalCategory.get();
-            category.setName(name);
+            category.setCategoryName(name);
             category.setDescription(description);
             return categoryRepository.save(category);
         } else {

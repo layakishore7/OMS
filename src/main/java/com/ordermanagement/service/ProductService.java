@@ -38,7 +38,7 @@ public class ProductService {
         product.setStatus(Enum.ProductStatus.ACTIVE);
         product.setCategory(request.getCategory());
 
-        // Fetch and set the Category using categoryId from the request
+
         Category category = categoryRepository.findById(request.getCategoryId())
                 .orElseThrow(() -> new RuntimeException("Category not found"));
         product.setCategory(category);
@@ -48,7 +48,7 @@ public class ProductService {
         ProductResponse response = new ProductResponse();
         response.setName(savedProduct.getName());
         response.setSku(savedProduct.getSku());
-        response.setCategoryId(savedProduct.getCategory().getCategoryId());
+        response.setCategoryId(savedProduct.getCategory().getId());
         response.setPrice(savedProduct.getPrice());
         response.setDescription(savedProduct.getDescription());
         response.setStock(savedProduct.getStock());
@@ -69,7 +69,7 @@ public class ProductService {
         ProductResponse productResponse = new ProductResponse();
         productResponse.setName(product.getName());
         productResponse.setSku(product.getSku());
-        productResponse.setCategoryId(product.getCategory().getCategoryId());
+        productResponse.setCategoryId(product.getCategory().getId());
         productResponse.setPrice(product.getPrice());
         productResponse.setStock(product.getStock());
         productResponse.setDescription(product.getDescription());
@@ -84,7 +84,6 @@ public class ProductService {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
 
-        // Update fields
         product.setName(request.getName());
         product.setSku(request.getSku());
         product.setPrice(request.getPrice());

@@ -25,4 +25,28 @@ public class Enum {
         CANCELLED,
         RETURNED
     }
+
+    public enum Status {
+        ACTIVE,
+        INACTIVE
+    }
+
+    public enum StorageType {
+        RACK,
+        FLOOR,
+        COLD_STORAGE
+    }
+
+    public enum InventoryStatus {
+        NEW,
+        ON_HOLD,
+        DAMAGED,
+        STAGING,
+        COMPLETED
+    }
+
+    public enum Action {
+        ADDED,
+        REMOVED
+    }
 }
