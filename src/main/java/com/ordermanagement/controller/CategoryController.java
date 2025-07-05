@@ -3,6 +3,7 @@ package com.ordermanagement.controller;
 import com.ordermanagement.entity.Category;
 import com.ordermanagement.repository.CategoryRepository;
 import com.ordermanagement.service.CategoryService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,18 +27,12 @@ public class CategoryController {
         return categoryService.addCategory(category);
     }
 
-    // Update category
     @PutMapping("/categories/{id}")
     public ResponseEntity<Category> updateCategory(
             @PathVariable Integer id,
-            @RequestBody Category categoryData
-    ) {
-        Category updatedCategory = categoryService.updateCategory(
-                id,
-                categoryData.getCategoryName(),
-                categoryData.getDescription()
-        );
-        return ResponseEntity.ok(updatedCategory);
+             @RequestBody Category category) {
+            Category updatedCategory = categoryService.updateCategory(category);
+            return ResponseEntity.ok(updatedCategory);
     }
 
     @DeleteMapping("/categories/{id}")

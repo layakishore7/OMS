@@ -19,7 +19,8 @@ import java.util.List;
 @Data
 public class Product extends BaseEntity {
 
-    private String name;
+    @Column(name = "product_name")
+    private String productName;
 
     private String sku;
 
@@ -29,8 +30,8 @@ public class Product extends BaseEntity {
 
     private String description;
 
-    @Enumerated(EnumType.STRING)
-    private Enum.ProductStatus status;
+    @Enumerated(EnumType.ORDINAL)
+    private Enum.Status status;
 
     @ManyToOne
     @JoinColumn(name = "category_id",nullable = false)

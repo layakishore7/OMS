@@ -1,5 +1,6 @@
-package com.ordermanagement.dto;
+package com.ordermanagement.domain.responseDTO;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.ordermanagement.entity.Category;
 import lombok.*;
 
@@ -9,7 +10,7 @@ import lombok.*;
 public class ProductResponse {
 
 
-    private String name;
+    private String productName;
 
     private String sku;
 
@@ -24,5 +25,4 @@ public class ProductResponse {
     private Enum status;
 
     private Category category;
-
 }

@@ -19,14 +19,14 @@ import java.util.List;
 public class Category extends BaseEntity {
 
     @Column(name = "category_name")
-    private String CategoryName;
+    private String categoryName;
 
     @Column(name = "description")
     private String description;
 
     @Column(name = "status")
     @Enumerated(EnumType.ORDINAL)
-    private Enum.Status status;
+    private Enum.Status status = Enum.Status.ACTIVE;
 
     @OneToMany(mappedBy = "category")
     @JsonIgnore
