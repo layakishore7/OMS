@@ -1,7 +1,7 @@
 package com.ordermanagement.controller;
 
-import com.ordermanagement.dto.ProductRequest;
-import com.ordermanagement.dto.ProductResponse;
+import com.ordermanagement.domain.requestDTO.ProductRequest;
+import com.ordermanagement.domain.responseDTO.ProductResponse;
 import com.ordermanagement.entity.Product;
 import com.ordermanagement.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +39,8 @@ public class ProductController {
     }
 
     @PutMapping("/products/{productId}")
-    public ResponseEntity<Product> updateProductById(@PathVariable Integer productId,@RequestBody ProductRequest product) {
-        Product updatedProduct = productService.updateProduct(productId,product);
+    public ResponseEntity<ProductResponse> updateProductById(@PathVariable Integer productId,@RequestBody ProductRequest product) {
+        ProductResponse updatedProduct = productService.updateProduct(productId,product);
         return ResponseEntity.ok(updatedProduct);
     }
 

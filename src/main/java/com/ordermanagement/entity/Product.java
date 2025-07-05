@@ -5,24 +5,22 @@ import com.ordermanagement.Enum.Enum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "products")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Product {
+public class Product extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id")
-    private Integer productId;
-
-    private String name;
+    @Column(name = "product_name")
+    private String productName;
 
     private String sku;
 
@@ -32,19 +30,10 @@ public class Product {
 
     private String description;
 
-    @Enumerated(EnumType.STRING)
-    private Enum.ProductStatus status;
-
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    @Enumerated(EnumType.ORDINAL)
+    private Enum.Status status;
 
     @ManyToOne
     @JoinColumn(name = "category_id",nullable = false)
     private Category category;
-
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-    }
 }
