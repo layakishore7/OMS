@@ -1,26 +1,23 @@
 package com.ordermanagement.entity;
 
 
+import com.ordermanagement.Enum.Enum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "customers")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Customer {
+public class Customer extends BaseEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id")
-    private Integer customerId;
-
-    private String name;
+    @Column(name = "customer_name")
+    private String CustomerName;
 
     private String email;
 
@@ -28,15 +25,12 @@ public class Customer {
 
     private String address;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name="status")
+    private Enum.Status organizationStatus;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-    }
 }
