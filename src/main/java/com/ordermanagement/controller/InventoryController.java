@@ -24,7 +24,12 @@ public class InventoryController {
 
     @GetMapping("/inventory")
     public List<Inventory> getAllInventory() {
-        return inventoryRepository.findAll();
+        return inventoryService.getAllInventory();
+    }
+
+    @GetMapping("/inventory/product/{productId}")
+    public List<InventoryResponse> getInventoryByProductId(@PathVariable Integer productId) {
+        return  inventoryService.getInventoryByProductId(productId);
     }
 
     @PostMapping("/inventory")
@@ -34,8 +39,8 @@ public class InventoryController {
     }
 
     @GetMapping("inventory/{inventoryId}")
-    public ResponseEntity<InventoryResponse> getStockById(@PathVariable Integer inventoryId){
-        InventoryResponse response = inventoryService.getStockById(inventoryId);
+    public ResponseEntity<InventoryResponse> getInventoryById(@PathVariable Integer inventoryId){
+        InventoryResponse response = inventoryService.getInventoryById(inventoryId);
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
 
@@ -50,8 +55,4 @@ public class InventoryController {
         inventoryService.deleteInventory(inventoryId);
         return ResponseEntity.noContent().build(); // 204 No Content
     }
-
-
-
-
 }

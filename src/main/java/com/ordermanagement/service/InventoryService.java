@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class InventoryService {
@@ -25,9 +27,13 @@ public class InventoryService {
     @Autowired
     InventoryMapper inventoryMapper;
 
+    public List<Inventory> getAllInventory(){
+        return inventoryRepository.fetchAllInventory();
+    }
+
     public InventoryResponse addInventory(InventoryRequest request){
 
-        Product product = productRepository.findById(request.getProduct().getId())
+        Product product = productRepository.findById(request.getProductId())
                 .orElseThrow(()-> new RuntimeException("Product Not Found"));
 
         Inventory inventory = inventoryMapper.requestToEntity(request,product);
@@ -37,7 +43,7 @@ public class InventoryService {
         return inventoryMapper.entityToResponse(savedInventory);
     }
 
-    public InventoryResponse getStockById(Integer inventoryId) {
+    public InventoryResponse getInventoryById(Integer inventoryId) {
         if (inventoryId == null) {
             throw new IllegalArgumentException("Inventory id cannot be null");
         }
@@ -61,4 +67,22 @@ public class InventoryService {
         inventory.setUpdatedAt(LocalDateTime.now());
         inventoryRepository.save(inventory);
     }
+
+    public List<InventoryResponse> getInventoryByProductId(Integer productId) {
+
+        if (productId == null) {
+            throw new IllegalArgumentException("Product Id cannot be null");
+        }
+        List<Inventory> inventory = inventoryRepository.getInventoryByProductId(productId);
+
+//        if (inventory.isEmpty()) {
+//            throw new RuntimeException("Inventory Not Found");
+//        }
+
+        return inventory.stream()
+                .map(inventoryMapper::entityToResponse)
+                .collect(Collectors.toList());
+
+    }
+
 }

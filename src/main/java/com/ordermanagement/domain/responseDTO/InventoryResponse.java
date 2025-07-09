@@ -25,10 +25,6 @@ public class InventoryResponse {
 
     private Integer quantity;
 
-    private LocalDateTime shipmentDate;
-
-    private LocalDateTime deliveryDate;
-
     private LocalDateTime receivedDate;
 
     private String warehouseName;
@@ -46,5 +42,9 @@ public class InventoryResponse {
     private Enum.Status status;
 
     private String reason;
+
+    private LocalDateTime shipmentDate;
+
+    private LocalDateTime deliveryDate;
 
 }

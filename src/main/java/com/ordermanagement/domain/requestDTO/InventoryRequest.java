@@ -16,7 +16,7 @@ public class InventoryRequest {
 
     private Integer quantity;
 
-    private String warehouse;
+    private String warehouseName;
 
     private String storageLocation;
 
@@ -32,7 +32,7 @@ public class InventoryRequest {
 
     private String reason;
 
-    private Product product;
+    private Integer productId;
 
     private Enum.Status status;
 }
