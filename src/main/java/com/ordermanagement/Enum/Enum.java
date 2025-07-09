@@ -47,17 +47,41 @@ public class Enum {
 
 
     public enum StorageType {
-        RACK,
-        FLOOR,
-        COLD_STORAGE
+        RACK(0),FLOOR(1),COLD_STORAGE(2);
+        private final int value;
+        StorageType(int value) {
+            this.value=value;
+        }
+        public int getValue() {
+            return value;
+        }
+        public static StorageType fromValues(int value) {
+            for (StorageType storageType: StorageType.values()) {
+                if (storageType.getValue()==value) {
+                    return storageType;
+                }
+            }
+            throw new IllegalArgumentException("Invalid StorageType "+ value);
+        }
     }
 
     public enum InventoryStatus {
-        NEW,
-        ON_HOLD,
-        DAMAGED,
-        STAGING,
-        COMPLETED
+        NEW(0), ON_HOLD(1),DAMAGED(2),STAGING(3),COMPLETED(4);
+        private final int value;
+        InventoryStatus(int value){
+            this.value=value;
+        }
+        public int getValue(){
+            return value;
+        }
+        public static InventoryStatus fromValues(int value) {
+            for (InventoryStatus inventoryStatus: InventoryStatus.values()){
+                if (inventoryStatus.getValue()==value){
+                    return inventoryStatus;
+                }
+            }
+            throw new IllegalArgumentException(("Invalid Inventory Status "+value));
+        }
     }
 
     public enum Action {
