@@ -9,6 +9,10 @@ import com.ordermanagement.entity.Product;
 import com.ordermanagement.repository.InventoryRepository;
 import com.ordermanagement.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -27,8 +31,12 @@ public class InventoryService {
     @Autowired
     InventoryMapper inventoryMapper;
 
-    public List<Inventory> getAllInventory(){
-        return inventoryRepository.fetchAllInventory();
+    public Page<Inventory> getAllInventory(int page, int size, String sortBy, String sortDirection ){
+        Sort sort = sortDirection.equalsIgnoreCase("desc") ?
+                Sort.by(sortBy).descending():
+                Sort.by(sortBy).ascending();
+        Pageable pageable = PageRequest.of(page,size,sort);
+        return inventoryRepository.fetchAllInventory(pageable);
     }
 
     public InventoryResponse addInventory(InventoryRequest request){

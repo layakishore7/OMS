@@ -9,6 +9,10 @@ import com.ordermanagement.exceptions.RecordNotFoundException;
 import com.ordermanagement.repository.CategoryRepository;
 import com.ordermanagement.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -27,8 +31,18 @@ public class CategoryService {
     private ProductRepository productRepository;
 
 
-    public List<Category> getAllCategories(){
-        return categoryRepository.fetchAllCategories();
+    public Page<Category> getAllCategories(int page, int size, String sortBy, String sortDirection){
+
+        Sort sort = sortDirection.equalsIgnoreCase("desc") ?
+                Sort.by(sortBy).descending():
+                Sort.by(sortBy).ascending();
+        Pageable pageable = PageRequest.of(page,size,sort);
+        return categoryRepository.fetchAllCategories(pageable);
+
+    }
+
+    public List<Category> fetchAllCategories(){
+        return categoryRepository.getAllCategories();
     }
 
     public ResponseEntity<Category> addCategory(Category category) {
@@ -42,11 +56,11 @@ public class CategoryService {
                 });
     }
 
-    public Category updateCategory(Category category) {
-        return categoryRepository.findById(category.getId())
+    public Category updateCategory(Integer id, Category category) {
+        return categoryRepository.findById(id)
                 .map(existingCategory-> {
                     categoryRepository.findByCategoryNameAndStatus(category.getCategoryName(), Enum.Status.ACTIVE)
-                            .filter(existing-> !existing.getId().equals(category.getId()))
+                            .filter(existing-> !existing.getId().equals(id))
                             .ifPresent(existing-> {
                                 throw new RecordAlreadyExistsException("Category With Name "+category.getCategoryName()+" already exists");
                             });
@@ -54,7 +68,7 @@ public class CategoryService {
                     existingCategory.setDescription(category.getDescription());
                     return categoryRepository.save(existingCategory);
                 })
-                .orElseThrow(()-> new RecordNotFoundException("Category Not Found with the"+category.getId()));
+                .orElseThrow(()-> new RecordNotFoundException("Category Not Found with id: "+id));
     }
 
 
