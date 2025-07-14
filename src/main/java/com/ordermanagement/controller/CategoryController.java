@@ -1,5 +1,6 @@
 package com.ordermanagement.controller;
 
+import com.ordermanagement.domain.misc.APIResponse;
 import com.ordermanagement.entity.Category;
 import com.ordermanagement.entity.Product;
 import com.ordermanagement.repository.CategoryRepository;
@@ -20,20 +21,22 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping("/categories")
-    public ResponseEntity<Page<Category>> getAllCategories(
+    public ResponseEntity<APIResponse> getAllCategories(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
             @RequestParam(defaultValue = "id") String sortBy,
             @RequestParam(defaultValue = "asc") String sortDirection){
+        try {
+            if (page<0) page =0;
+            if ((size<1) || size>100) size = 10;
 
-        if (page<0) page =0;
-        if ((size<1) || size>100) size = 10;
-
-        if (!sortDirection.equalsIgnoreCase("asc")&&!sortDirection.equalsIgnoreCase("desc"))
-            sortDirection = "asc";
-        Page<Category> categories = categoryService.getAllCategories(page,size,sortBy,sortDirection);
-        return ResponseEntity.ok(categories);
-
+            if (!sortDirection.equalsIgnoreCase("asc")&&!sortDirection.equalsIgnoreCase("desc"))
+                sortDirection = "asc";
+            Page<Category> categories = categoryService.getAllCategories(page,size,sortBy,sortDirection);
+            return APIResponse.success(categories);
+        } catch (RuntimeException ex) {
+            return APIResponse.error(ex.getMessage());
+        }
     }
 
     
