@@ -1,6 +1,8 @@
 package com.ordermanagement.service;
 
 import com.ordermanagement.Enum.Enum;
+import com.ordermanagement.domain.misc.MetaData;
+import com.ordermanagement.domain.responses.CategoriesPageResponse;
 import com.ordermanagement.entity.Category;
 import com.ordermanagement.entity.Product;
 import com.ordermanagement.exceptions.CategoryDeletionException;
@@ -20,6 +22,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CategoryService {
@@ -31,13 +34,31 @@ public class CategoryService {
     private ProductRepository productRepository;
 
 
-    public Page<Category> getAllCategories(int page, int size, String sortBy, String sortDirection){
+//    public Page<Category> getAllCategories(int page, int size, String sortBy, String sortDirection){
+//
+//        Sort sort = sortDirection.equalsIgnoreCase("desc") ?
+//                Sort.by(sortBy).descending():
+//                Sort.by(sortBy).ascending();
+//        Pageable pageable = PageRequest.of(page,size,sort);
+//        return categoryRepository.fetchAllCategories(search, pageable);
+//
+//    }
 
-        Sort sort = sortDirection.equalsIgnoreCase("desc") ?
-                Sort.by(sortBy).descending():
-                Sort.by(sortBy).ascending();
-        Pageable pageable = PageRequest.of(page,size,sort);
-        return categoryRepository.fetchAllCategories(pageable);
+    public CategoriesPageResponse getCategory(String search, int pageNumber, int pageSize){
+        PageRequest pageable = PageRequest.of(pageNumber,pageSize)
+                .withSort(Sort.by("category_name").ascending());
+        Page<Category> categories = categoryRepository.fetchAllCategories(search,pageable);
+
+        List<Category> categoriesResponse = categories.stream()
+                .toList();
+
+        MetaData metaData = new MetaData();
+        metaData.setPageNumber(pageNumber);
+        metaData.setPageSize(pageSize);
+        metaData.setPageCount(categories.getTotalPages());
+        metaData.setRecordCount(categories.getTotalElements());
+
+        return new CategoriesPageResponse(categoriesResponse,metaData);
 
     }
 

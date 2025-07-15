@@ -34,6 +34,8 @@ public class APIResponse {
 
     public static ResponseEntity<APIResponse> success(Object data){
         APIResponse resposne = new APIResponse();
+        resposne.setSuccess(true);
+        resposne.setMessage("Success");
         resposne.setStatus(HttpStatus.OK);
         resposne.setStatusCode(200);
         resposne.setData(data);

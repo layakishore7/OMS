@@ -1,6 +1,7 @@
 package com.ordermanagement.controller;
 
 import com.ordermanagement.domain.misc.APIResponse;
+import com.ordermanagement.domain.responses.CategoriesPageResponse;
 import com.ordermanagement.entity.Category;
 import com.ordermanagement.entity.Product;
 import com.ordermanagement.repository.CategoryRepository;
@@ -8,6 +9,7 @@ import com.ordermanagement.service.CategoryService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,20 +24,14 @@ public class CategoryController {
 
     @GetMapping("/categories")
     public ResponseEntity<APIResponse> getAllCategories(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "5") int size,
-            @RequestParam(defaultValue = "id") String sortBy,
-            @RequestParam(defaultValue = "asc") String sortDirection){
+            @RequestParam(defaultValue = "") String search,
+            @RequestParam(defaultValue = "0") int pageNumber,
+            @RequestParam(defaultValue = "5") int size) {
         try {
-            if (page<0) page =0;
-            if ((size<1) || size>100) size = 10;
-
-            if (!sortDirection.equalsIgnoreCase("asc")&&!sortDirection.equalsIgnoreCase("desc"))
-                sortDirection = "asc";
-            Page<Category> categories = categoryService.getAllCategories(page,size,sortBy,sortDirection);
-            return APIResponse.success(categories);
-        } catch (RuntimeException ex) {
-            return APIResponse.error(ex.getMessage());
+            CategoriesPageResponse response = categoryService.getCategory(search,pageNumber,size);
+            return APIResponse.success(response);
+        } catch (Exception e) {
+            return APIResponse.error(HttpStatus.BAD_REQUEST,e.getMessage());
         }
     }
 
