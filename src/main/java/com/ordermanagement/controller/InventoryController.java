@@ -6,6 +6,7 @@ import com.ordermanagement.entity.Inventory;
 import com.ordermanagement.repository.InventoryRepository;
 import com.ordermanagement.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +24,19 @@ public class InventoryController {
     InventoryRepository inventoryRepository;
 
     @GetMapping("/inventory")
-    public List<Inventory> getAllInventory() {
-        return inventoryService.getAllInventory();
+    public ResponseEntity<Page<Inventory>> getAllInventory(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortDirection) {
+
+        if (page<0) page = 0;
+        if (size<1 || size>100) size = 10;
+
+        if (!sortDirection.equalsIgnoreCase("asc")&&!sortDirection.equalsIgnoreCase("desc"))
+            sortDirection = "asc";
+        Page<Inventory> inventory = inventoryService.getAllInventory(page, size, sortBy, sortDirection);
+        return ResponseEntity.ok(inventory);
     }
 
     @GetMapping("/inventory/product/{productId}")

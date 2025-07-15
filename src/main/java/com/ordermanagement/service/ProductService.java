@@ -10,6 +10,10 @@ import com.ordermanagement.exceptions.RecordNotFoundException;
 import com.ordermanagement.repository.CategoryRepository;
 import com.ordermanagement.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -27,8 +31,13 @@ public class ProductService {
     @Autowired
     ProductMapper productMapper;
 
-    public List<Product> getAllProducts(){
-        return productRepository.fetchAllProducts();
+    public Page<Product> getAllProducts(int page, int size, String sortBy, String sortDirection){
+
+        Sort sort = sortDirection.equalsIgnoreCase("desc") ?
+                Sort.by(sortBy).descending():
+                Sort.by(sortBy).ascending();
+        Pageable pageable = PageRequest.of(page,size,sort);
+        return productRepository.fetchAllProducts(pageable);
     }
 
 
