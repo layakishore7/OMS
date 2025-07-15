@@ -21,22 +21,18 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping("/categories")
-    public ResponseEntity<APIResponse> getAllCategories(
+    public ResponseEntity<Page<Category>> getAllCategories(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
             @RequestParam(defaultValue = "id") String sortBy,
             @RequestParam(defaultValue = "asc") String sortDirection){
-        try {
             if (page<0) page =0;
             if ((size<1) || size>100) size = 10;
 
             if (!sortDirection.equalsIgnoreCase("asc")&&!sortDirection.equalsIgnoreCase("desc"))
                 sortDirection = "asc";
             Page<Category> categories = categoryService.getAllCategories(page,size,sortBy,sortDirection);
-            return APIResponse.success(categories);
-        } catch (RuntimeException ex) {
-            return APIResponse.error(ex.getMessage());
-        }
+            return ResponseEntity.ok(categories);
     }
 
     
