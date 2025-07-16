@@ -34,16 +34,6 @@ public class CategoryService {
     private ProductRepository productRepository;
 
 
-//    public Page<Category> getAllCategories(int page, int size, String sortBy, String sortDirection){
-//
-//        Sort sort = sortDirection.equalsIgnoreCase("desc") ?
-//                Sort.by(sortBy).descending():
-//                Sort.by(sortBy).ascending();
-//        Pageable pageable = PageRequest.of(page,size,sort);
-//        return categoryRepository.fetchAllCategories(search, pageable);
-//
-//    }
-
     public CategoriesPageResponse getCategory(String search, int pageNumber, int pageSize){
         PageRequest pageable = PageRequest.of(pageNumber,pageSize)
                 .withSort(Sort.by("category_name").ascending());
@@ -66,16 +56,16 @@ public class CategoryService {
         return categoryRepository.getAllCategories();
     }
 
-    public ResponseEntity<Category> addCategory(Category category) {
+    public Category addCategory(Category category) {
         return Optional.ofNullable(category)
-                .filter(cat-> ! categoryRepository.existsByCategoryNameAndStatus(cat.getCategoryName(), Enum.Status.ACTIVE))
+                .filter(cat -> !categoryRepository.existsByCategoryNameAndStatus(cat.getCategoryName(), Enum.Status.ACTIVE))
                 .map(categoryRepository::save)
-                .map(savedCategory->ResponseEntity.status(HttpStatus.CREATED).body(savedCategory))
-                .orElseThrow(()-> {
+                .orElseThrow(() -> {
                     assert category != null;
-                    return new RecordAlreadyExistsException("Category With Name "+category.getCategoryName()+" already exists");
+                    return new RecordAlreadyExistsException("Category With Name " + category.getCategoryName() + " already exists");
                 });
     }
+
 
     public Category updateCategory(Integer id, Category category) {
         return categoryRepository.findById(id)

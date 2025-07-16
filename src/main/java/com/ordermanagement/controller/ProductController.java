@@ -1,7 +1,10 @@
 package com.ordermanagement.controller;
 
+import com.ordermanagement.domain.misc.APIResponse;
 import com.ordermanagement.domain.requestDTO.ProductRequest;
 import com.ordermanagement.domain.responseDTO.ProductResponse;
+import com.ordermanagement.domain.responses.CategoriesPageResponse;
+import com.ordermanagement.domain.responses.ProductsPageResponse;
 import com.ordermanagement.entity.Product;
 import com.ordermanagement.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,45 +24,42 @@ public class ProductController {
 
 
     @GetMapping("/products")
-    public ResponseEntity<Page<Product>> getAllProducts(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "5") int size,
-            @RequestParam(defaultValue = "id") String sortBy,
-            @RequestParam(defaultValue = "asc") String sortDirection){
+    public ResponseEntity<APIResponse> getAllProducts(
+            @RequestParam(defaultValue = "") String search,
+            @RequestParam(defaultValue = "0") int pageNumber,
+            @RequestParam(defaultValue = "5") int  size){
 
-            if (page<0) page = 0;
-            if (size<1 || size>100) size = 10;
-
-            if (!sortDirection.equalsIgnoreCase("asc")&&!sortDirection.equalsIgnoreCase("desc"))
-                sortDirection = "asc";
-            Page<Product> products = productService.getAllProducts(page, size, sortBy, sortDirection);
-            return ResponseEntity.ok(products);
+            try {
+                ProductsPageResponse products = productService.getAllProducts(search,pageNumber,size);
+                return APIResponse.success(products);
+            } catch (Exception e) {
+                return APIResponse.error(HttpStatus.BAD_REQUEST,e.getMessage());
+            }
     }
-
 
 
     @PostMapping("/products")
-    public ResponseEntity<ProductResponse> addProduct(@RequestBody ProductRequest request) {
+    public ResponseEntity<APIResponse> addProduct(@RequestBody ProductRequest request) {
         ProductResponse response = productService.addProduct(request);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        return APIResponse.created("Product Created Successfully",response);
     }
 
     @GetMapping("/products/{productId}")
-    public ResponseEntity<ProductResponse> getProductById(@PathVariable Integer productId) {
+    public ResponseEntity<APIResponse> getProductById(@PathVariable Integer productId) {
         ProductResponse response = productService.getProductById(productId);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return APIResponse.success(response);
     }
 
     @PutMapping("/products/{productId}")
-    public ResponseEntity<ProductResponse> updateProductById(@PathVariable Integer productId,@RequestBody ProductRequest product) {
+    public ResponseEntity<APIResponse> updateProductById(@PathVariable Integer productId,@RequestBody ProductRequest product) {
         ProductResponse updatedProduct = productService.updateProduct(productId,product);
-        return ResponseEntity.ok(updatedProduct);
+        return APIResponse.updated("Product Updated Successfully",updatedProduct);
     }
 
     @DeleteMapping("/products/{productId}")
-    public ResponseEntity<Void> deleteProductById(@PathVariable Integer productId) {
+    public ResponseEntity<APIResponse> deleteProductById(@PathVariable Integer productId) {
         productService.deleteProduct(productId);
-        return ResponseEntity.noContent().build(); // 204 No Content
+        return APIResponse.success("Product Deleted Successfully");
     }
 
 
