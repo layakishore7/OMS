@@ -10,10 +10,9 @@ public class Enum {
     }
 
     public enum OrderType {
-        PURCHASE,
-        SALE,
-        RETURN,
-        ADJUSTMENT
+        INBOUND,
+        OUTBOUND,
+        TRANSFER
     }
 
     public enum OrderStatus {
@@ -23,7 +22,8 @@ public class Enum {
         SHIPPED,
         DELIVERED,
         CANCELLED,
-        RETURNED
+        RETURNED,
+        NEW
     }
 
     public enum Status {
