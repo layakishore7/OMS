@@ -2,8 +2,12 @@ package com.ordermanagement.service;
 
 import com.ordermanagement.Enum.Enum;
 import com.ordermanagement.domain.mapper.InventoryMapper;
+import com.ordermanagement.domain.misc.MetaData;
 import com.ordermanagement.domain.requestDTO.InventoryRequest;
 import com.ordermanagement.domain.responseDTO.InventoryResponse;
+import com.ordermanagement.domain.responses.CategoriesPageResponse;
+import com.ordermanagement.domain.responses.InventoryPageResponse;
+import com.ordermanagement.entity.Category;
 import com.ordermanagement.entity.Inventory;
 import com.ordermanagement.entity.Product;
 import com.ordermanagement.repository.InventoryRepository;
@@ -31,12 +35,23 @@ public class InventoryService {
     @Autowired
     InventoryMapper inventoryMapper;
 
-    public Page<Inventory> getAllInventory(int page, int size, String sortBy, String sortDirection ){
-        Sort sort = sortDirection.equalsIgnoreCase("desc") ?
-                Sort.by(sortBy).descending():
-                Sort.by(sortBy).ascending();
-        Pageable pageable = PageRequest.of(page,size,sort);
-        return inventoryRepository.fetchAllInventory(pageable);
+    public InventoryPageResponse getAllInventory(String search, int pageNumber, int pageSize) {
+        PageRequest pageable = PageRequest.of(pageNumber,pageSize)
+                .withSort(Sort.by("id").ascending());
+
+        Page<Inventory> inventory = inventoryRepository.fetchAllInventory(search,pageable);
+        List<InventoryResponse> response = inventory
+                .stream()
+                .map(i -> inventoryMapper.entityToResponse(i))
+                .toList();
+
+        MetaData metaData = new MetaData();
+        metaData.setPageNumber(pageNumber);
+        metaData.setPageSize(pageSize);
+        metaData.setPageCount(inventory.getTotalPages());
+        metaData.setRecordCount(inventory.getTotalElements());
+
+        return new InventoryPageResponse(response,metaData);
     }
 
     public InventoryResponse addInventory(InventoryRequest request){
@@ -82,11 +97,6 @@ public class InventoryService {
             throw new IllegalArgumentException("Product Id cannot be null");
         }
         List<Inventory> inventory = inventoryRepository.getInventoryByProductId(productId);
-
-//        if (inventory.isEmpty()) {
-//            throw new RuntimeException("Inventory Not Found");
-//        }
-
         return inventory.stream()
                 .map(inventoryMapper::entityToResponse)
                 .collect(Collectors.toList());

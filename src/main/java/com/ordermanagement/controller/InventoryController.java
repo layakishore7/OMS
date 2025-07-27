@@ -3,6 +3,8 @@ package com.ordermanagement.controller;
 import com.ordermanagement.domain.misc.APIResponse;
 import com.ordermanagement.domain.requestDTO.InventoryRequest;
 import com.ordermanagement.domain.responseDTO.InventoryResponse;
+import com.ordermanagement.domain.responses.CategoriesPageResponse;
+import com.ordermanagement.domain.responses.InventoryPageResponse;
 import com.ordermanagement.entity.Inventory;
 import com.ordermanagement.repository.InventoryRepository;
 import com.ordermanagement.service.InventoryService;
@@ -25,24 +27,16 @@ public class InventoryController {
     InventoryRepository inventoryRepository;
 
     @GetMapping("/inventory")
-    public ResponseEntity<APIResponse> getAllInventory(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "5") int size,
-            @RequestParam(defaultValue = "id") String sortBy,
-            @RequestParam(defaultValue = "asc") String sortDirection) {
-
-        if (page<0) page = 0;
-        if (size<1 || size>100) size = 10;
-
-        if (!sortDirection.equalsIgnoreCase("asc")&&!sortDirection.equalsIgnoreCase("desc"))
-            sortDirection = "asc";
+    public ResponseEntity<APIResponse> getAllCategories(
+            @RequestParam(defaultValue = "") String search,
+            @RequestParam(defaultValue = "0") int pageNumber,
+            @RequestParam(defaultValue = "5") int size) {
         try {
-            Page<Inventory> inventory = inventoryService.getAllInventory(page, size, sortBy, sortDirection);
-            return APIResponse.success(inventory);
+            InventoryPageResponse response = inventoryService.getAllInventory(search,pageNumber,size);
+            return APIResponse.success(response);
         } catch (Exception e) {
             return APIResponse.error(HttpStatus.BAD_REQUEST,e.getMessage());
         }
-
     }
 
     @GetMapping("/inventory/product/{productId}")

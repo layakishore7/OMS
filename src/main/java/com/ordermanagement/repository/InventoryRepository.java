@@ -1,6 +1,7 @@
 package com.ordermanagement.repository;
 
 import com.ordermanagement.domain.responseDTO.InventoryResponse;
+import com.ordermanagement.domain.responses.InventoryPageResponse;
 import com.ordermanagement.entity.Inventory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,5 +19,5 @@ public interface InventoryRepository extends JpaRepository<Inventory,Integer> {
     List<Inventory> getInventoryByProductId(@Param("productId") Integer productId);
 
     @Query(value = "SELECT * FROM inventory WHERE status = 1 ",nativeQuery = true)
-    Page<Inventory> fetchAllInventory(Pageable pageable);
+    Page<Inventory> fetchAllInventory(String search, Pageable pageable);
 }

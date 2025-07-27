@@ -48,6 +48,7 @@ public class APIResponse {
         response.setMessage(createdSuccessfully);
         response.setStatusCode(200);
         response.setSuccess(true);
+        response.setData("No Data");
         return ResponseEntity.ok(response);
     }
 
@@ -93,6 +94,8 @@ public class APIResponse {
         APIResponse response = new APIResponse();
         response.setSuccess(false);
         response.setMessage(message);
+        response.setStatusCode(400);
+        response.setStatus(HttpStatusCode.valueOf(400));
         response.setData(null);
         return ResponseEntity.status(status).body(response);
     }
