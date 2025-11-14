@@ -1,5 +1,6 @@
 package com.ordermanagement.controller;
 
+import com.ordermanagement.domain.misc.APIResponse;
 import com.ordermanagement.domain.requestDTO.InventoryRequest;
 import com.ordermanagement.domain.responseDTO.InventoryResponse;
 import com.ordermanagement.entity.Inventory;
@@ -24,7 +25,7 @@ public class InventoryController {
     InventoryRepository inventoryRepository;
 
     @GetMapping("/inventory")
-    public ResponseEntity<Page<Inventory>> getAllInventory(
+    public ResponseEntity<APIResponse> getAllInventory(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
             @RequestParam(defaultValue = "id") String sortBy,
@@ -35,8 +36,13 @@ public class InventoryController {
 
         if (!sortDirection.equalsIgnoreCase("asc")&&!sortDirection.equalsIgnoreCase("desc"))
             sortDirection = "asc";
-        Page<Inventory> inventory = inventoryService.getAllInventory(page, size, sortBy, sortDirection);
-        return ResponseEntity.ok(inventory);
+        try {
+            Page<Inventory> inventory = inventoryService.getAllInventory(page, size, sortBy, sortDirection);
+            return APIResponse.success(inventory);
+        } catch (Exception e) {
+            return APIResponse.error(HttpStatus.BAD_REQUEST,e.getMessage());
+        }
+
     }
 
     @GetMapping("/inventory/product/{productId}")
@@ -45,26 +51,26 @@ public class InventoryController {
     }
 
     @PostMapping("/inventory")
-    public ResponseEntity<InventoryResponse> addInventory(@RequestBody InventoryRequest request) {
+    public ResponseEntity<APIResponse> addInventory(@RequestBody InventoryRequest request) {
         InventoryResponse response = inventoryService.addInventory(request);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        return APIResponse.created("Inventory Added Successfully",response);
     }
 
     @GetMapping("inventory/{inventoryId}")
-    public ResponseEntity<InventoryResponse> getInventoryById(@PathVariable Integer inventoryId){
+    public ResponseEntity<APIResponse> getInventoryById(@PathVariable Integer inventoryId){
         InventoryResponse response = inventoryService.getInventoryById(inventoryId);
-        return new ResponseEntity<>(response,HttpStatus.OK);
+        return APIResponse.success(response);
     }
 
     @PutMapping("inventory/{inventoryId}")
-    public ResponseEntity<InventoryResponse> updateInventory(@PathVariable Integer inventoryId,@RequestBody InventoryRequest request) {
+    public ResponseEntity<APIResponse> updateInventory(@PathVariable Integer inventoryId,@RequestBody InventoryRequest request) {
         InventoryResponse updatedInventory = inventoryService.updateInventory(inventoryId,request);
-        return new ResponseEntity<>(updatedInventory,HttpStatus.OK);
+        return APIResponse.success("Inventory Updated Successfully",updatedInventory);
     }
 
     @DeleteMapping("/inventory/{inventoryId}")
-    public ResponseEntity<Void> deleteProductById(@PathVariable Integer inventoryId) {
+    public ResponseEntity<APIResponse> deleteProductById(@PathVariable Integer inventoryId) {
         inventoryService.deleteInventory(inventoryId);
-        return ResponseEntity.noContent().build(); // 204 No Content
+        return APIResponse.success("Inventory Deleted Successfully");
     }
 }

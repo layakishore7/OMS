@@ -23,50 +23,52 @@ public class APIResponse {
     private Object data;
 
     public static ResponseEntity<APIResponse> success(String createdSuccessfully, Object data){
-        APIResponse resposne = new APIResponse();
-        resposne.setStatus(HttpStatus.OK);
-        resposne.setMessage(createdSuccessfully);
-        resposne.setStatusCode(200);
-        resposne.setData(data);
-        return ResponseEntity.ok(resposne);
+        APIResponse response = new APIResponse();
+        response.setStatus(HttpStatus.OK);
+        response.setMessage(createdSuccessfully);
+        response.setStatusCode(200);
+        response.setData(data);
+        return ResponseEntity.ok(response);
 
     }
 
     public static ResponseEntity<APIResponse> success(Object data){
-        APIResponse resposne = new APIResponse();
-        resposne.setStatus(HttpStatus.OK);
-        resposne.setStatusCode(200);
-        resposne.setData(data);
-        return ResponseEntity.ok(resposne);
+        APIResponse response = new APIResponse();
+        response.setSuccess(true);
+        response.setMessage("Success");
+        response.setStatus(HttpStatus.OK);
+        response.setStatusCode(200);
+        response.setData(data);
+        return ResponseEntity.ok(response);
     }
 
     public static ResponseEntity<APIResponse> success(String createdSuccessfully) {
-        APIResponse resposne = new APIResponse();
-        resposne.setStatus(HttpStatus.OK);
-        resposne.setMessage(createdSuccessfully);
-        resposne.setStatusCode(200);
-        return ResponseEntity.ok(resposne);
+        APIResponse response = new APIResponse();
+        response.setStatus(HttpStatus.OK);
+        response.setMessage(createdSuccessfully);
+        response.setStatusCode(200);
+        response.setSuccess(true);
+        return ResponseEntity.ok(response);
     }
 
-    public static ResponseEntity<APIResponse> created(String message, Object data){
-        APIResponse resposne = new APIResponse();
-        resposne.setStatus(HttpStatusCode.valueOf(201));
-        resposne.setStatusCode(201);
-        resposne.setSuccess(true);
-        resposne.setData(data);
-        resposne.setMessage(message);
-        return ResponseEntity.status(HttpStatus.CREATED).body(resposne);
-
+    public static ResponseEntity<APIResponse> created(String message, Object data) {
+        APIResponse response = new APIResponse();
+        response.setStatus(HttpStatusCode.valueOf(201));
+        response.setStatusCode(201);
+        response.setSuccess(true);
+        response.setData(data);
+        response.setMessage(message);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     public static ResponseEntity<APIResponse> updated(String message, Object data){
-        APIResponse resposne = new APIResponse();
-        resposne.setStatus(HttpStatusCode.valueOf(201));
-        resposne.setStatusCode(201);
-        resposne.setSuccess(true);
-        resposne.setData(data);
-        resposne.setMessage(message);
-        return ResponseEntity.status(HttpStatus.CREATED).body(resposne);
+        APIResponse response = new APIResponse();
+        response.setStatus(HttpStatusCode.valueOf(201));
+        response.setStatusCode(201);
+        response.setSuccess(true);
+        response.setData(data);
+        response.setMessage(message);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     public static ResponseEntity<APIResponse> error(String message){

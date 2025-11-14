@@ -14,8 +14,6 @@ public class ProductResponse {
 
     private String sku;
 
-    private Integer categoryId;
-
     private Integer price;
 
     private String description;

@@ -19,7 +19,7 @@ public interface CategoryRepository extends JpaRepository<Category,Integer> {
     Optional<Category> findByCategoryNameAndStatus(String categoryName, Enum.Status active);
 
     @Query(value = "SELECT * FROM categories WHERE status = 1", nativeQuery = true)
-    Page<Category> fetchAllCategories(Pageable pageable);
+    Page<Category> fetchAllCategories(String search, Pageable pageable);
 
     @Query(value = "SELECT * FROM categories WHERE status = 1", nativeQuery = true)
     List<Category> getAllCategories();

@@ -10,10 +10,9 @@ public class Enum {
     }
 
     public enum OrderType {
-        PURCHASE,
-        SALE,
-        RETURN,
-        ADJUSTMENT
+        INBOUND,
+        OUTBOUND,
+        TRANSFER
     }
 
     public enum OrderStatus {
@@ -23,7 +22,27 @@ public class Enum {
         SHIPPED,
         DELIVERED,
         CANCELLED,
-        RETURNED
+        RETURNED,
+        NEW
+    }
+
+    public enum OrganizationType {
+        CARRIER(0),SHIPPER(1),WAREHOUSE(2);
+        private final int value;
+        OrganizationType(int value) {
+            this.value=value;
+        }
+        public int getValue() {
+            return value;
+        }
+        public static OrganizationType fromValue(int value) {
+            for (OrganizationType organizationType : OrganizationType.values()) {
+                if (organizationType.getValue()==value){
+                    return organizationType;
+                }
+            }
+            throw new IllegalArgumentException(("Invalid OrganizationType "+ value));
+        }
     }
 
     public enum Status {
