@@ -1,8 +1,11 @@
 package com.ordermanagement.service;
 import com.ordermanagement.Enum.Enum;
 import com.ordermanagement.domain.mapper.ProductMapper;
+import com.ordermanagement.domain.misc.MetaData;
 import com.ordermanagement.domain.requestDTO.ProductRequest;
 import com.ordermanagement.domain.responseDTO.ProductResponse;
+import com.ordermanagement.domain.responses.CategoriesPageResponse;
+import com.ordermanagement.domain.responses.ProductsPageResponse;
 import com.ordermanagement.entity.Category;
 import com.ordermanagement.entity.Product;
 import com.ordermanagement.exceptions.DeletionException;
@@ -31,13 +34,21 @@ public class ProductService {
     @Autowired
     ProductMapper productMapper;
 
-    public Page<Product> getAllProducts(int page, int size, String sortBy, String sortDirection){
 
-        Sort sort = sortDirection.equalsIgnoreCase("desc") ?
-                Sort.by(sortBy).descending():
-                Sort.by(sortBy).ascending();
-        Pageable pageable = PageRequest.of(page,size,sort);
-        return productRepository.fetchAllProducts(pageable);
+    public ProductsPageResponse getAllProducts(String search, int pageNumber, int pageSize) {
+        PageRequest pageable = PageRequest.of(pageNumber,pageSize)
+                .withSort(Sort.by("product_name").ascending());
+        Page<Product> products = productRepository.fetchAllProducts(search,pageable);
+
+        List<Product> productsResponse = products.stream().toList();
+
+        MetaData metaData = new MetaData();
+        metaData.setPageNumber(pageNumber);
+        metaData.setPageSize(pageSize);
+        metaData.setPageCount(products.getTotalPages());
+        metaData.setRecordCount(products.getTotalElements());
+
+        return new ProductsPageResponse(productsResponse,metaData);
     }
 
 

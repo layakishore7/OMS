@@ -1,6 +1,7 @@
 package com.ordermanagement.controller;
 
 import com.ordermanagement.domain.misc.APIResponse;
+import com.ordermanagement.domain.responses.CategoriesPageResponse;
 import com.ordermanagement.entity.Category;
 import com.ordermanagement.entity.Product;
 import com.ordermanagement.repository.CategoryRepository;
@@ -8,6 +9,7 @@ import com.ordermanagement.service.CategoryService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,21 +40,23 @@ public class CategoryController {
     
 
     @PostMapping("/categories")
-    public ResponseEntity<Category> addCategory(@RequestBody Category category) {
-        return categoryService.addCategory(category);
+    public ResponseEntity<APIResponse> addCategory(@RequestBody Category category) {
+
+        Category savedCategory = categoryService.addCategory(category);
+        return APIResponse.created("Category Created Successfully",savedCategory);
     }
 
     @PutMapping("/categories/{id}")
-    public ResponseEntity<Category> updateCategory(@PathVariable Integer id,
+    public ResponseEntity<APIResponse> updateCategory(@PathVariable Integer id,
                                                    @RequestBody Category category) {
         Category updatedCategory = categoryService.updateCategory(id, category);
-        return ResponseEntity.ok(updatedCategory);
+        return APIResponse.updated("Category Updated Successfully",updatedCategory);
     }
 
     @DeleteMapping("/categories/{id}")
-    public ResponseEntity<Void> deleteCategoryById(@PathVariable Integer id) {
+    public ResponseEntity<APIResponse> deleteCategoryById(@PathVariable Integer id) {
         categoryService.deleteCategory(id);
-        return ResponseEntity.noContent().build(); // 204 No Content
+        return APIResponse.success("Category Deleted Successfully"); // 204 No Content
     }
 
 

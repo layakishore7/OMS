@@ -17,5 +17,5 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     List<Product> fetchProductsByCategory(Integer categoryId);
 
     @Query(value = "select * from products where status =1",nativeQuery = true)
-    Page<Product> fetchAllProducts(Pageable pageable);
+    Page<Product> fetchAllProducts(String search, Pageable pageable);
 }
