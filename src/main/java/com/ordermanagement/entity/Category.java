@@ -16,6 +16,7 @@ import java.util.List;
 @Data
 @Getter
 @Setter
+@Builder
 public class Category extends BaseEntity {
 
     @Column(name = "category_name")
