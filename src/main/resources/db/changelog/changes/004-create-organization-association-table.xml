@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="organization-association-table" author="dev">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="organization_association"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="organization_association">
+
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="carrier_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="shipper_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="warehouse_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <!-- Foreign Keys -->
+        <addForeignKeyConstraint
+                baseTableName="organization_association"
+                baseColumnNames="carrier_id"
+                constraintName="fk_org_assoc_carrier"
+                referencedTableName="organizations"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+
+        <addForeignKeyConstraint
+                baseTableName="organization_association"
+                baseColumnNames="shipper_id"
+                constraintName="fk_org_assoc_shipper"
+                referencedTableName="organizations"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+
+        <addForeignKeyConstraint
+                baseTableName="organization_association"
+                baseColumnNames="warehouse_id"
+                constraintName="fk_org_assoc_warehouse"
+                referencedTableName="organizations"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+
+        <!-- Composite Index -->
+        <createIndex tableName="organization_association"
+                     indexName="idx_org_assoc_carrier_shipper_warehouse">
+            <column name="carrier_id"/>
+            <column name="shipper_id"/>
+            <column name="warehouse_id"/>
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>

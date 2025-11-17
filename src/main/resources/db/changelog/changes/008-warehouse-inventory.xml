@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="create-warehouse-inventory" author="dev">
+        <!-- Ensure products exists before trying to create FKs to it.
+             Use HALT so the error is explicit if it truly doesn't exist. -->
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="warehouse_inventory"/>
+            </not>
+        </preConditions>
+
+        <createTable schemaName="public" tableName="warehouse_inventory">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_warehouse_inventory"/>
+            </column>
+
+            <!-- store product_id (matches products.product_id) -->
+            <column name="product_id" type="INT">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="warehouse_id" type="INT">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="min_threshold" type="INT"/>
+            <column name="available_quantity" type="INT"/>
+            <column name="record_status" type="SMALLINT" defaultValueNumeric="1"/>
+
+            <column name="created_userid" type="INT"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="updated_userid" type="INT"/>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+
+        <!-- Add foreign keys explicitly and correctly reference products.product_id -->
+        <addForeignKeyConstraint baseTableSchemaName="public" baseTableName="warehouse_inventory"
+                                 baseColumnNames="product_id"
+                                 constraintName="FK_WI_PRODUCT"
+                                 referencedTableSchemaName="public" referencedTableName="products"
+                                 referencedColumnNames="id"
+                                 onDelete="SET NULL" onUpdate="CASCADE"/>
+
+        <addForeignKeyConstraint baseTableSchemaName="public" baseTableName="warehouse_inventory"
+                                 baseColumnNames="warehouse_id"
+                                 constraintName="FK_WI_ORGANIZATION"
+                                 referencedTableSchemaName="public" referencedTableName="organizations"
+                                 referencedColumnNames="id"
+                                 onDelete="SET NULL" onUpdate="CASCADE"/>
+
+        <rollback>
+            <dropTable schemaName="public" tableName="warehouse_inventory"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
