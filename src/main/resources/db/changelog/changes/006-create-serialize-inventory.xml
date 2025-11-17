@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="create-serialized-inventory" author="dev">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="serialized_inventory"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="serialized_inventory">
+
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="product_id" type="int">
+                <constraints nullable="true"
+                             referencedTableName="products"
+                             referencedColumnNames="id"
+                             foreignKeyName="FK_PRODUCT_ID"/>
+            </column>
+
+            <column name="warehouse_id" type="int">
+                <constraints nullable="true"
+                             referencedTableName="organizations"
+                             referencedColumnNames="id"
+                             foreignKeyName="FK_WAREHOUSE_ID"/>
+            </column>
+
+            <column name="carrier_id" type="int">
+                <constraints nullable="true"
+                             referencedTableName="organizations"
+                             referencedColumnNames="id"
+                             foreignKeyName="FK_CARRIER_ID"/>
+            </column>
+
+            <column name="serial_number" type="varchar(255)"/>
+            <column name="reference_number" type="varchar(255)"/>
+            <column name="quantity" type="int"/>
+            <column name="record_status" type="tinyint" defaultValueNumeric="1"/>
+            <column name="product_condition" type="tinyint"/>
+            <column name="product_class" type="tinyint"/>
+
+            <column name="expiry_date" type="TIMESTAMP"/>
+            <column name="received_date" type="TIMESTAMP"/>
+            <column name="dispatch_date" type="TIMESTAMP"/>
+
+            <column name="warehouse_inventory_id" type="int">
+                <constraints nullable="true"
+                             referencedTableName="warehouse_inventory"
+                             referencedColumnNames="id"
+                             foreignKeyName="FK_WAREHOUSE_INVENTORY_ID"/>
+            </column>
+
+            <column name="created_userid" type="int"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_userid" type="int"/>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+
+            <column name="lot_number" type="varchar(255)"/>
+            <column name="storage_location" type="varchar(255)"/>
+            <column name="pallet_number" type="varchar(255)"/>
+            <column name="storage_type" type="tinyint"/>
+            <column name="storage_type_ref_number" type="varchar(255)"/>
+            <column name="po_number" type="varchar(225)"/>
+            <column name="container_number" type="varchar(225)"/>
+
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="serialized_inventory"/>
+        </rollback>
+
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="products-table-create-v2" author="dev">
+        <!-- If the table already exists, mark the changeset ran.
+             This precondition will cause the changeset to be skipped if products exists. -->
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="products"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="products">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_products"/>
+            </column>
+
+            <column name="shipper_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="product_unique_id" type="VARCHAR(100)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="product_alternate_number" type="VARCHAR(100)"/>
+
+            <column name="product_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="description" type="VARCHAR(1000)"/>
+
+            <column name="parent_category_id" type="INT"/>
+            <column name="parent_category_name" type="VARCHAR(255)"/>
+            <column name="category_id" type="INT"/>
+            <column name="category_name" type="VARCHAR(255)"/>
+
+            <column name="length" type="DECIMAL(12,4)"/>
+            <column name="breadth" type="DECIMAL(12,4)"/>
+            <column name="height" type="DECIMAL(12,4)"/>
+            <column name="weight" type="DECIMAL(12,4)"/>
+            <column name="dimension_uom" type="INT"/>
+            <column name="weight_uom" type="INT"/>
+
+            <column name="threshold" type="INT"/>
+            <column name="vendor" type="VARCHAR(100)"/>
+            <column name="available_quantity" type="INT" defaultValueNumeric="0"/>
+            <column name="perishable" type="BOOLEAN" defaultValueBoolean="false"/>
+            <column name="serializable" type="BOOLEAN" defaultValueBoolean="false"/>
+            <column name="upload_image" type="VARCHAR(1000)"/>
+
+            <column name="status" type="INT" defaultValueNumeric="0"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+
+        <!-- Foreign keys added after creating table for clarity/portability -->
+        <addForeignKeyConstraint baseTableSchemaName="public" baseTableName="products"
+                                 baseColumnNames="shipper_id"
+                                 constraintName="fk_products_shipper"
+                                 referencedTableSchemaName="public" referencedTableName="organizations"
+                                 referencedColumnNames="id"
+                                 onDelete="RESTRICT" onUpdate="CASCADE"/>
+
+        <addForeignKeyConstraint baseTableSchemaName="public" baseTableName="products"
+                                 baseColumnNames="parent_category_id"
+                                 constraintName="fk_products_parent_category"
+                                 referencedTableSchemaName="public" referencedTableName="categories"
+                                 referencedColumnNames="category_id"
+                                 onDelete="RESTRICT" onUpdate="CASCADE"/>
+
+        <addForeignKeyConstraint baseTableSchemaName="public" baseTableName="products"
+                                 baseColumnNames="category_id"
+                                 constraintName="fk_products_category"
+                                 referencedTableSchemaName="public" referencedTableName="categories"
+                                 referencedColumnNames="category_id"
+                                 onDelete="RESTRICT" onUpdate="CASCADE"/>
+
+        <!-- Indexes -->
+        <createIndex schemaName="public" tableName="products" indexName="idx_products_shipper_id">
+            <column name="shipper_id"/>
+        </createIndex>
+
+        <createIndex schemaName="public" tableName="products" indexName="idx_products_parent_category_id">
+            <column name="parent_category_id"/>
+        </createIndex>
+
+        <createIndex schemaName="public" tableName="products" indexName="idx_products_category_id">
+            <column name="category_id"/>
+        </createIndex>
+
+    </changeSet>
+</databaseChangeLog>

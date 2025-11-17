@@ -11,14 +11,43 @@
                 <tableExists tableName="categories"/>
             </not>
         </preConditions>
+
         <createTable tableName="categories">
             <column name="category_id" type="INT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="VARCHAR(255)"/>
+
+            <column name="category_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
             <column name="description" type="VARCHAR(500)"/>
+
+            <!-- Parent category reference (nullable for root categories) -->
+            <column name="parent_id" type="INT">
+                <constraints nullable="true" foreignKeyName="fk_category_parent"
+                             references="categories(category_id)"/>
+            </column>
+
+            <column name="status" type="INT" defaultValueNumeric="0">
+                <constraints nullable="false"/>
+            </column>
+
             <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP"/>
         </createTable>
+
+        <!-- Optional: enforce unique category names within the same parent -->
+        <addUniqueConstraint
+                tableName="categories"
+                columnNames="parent_id, category_name"
+                constraintName="uk_category_parent_name"/>
+
+        <!-- Optional: index for faster parent-child queries -->
+        <createIndex indexName="idx_category_parent_id" tableName="categories">
+            <column name="parent_id"/>
+        </createIndex>
+
     </changeSet>
 
 </databaseChangeLog>
