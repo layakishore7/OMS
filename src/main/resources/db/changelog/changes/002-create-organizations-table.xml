@@ -36,7 +36,7 @@
 
             <column name="is_inventory" type="BOOLEAN"/>
 
-            <column name="status" type="INT" defaultValueNumeric="0">
+            <column name="record_status" type="INT" defaultValueNumeric="1">
                 <constraints nullable="false"/>
             </column>
 

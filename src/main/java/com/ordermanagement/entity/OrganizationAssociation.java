@@ -26,7 +26,4 @@ public class OrganizationAssociation extends BaseEntity{
     @JoinColumn(name = "warehouse_id")
     private Organization warehouseOrganization;
 
-    @Enumerated(EnumType.ORDINAL)
-    @Column(name = "status")
-    private Enum.Status carrierShipperWarehouseAssociationStatus;
 }

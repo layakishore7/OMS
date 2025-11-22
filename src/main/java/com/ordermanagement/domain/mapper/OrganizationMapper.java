@@ -76,7 +76,7 @@ public class OrganizationMapper {
         CarrierShipperAssociation carrierShipperAssociation = new CarrierShipperAssociation();
         carrierShipperAssociation.setCarrierOrganization(carrier);
         carrierShipperAssociation.setShipperOrganization(shipperOrganization);
-        carrierShipperAssociation.setCarrierAssociationStatus(Enum.Status.ACTIVE);
+        carrierShipperAssociation.setStatus(Enum.Status.ACTIVE);
         carrierShipperAssociation.setCreatedAt(LocalDateTime.now());
         carrierShipperAssociation.setUpdatedAt(LocalDateTime.now());
         return carrierShipperAssociation;
@@ -87,7 +87,7 @@ public class OrganizationMapper {
         organizationAssociation.setCarrierOrganization(carrier);
         organizationAssociation.setShipperOrganization(shipper);
         organizationAssociation.setWarehouseOrganization(warehouse);
-        organizationAssociation.setCarrierShipperWarehouseAssociationStatus(Enum.Status.ACTIVE);
+        organizationAssociation.setStatus(Enum.Status.ACTIVE);
         organizationAssociation.setCreatedAt(LocalDateTime.now());
         organizationAssociation.setUpdatedAt(LocalDateTime.now());
         return organizationAssociation;
@@ -97,7 +97,7 @@ public class OrganizationMapper {
         CarrierShipperAssociationResponseDto carrierShipperAssociationResponseDto = new CarrierShipperAssociationResponseDto();
         carrierShipperAssociationResponseDto.setShipperId(association.getCarrierOrganization().getId());
         carrierShipperAssociationResponseDto.setCarrierId(association.getShipperOrganization().getId());
-        carrierShipperAssociationResponseDto.setAssociation(association.getCarrierAssociationStatus().name());
+        carrierShipperAssociationResponseDto.setAssociation(association.getStatus().name());
         return carrierShipperAssociationResponseDto;
 
     }
@@ -107,7 +107,7 @@ public class OrganizationMapper {
         organizationAssociationResponseDto.setCarrierId(association.getCarrierOrganization().getId());
         organizationAssociationResponseDto.setShipperId(association.getShipperOrganization().getId());
         organizationAssociationResponseDto.setWarehouseId(association.getWarehouseOrganization().getId());
-        organizationAssociationResponseDto.setAssociation(association.getCarrierShipperWarehouseAssociationStatus().name());
+        organizationAssociationResponseDto.setAssociation(association.getStatus().name());
         return organizationAssociationResponseDto;
     }
 }

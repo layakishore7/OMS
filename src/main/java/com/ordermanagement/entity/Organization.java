@@ -48,8 +48,5 @@ public class Organization extends BaseEntity {
     @Column(name = "is_inventory")
     private boolean isInventory;
 
-    @Column(name = "status")
-    @Enumerated(EnumType.ORDINAL)
-    private Enum.Status status = Enum.Status.ACTIVE;
 
 }

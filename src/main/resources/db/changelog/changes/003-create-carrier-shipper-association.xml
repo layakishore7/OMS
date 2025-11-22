@@ -35,7 +35,7 @@
             </column>
 
             <!-- The final status column you requested -->
-            <column name="status" type="SMALLINT" defaultValueNumeric="0">
+            <column name="record_status" type="SMALLINT" defaultValueNumeric="1">
                 <constraints nullable="false"/>
             </column>
 
