@@ -22,7 +22,4 @@ public class CarrierShipperAssociation extends BaseEntity{
     @JoinColumn(name = "shipper_id")
     private Organization shipperOrganization;
 
-    @Column(name = "status")
-    @Enumerated(EnumType.ORDINAL)
-    private Enum.Status carrierAssociationStatus;
 }

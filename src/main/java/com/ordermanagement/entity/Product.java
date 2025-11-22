@@ -30,8 +30,6 @@ public class Product extends BaseEntity {
 
     private String description;
 
-    @Enumerated(EnumType.ORDINAL)
-    private Enum.Status status;
 
     @ManyToOne
     @JoinColumn(name = "category_id",nullable = false)

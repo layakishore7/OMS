@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="organizations-table" author="dev">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="organizations"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="organizations">
+
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="organization_name" type="VARCHAR(50)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="organization_code" type="VARCHAR(50)"/>
+            <column name="organization_type" type="INT"/>
+
+            <column name="contact_email" type="VARCHAR(50)"/>
+            <column name="organization_contact" type="VARCHAR(255)"/>
+
+            <column name="address" type="VARCHAR(500)"/>
+            <column name="city" type="VARCHAR(500)"/>
+            <column name="state" type="VARCHAR(500)"/>
+            <column name="zip_code" type="VARCHAR(500)"/>
+            <column name="country" type="VARCHAR(500)"/>
+
+            <column name="is_inventory" type="BOOLEAN"/>
+
+            <column name="record_status" type="INT" defaultValueNumeric="1">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_user" type="VARCHAR(255)"/>
+
+            <column name="association" type="SMALLINT"/>
+
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+
+        </createTable>
+
+        <!-- Useful optional indexes -->
+        <createIndex tableName="organizations" indexName="idx_org_code">
+            <column name="organization_code"/>
+        </createIndex>
+
+        <createIndex tableName="organizations" indexName="idx_org_type">
+            <column name="organization_type"/>
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>

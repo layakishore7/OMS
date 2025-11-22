@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="carrier-shipper-association-table" author="dev">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="carrier_shipper_association"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="carrier_shipper_association">
+
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="carrier_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="shipper_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- The final status column you requested -->
+            <column name="record_status" type="SMALLINT" defaultValueNumeric="1">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <!-- Foreign keys -->
+        <addForeignKeyConstraint
+                baseTableName="carrier_shipper_association"
+                baseColumnNames="carrier_id"
+                constraintName="fk_csa_carrier_org"
+                referencedTableName="organizations"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+
+        <addForeignKeyConstraint
+                baseTableName="carrier_shipper_association"
+                baseColumnNames="shipper_id"
+                constraintName="fk_csa_shipper_org"
+                referencedTableName="organizations"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+
+        <!-- Unique pair constraint -->
+        <addUniqueConstraint
+                tableName="carrier_shipper_association"
+                columnNames="carrier_id, shipper_id"
+                constraintName="idx_carrier_shipper_unique"/>
+
+        <!-- Indexes -->
+        <createIndex tableName="carrier_shipper_association" indexName="idx_csa_carrier_org">
+            <column name="carrier_id"/>
+        </createIndex>
+
+        <createIndex tableName="carrier_shipper_association" indexName="idx_csa_shipper_org">
+            <column name="shipper_id"/>
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>

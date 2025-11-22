@@ -1,5 +1,6 @@
 package com.ordermanagement.entity;
 
+import com.ordermanagement.Enum.Enum;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +18,10 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer  id;
+
+    @Column(name = "status")
+    @Enumerated(EnumType.ORDINAL)
+    private com.ordermanagement.Enum.Enum.Status status = Enum.Status.ACTIVE;
 
 //    @Column(name = "created_userid")
 //    private Long createdUserId;

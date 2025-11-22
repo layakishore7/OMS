@@ -6,13 +6,13 @@
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
 
     <!-- Include changesets in the correct order -->
+    <include file="db/changelog/changes/002-create-organizations-table.xml"/>
+    <include file="db/changelog/changes/003-create-carrier-shipper-association.xml"/>
+    <include file="db/changelog/changes/004-create-organization-association-table.xml"/>
     <include file="db/changelog/changes/001-create-categories-table.xml"/>
-    <include file="db/changelog/changes/002-create-customers-table.xml"/>
-    <include file="db/changelog/changes/003-create-products-table.xml"/>
-    <include file="db/changelog/changes/004-create-orders-table.xml"/>
-    <include file="db/changelog/changes/005-create-order-items-table.xml"/>
-    <include file="db/changelog/changes/006-create-inventory-table.xml"/>
-    <include file="db/changelog/changes/007-add-indexes.xml"/>
-    <include file="db/changelog/changes/008-add-constraints.xml"/>
-
+    <include file="db/changelog/changes/005-create-products-table.xml"/>
+    <include file="db/changelog/changes/008-warehouse-inventory.xml"/>
+    <include file="db/changelog/changes/006-create-serialize-inventory.xml"/>
+    <include file="db/changelog/changes/007-create-non-serialize-inventory.xml"/>
+    <include file="db/changelog/changes/009-product-stock-log.xml"/>
 </databaseChangeLog>

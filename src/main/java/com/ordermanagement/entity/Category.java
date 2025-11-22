@@ -25,9 +25,9 @@ public class Category extends BaseEntity {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "status")
-    @Enumerated(EnumType.ORDINAL)
-    private Enum.Status status = Enum.Status.ACTIVE;
+    @Column(name = "shipper_id")
+    private Integer shipperId;
+
 
     @OneToMany(mappedBy = "category")
     @JsonIgnore

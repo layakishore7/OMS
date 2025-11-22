@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="create-product-stock-log" author="dev">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="product_stock_log"/>
+            </not>
+        </preConditions>
+
+
+        <createTable tableName="product_stock_log">
+
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="action" type="int"/>
+
+            <column name="product_id" type="int">
+                <constraints nullable="true"
+                             referencedTableName="products"
+                             referencedColumnNames="id"
+                             foreignKeyName="FK_LOG_PRODUCT_ID"/>
+            </column>
+
+            <column name="warehouse_id" type="int">
+                <constraints nullable="true"
+                             referencedTableName="organizations"
+                             referencedColumnNames="id"
+                             foreignKeyName="FK_LOG_WAREHOUSE_ID"/>
+            </column>
+
+            <column name="carrier_id" type="int">
+                <constraints nullable="true"
+                             referencedTableName="organizations"
+                             referencedColumnNames="id"
+                             foreignKeyName="FK_LOG_CARRIER_ID"/>
+            </column>
+
+            <column name="shipper_id" type="int">
+                <constraints nullable="true"
+                             referencedTableName="organizations"
+                             referencedColumnNames="id"
+                             foreignKeyName="FK_LOG_SHIPPER_ORGANIZATION_ID"/>
+            </column>
+            <column name="serial_number" type="varchar(255)"/>
+
+            <column name="product_condition" type="int"/>
+            <column name="product_class" type="int"/>
+
+            <column name="storage_location" type="varchar(255)"/>
+            <column name="pallet_number" type="varchar(225)"/>
+            <column name="lot_number" type="varchar(225)"/>
+
+            <column name="storage_type" type="tinyint"/>
+            <column name="storage_type_ref_number" type="varchar(225)"/>
+
+            <column name="expiry_date" type="TIMESTAMP" defaultValueDate="CURRENT_TIMESTAMP"/>
+            <column name="reference_number" type="varchar(225)"/>
+
+            <column name="previous_quantity" type="int"/>
+            <column name="quantity" type="int"/>
+            <column name="quantity_type" type="int"/>
+            <column name="quantity_action" type="int"/>
+
+            <column name="updated_quantity" type="int"/>
+
+            <column name="warehouse_inventory_prev_qty" type="int"/>
+            <column name="warehouse_inventory_updated_qty" type="int"/>
+
+            <column name="warehouse_inventory_id" type="int"/>
+
+            <column name="order_number" type="varchar(255)"/>
+            <column name="order_type" type="int"/>
+
+            <column name="order_item_id" type="int"/>
+
+            <column name="truck_number" type="varchar(255)"/>
+            <column name="dock_number" type="varchar(255)"/>
+
+            <column name="description" type="text"/>
+
+            <column name="logged_by" type="varchar(255)"/>
+
+            <column name="date_action" type="int"/>
+            <column name="date" type="TIMESTAMP"/>
+
+            <column name="created_userid" type="int"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueDate="CURRENT_TIMESTAMP"/>
+
+            <column name="record_status" type="tinyint" defaultValueNumeric="1"/>
+
+            <column name="updated_userid" type="int"/>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="received_date" type="TIMESTAMP"/>
+            <column name="order_status" type="tinyint"/>
+            <column name="po_number" type="varchar(225)"/>
+            <column name="container_number" type="varchar(225)"/>
+
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="product_stock_log"/>
+        </rollback>
+
+    </changeSet>
+
+</databaseChangeLog>
