@@ -104,7 +104,7 @@ public class OrganizationService {
                     .findByCarrierIdAndShipperId(carrierId, shipper.getId())
                     .orElseGet(() -> organizationMapper.convertDtoToCarrierShipperAssociation(carrier, shipper));
 
-            carrierShipperAssociation.setCarrierAssociationStatus(status);
+            carrierShipperAssociation.setStatus(status);
 
             associationsToSave.add(carrierShipperAssociation);
 
@@ -123,7 +123,7 @@ public class OrganizationService {
                 organizationAssociationRepository.fetchByCarrierAndShipper(carrierId, shipperId);
 
         for (OrganizationAssociation association : associations) {
-            association.setCarrierShipperWarehouseAssociationStatus(status);
+            association.setStatus(status);
         }
         organizationAssociationRepository.saveAll(associations);
     }
@@ -152,7 +152,7 @@ public class OrganizationService {
             OrganizationAssociation warehouseAssociation = existingAssociation
                     .orElseGet(() -> organizationMapper.convertDtoToOrganizationAssociation(carrier, shipper, warehouse));
 
-            warehouseAssociation.setCarrierShipperWarehouseAssociationStatus(status);
+            warehouseAssociation.setStatus(status);
 
             warehouseAssociationsToSave.add(warehouseAssociation);
 
@@ -173,7 +173,7 @@ public class OrganizationService {
                         (carrierId, shipperId,warehouseId);
 
         for (OrganizationAssociation association : associations) {
-            association.setCarrierShipperWarehouseAssociationStatus(status);
+            association.setStatus(status);
         }
         organizationAssociationRepository.saveAll(associations);
     }

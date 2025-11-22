@@ -54,7 +54,7 @@
             <column name="serializable" type="BOOLEAN" defaultValueBoolean="false"/>
             <column name="upload_image" type="VARCHAR(1000)"/>
 
-            <column name="status" type="INT" defaultValueNumeric="0"/>
+            <column name="record_status" type="INT" defaultValueNumeric="1"/>
             <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
             <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
         </createTable>

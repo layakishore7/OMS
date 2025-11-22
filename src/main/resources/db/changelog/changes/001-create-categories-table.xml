@@ -17,6 +17,10 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
+            <column name="shipper_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+
             <column name="category_name" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
@@ -29,13 +33,19 @@
                              references="categories(category_id)"/>
             </column>
 
-            <column name="status" type="INT" defaultValueNumeric="0">
+            <column name="record_status" type="INT" defaultValueNumeric="1">
                 <constraints nullable="false"/>
             </column>
 
             <column name="created_at" type="TIMESTAMP"/>
             <column name="updated_at" type="TIMESTAMP"/>
         </createTable>
+
+        <addForeignKeyConstraint baseTableName="categories" baseColumnNames="shipper_id"
+                                 referencedTableName="organizations" referencedColumnNames="id"
+                                 baseTableSchemaName="public" referencedTableSchemaName="public"
+                                 constraintName="fk_categories_shipper"
+                                 onUpdate="CASCADE" onDelete="RESTRICT"/>
 
         <!-- Optional: enforce unique category names within the same parent -->
         <addUniqueConstraint

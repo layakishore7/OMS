@@ -38,6 +38,10 @@
                 <constraints nullable="false"/>
             </column>
 
+            <column name="record_status" type="SMALLINT" defaultValueNumeric="1">
+                <constraints nullable="false"/>
+            </column>
+
         </createTable>
 
         <!-- Foreign Keys -->
