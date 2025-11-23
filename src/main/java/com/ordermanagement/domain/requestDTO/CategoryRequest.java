@@ -11,5 +11,10 @@ public class CategoryRequest {
 
     private String categoryName;
 
-    private String description;
+    private String parentCategoryName;
+
+    private Integer shipperId;
+
+    private Integer parentCategoryId;
+
 }

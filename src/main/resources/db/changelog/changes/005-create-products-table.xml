@@ -71,14 +71,14 @@
                                  baseColumnNames="parent_category_id"
                                  constraintName="fk_products_parent_category"
                                  referencedTableSchemaName="public" referencedTableName="categories"
-                                 referencedColumnNames="category_id"
+                                 referencedColumnNames="id"
                                  onDelete="RESTRICT" onUpdate="CASCADE"/>
 
         <addForeignKeyConstraint baseTableSchemaName="public" baseTableName="products"
-                                 baseColumnNames="category_id"
+                                 baseColumnNames="id"
                                  constraintName="fk_products_category"
                                  referencedTableSchemaName="public" referencedTableName="categories"
-                                 referencedColumnNames="category_id"
+                                 referencedColumnNames="id"
                                  onDelete="RESTRICT" onUpdate="CASCADE"/>
 
         <!-- Indexes -->
@@ -91,7 +91,7 @@
         </createIndex>
 
         <createIndex schemaName="public" tableName="products" indexName="idx_products_category_id">
-            <column name="category_id"/>
+            <column name="id"/>
         </createIndex>
 
     </changeSet>

@@ -13,7 +13,7 @@
         </preConditions>
 
         <createTable tableName="categories">
-            <column name="category_id" type="INT" autoIncrement="true">
+            <column name="id" type="INT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
@@ -25,12 +25,10 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="description" type="VARCHAR(500)"/>
-
             <!-- Parent category reference (nullable for root categories) -->
             <column name="parent_id" type="INT">
                 <constraints nullable="true" foreignKeyName="fk_category_parent"
-                             references="categories(category_id)"/>
+                             references="categories(id)"/>
             </column>
 
             <column name="record_status" type="INT" defaultValueNumeric="1">
