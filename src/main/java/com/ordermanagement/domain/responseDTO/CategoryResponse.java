@@ -14,15 +14,13 @@ import java.time.LocalDateTime;
 @Builder
 public class CategoryResponse {
 
-    private Integer id;
+    private Integer categoryId;
 
     private String categoryName;
 
-    private String description;
+    private Integer shipperId;
 
-    private Enum.Status status;
+    private Integer parentCategoryId;
 
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
+    private String parentCategoryName;
 }

@@ -4,36 +4,40 @@ import com.ordermanagement.Enum.Enum;
 import com.ordermanagement.domain.requestDTO.CategoryRequest;
 import com.ordermanagement.domain.responseDTO.CategoryResponse;
 import com.ordermanagement.entity.Category;
+import com.ordermanagement.entity.Organization;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 
 
 @Component
 public class CategoryMapper {
 
-    public Category requestToEntity(CategoryRequest request) {
-        if (request == null) {
-            return null;
-        }
-
-        return Category.builder()
-                .categoryName(request.getCategoryName())
-                .description(request.getDescription())
-                //.status(Enum.Status.ACTIVE)
-                .build();
+    public Category convertCategoryRequestToEntity(CategoryRequest categoryRequest, String categoryName, Organization shipperOrganization){
+        Category category = new Category();
+        category.setCategoryName(categoryName);
+        category.setStatus(Enum.Status.ACTIVE);
+        category.setCreatedAt(LocalDateTime.now());
+        category.setUpdatedAt(LocalDateTime.now());
+        category.setShipperOrganization(shipperOrganization);
+        return category;
     }
 
-    public CategoryResponse entityToResponse(Category category) {
-        if (category == null) {
-            return null;
-        }
 
-        return CategoryResponse.builder()
-                .id(category.getId())
-                .categoryName(category.getCategoryName())
-                .description(category.getDescription())
-                .status(category.getStatus())
-                .createdAt(category.getCreatedAt())
-                .updatedAt(category.getUpdatedAt())
-                .build();
+
+    public CategoryResponse convertEntityToCategoryResponse(Category category){
+        CategoryResponse categoryResponse = new CategoryResponse();
+        categoryResponse.setCategoryId(category.getId());
+        categoryResponse.setCategoryName(category.getCategoryName());
+        categoryResponse.setShipperId(category.getShipperOrganization().getId());
+        categoryResponse.setParentCategoryId(
+                category.getParentCategory() != null ? category.getParentCategory().getId() : null
+        );
+        categoryResponse.setParentCategoryName(
+                category.getParentCategory() != null ? category.getParentCategory().getCategoryName() : null
+        );
+        return categoryResponse;
     }
+
+
 }

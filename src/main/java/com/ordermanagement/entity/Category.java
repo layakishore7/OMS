@@ -22,15 +22,12 @@ public class Category extends BaseEntity {
     @Column(name = "category_name")
     private String categoryName;
 
-    @Column(name = "description")
-    private String description;
+    @ManyToOne
+    @JoinColumn(name = "shipper_id")
+    private Organization shipperOrganization;
 
-    @Column(name = "shipper_id")
-    private Integer shipperId;
-
-
-    @OneToMany(mappedBy = "category")
-    @JsonIgnore
-    private List<Product> products;
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Category parentCategory;
 
 }

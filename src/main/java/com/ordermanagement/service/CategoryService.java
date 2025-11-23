@@ -1,22 +1,19 @@
 package com.ordermanagement.service;
 
-import com.ordermanagement.Enum.Enum;
-import com.ordermanagement.domain.misc.MetaData;
-import com.ordermanagement.domain.responses.CategoriesPageResponse;
+import com.ordermanagement.domain.mapper.CategoryMapper;
+import com.ordermanagement.domain.requestDTO.CategoryRequest;
+import com.ordermanagement.domain.responseDTO.CategoryResponse;
 import com.ordermanagement.entity.Category;
-import com.ordermanagement.entity.Product;
-import com.ordermanagement.exceptions.CategoryDeletionException;
+import com.ordermanagement.entity.Organization;
 import com.ordermanagement.exceptions.RecordAlreadyExistsException;
-import com.ordermanagement.exceptions.RecordNotFoundException;
 import com.ordermanagement.repository.CategoryRepository;
-import com.ordermanagement.repository.ProductRepository;
+import com.ordermanagement.repository.OrganizationRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,69 +24,118 @@ public class CategoryService {
     private CategoryRepository categoryRepository;
 
     @Autowired
-    private ProductRepository productRepository;
+    private CategoryMapper categoryMapper;
+
+    @Autowired
+    private OrganizationRepository organizationRepository;
 
 
-    public CategoriesPageResponse getCategory(String search, int pageNumber, int pageSize){
-        PageRequest pageable = PageRequest.of(pageNumber,pageSize)
-                .withSort(Sort.by("category_name").ascending());
-        Page<Category> categories = categoryRepository.fetchAllCategories(search,pageable);
 
-        List<Category> categoriesResponse = categories.stream()
-                .toList();
+    @Transactional
+    public List<CategoryResponse> addProductCategory(CategoryRequest request) {
 
-        MetaData metaData = new MetaData();
-        metaData.setPageNumber(pageNumber);
-        metaData.setPageSize(pageSize);
-        metaData.setPageCount(categories.getTotalPages());
-        metaData.setRecordCount(categories.getTotalElements());
+        // Load organization (shipper)
+        Organization shipperOrganization = organizationRepository.findById(request.getShipperId())
+                .orElseThrow(() -> new IllegalArgumentException("Organization not found for id: " + request.getShipperId()));
 
-        return new CategoriesPageResponse(categoriesResponse,metaData);
+        // Basic validation of request combinators
+        validateProductCategoryRequest(request);
 
-    }
+        List<CategoryResponse> responses = new ArrayList<>();
 
-    public List<Category> fetchAllCategories(){
-        return categoryRepository.getAllCategories();
-    }
+        try {
+            // CASE 1: parentCategoryId provided -> use existing parent and create child
+            if (request.getParentCategoryId() != null) {
+                // child name is required in this flow
+                if (request.getCategoryName() == null || request.getCategoryName().trim().isEmpty()) {
+                    throw new IllegalArgumentException("Subcategory name is required when parentCategoryId is provided.");
+                }
 
-    public Category addCategory(Category category) {
-        return Optional.ofNullable(category)
-                .filter(cat -> !categoryRepository.existsByCategoryNameAndStatus(cat.getCategoryName(), Enum.Status.ACTIVE))
-                .map(categoryRepository::save)
-                .orElseThrow(() -> {
-                    assert category != null;
-                    return new RecordAlreadyExistsException("Category With Name " + category.getCategoryName() + " already exists");
-                });
-    }
+                Category parent = categoryRepository.findById(request.getParentCategoryId())
+                        .orElseThrow(() -> new IllegalArgumentException("Parent Category not found for id: " + request.getParentCategoryId()));
 
+                // verify parent belongs to the organization
+                if (parent.getShipperOrganization() == null
+                        || parent.getShipperOrganization().getId() == null
+                        || !parent.getShipperOrganization().getId().equals(shipperOrganization.getId())) {
+                    throw new IllegalArgumentException("Parent category does not belong to the provided organization");
+                }
 
-    public Category updateCategory(Integer id, Category category) {
-        return categoryRepository.findById(id)
-                .map(existingCategory-> {
-                    categoryRepository.findByCategoryNameAndStatus(category.getCategoryName(), Enum.Status.ACTIVE)
-                            .filter(existing-> !existing.getId().equals(id))
-                            .ifPresent(existing-> {
-                                throw new RecordAlreadyExistsException("Category With Name "+category.getCategoryName()+" already exists");
-                            });
-                    existingCategory.setCategoryName(category.getCategoryName());
-                    existingCategory.setDescription(category.getDescription());
-                    return categoryRepository.save(existingCategory);
-                })
-                .orElseThrow(()-> new RecordNotFoundException("Category Not Found with id: "+id));
-    }
+                // ensure no duplicate child under this parent
+                checkCategoryExists(request.getCategoryName().trim(), shipperOrganization, parent);
 
+                Category child = createAndSaveCategory(request, request.getCategoryName().trim(), shipperOrganization, parent);
+                responses.add(categoryMapper.convertEntityToCategoryResponse(child));
+                return responses;
+            }
 
-    public void deleteCategory(Integer id) {
-        Category category = categoryRepository.findById(id).orElseThrow(()->new RecordNotFoundException("Category Not Found"));
-        List<Product> activeProducts = productRepository.fetchProductsByCategory(id);
+            // CASE 2: parentCategoryId is null, but parentCategoryName provided
+            if (request.getParentCategoryName() != null && !request.getParentCategoryName().trim().isEmpty()) {
 
-        if (!activeProducts.isEmpty()) {
-            throw new CategoryDeletionException("Cannot deactivate category '" + category.getCategoryName() +
-                    "'. " + activeProducts.size() + " active product(s) are still associated with this category");
+                // If client only provided parentCategoryName (no categoryName) -> create parent only
+                if (request.getCategoryName() == null || request.getCategoryName().trim().isEmpty()) {
+                    checkCategoryExists(request.getParentCategoryName().trim(), shipperOrganization, null);
+                    Category parent = createAndSaveCategory(request, request.getParentCategoryName().trim(), shipperOrganization, null);
+                    responses.add(categoryMapper.convertEntityToCategoryResponse(parent));
+                    return responses;
+                }
+
+                // Both parent and child names provided -> create both
+                checkCategoryExists(request.getParentCategoryName().trim(), shipperOrganization, null);
+                Category parent = createAndSaveCategory(request, request.getParentCategoryName().trim(), shipperOrganization, null);
+
+                checkCategoryExists(request.getCategoryName().trim(), shipperOrganization, parent);
+                Category child = createAndSaveCategory(request, request.getCategoryName().trim(), shipperOrganization, parent);
+
+                responses.add(categoryMapper.convertEntityToCategoryResponse(parent));
+                responses.add(categoryMapper.convertEntityToCategoryResponse(child));
+                return responses;
+            }
+
+            // If we reach here, request was invalid (should have been captured earlier)
+            throw new IllegalArgumentException("Invalid request combination for categories");
+
+        } catch (DataIntegrityViolationException dive) {
+            // This will catch unique constraint violations caused by race conditions
+            throw new RecordAlreadyExistsException("Category already exists (concurrent create or unique constraint).");
         }
-        category.setStatus(Enum.Status.INACTIVE);
-        category.setUpdatedAt(LocalDateTime.now());
-        categoryRepository.save(category);
     }
 
+
+
+    private Category createAndSaveCategory(CategoryRequest request, String categoryName, Organization shipperOrganization, Category parentCategory) {
+        // Build entity via mapper; ensure we supply the chosen categoryName (mapper should accept it)
+        Category category = categoryMapper.convertCategoryRequestToEntity(request, categoryName, shipperOrganization);
+        category.setParentCategory(parentCategory);
+        return categoryRepository.save(category);
+    }
+
+    private void checkCategoryExists(String categoryName, Organization shipperOrganization, Category parentCategory) {
+        if (categoryName == null) return;
+
+        Optional<Category> existing;
+        if (parentCategory == null) {
+            existing = categoryRepository.findByCategoryNameAndShipperOrganization(categoryName, shipperOrganization);
+        } else {
+            existing = categoryRepository.findByCategoryNameAndShipperOrganizationAndParentCategory(categoryName, shipperOrganization, parentCategory);
+        }
+        if (existing.isPresent()) {
+            throw new RecordAlreadyExistsException("Category Already Exists: " + categoryName);
+        }
+    }
+
+    private void validateProductCategoryRequest(CategoryRequest request) {
+        // require shipperId always
+        if (request.getShipperId() == null) {
+            throw new IllegalArgumentException("shipperId is required");
+        }
+        // require at least one parent identifier (id or name)
+        if (request.getParentCategoryId() == null && (request.getParentCategoryName() == null || request.getParentCategoryName().trim().isEmpty())) {
+            throw new IllegalArgumentException("Either parentCategoryId or parentCategoryName is required");
+        }
+        // When parentCategoryId is provided, child name must be present
+        if (request.getParentCategoryId() != null && (request.getCategoryName() == null || request.getCategoryName().trim().isEmpty())) {
+            throw new IllegalArgumentException("Subcategory Name is required when parentCategoryId is provided");
+        }
+    }
 }
