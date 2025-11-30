@@ -1,21 +1,28 @@
 package com.ordermanagement.service;
 
+import com.ordermanagement.Enum.Enum;
 import com.ordermanagement.domain.mapper.CategoryMapper;
 import com.ordermanagement.domain.requestDTO.CategoryRequest;
 import com.ordermanagement.domain.responseDTO.CategoryResponse;
 import com.ordermanagement.entity.Category;
 import com.ordermanagement.entity.Organization;
 import com.ordermanagement.exceptions.RecordAlreadyExistsException;
+import com.ordermanagement.exceptions.RecordNotFoundException;
 import com.ordermanagement.repository.CategoryRepository;
 import com.ordermanagement.repository.OrganizationRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CategoryService {
@@ -28,6 +35,15 @@ public class CategoryService {
 
     @Autowired
     private OrganizationRepository organizationRepository;
+
+    public List<CategoryResponse> getAllCategories(String search, int pageNumber, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        Page<Category> page = categoryRepository.fetchAllCategories(search, pageable);
+        return page.getContent().stream()
+                .map(categoryMapper::convertEntityToCategoryResponse)
+                .collect(Collectors.toList());
+    }
+
 
 
 
@@ -101,7 +117,66 @@ public class CategoryService {
         }
     }
 
+    public CategoryResponse updateCategory(CategoryRequest request, Integer categoryId) {
+        // 1. Check if another active category with same name exists (exclude current id)
+        Optional<Category> duplicate =
+                categoryRepository.findByCategoryNameAndStatusExcludingId(
+                        request.getCategoryName(),
+                        categoryId
+                );
 
+        if (duplicate.isPresent()) {
+            throw new RecordAlreadyExistsException(
+                    "Category Already Exists: " + request.getCategoryName()
+            );
+        }
+
+        // 2. Load the category to update
+        Category category = categoryRepository.findById(categoryId)
+                .orElseThrow(() ->
+                        new IllegalArgumentException("Category not found for id: " + categoryId));
+
+        // 3. Load parent category if provided
+        Category parentCategory = null;
+        if (request.getParentCategoryId() != null) {
+            parentCategory = categoryRepository.findById(request.getParentCategoryId())
+                    .orElseThrow(() ->
+                            new IllegalArgumentException("Parent Category not found for id: "
+                                    + request.getParentCategoryId()));
+        }
+
+        // 4. Apply changes
+        category.setCategoryName(request.getCategoryName());
+        category.setParentCategory(parentCategory);
+        category.setUpdatedAt(LocalDateTime.now());
+
+        // 5. Save and map
+        Category saved = categoryRepository.save(category);
+        return categoryMapper.convertEntityToCategoryResponse(saved);
+    }
+
+    public void deleteCategory(Integer categoryId) {
+        // Find the category to delete
+        Category category = categoryRepository.findById(categoryId)
+                .orElseThrow(() ->
+                        new RecordNotFoundException("Category not found for id: " + categoryId));
+
+        // Check if this category is used as a parent for any other category
+        Category childCategory = categoryRepository.findByParentCategory(categoryId);
+        if (childCategory != null) {
+            throw new RecordNotFoundException(
+                    "Cannot delete category. It is a parent for category id: " + childCategory.getId()
+            );
+        }
+
+        // Soft delete only if currently ACTIVE
+        if (category.getStatus() == Enum.Status.ACTIVE) {
+            category.setStatus(Enum.Status.INACTIVE);
+            categoryRepository.save(category);
+        } else {
+            throw new RecordNotFoundException("Category not found for id: " + categoryId);
+        }
+    }
 
     private Category createAndSaveCategory(CategoryRequest request, String categoryName, Organization shipperOrganization, Category parentCategory) {
         // Build entity via mapper; ensure we supply the chosen categoryName (mapper should accept it)
@@ -138,4 +213,6 @@ public class CategoryService {
             throw new IllegalArgumentException("Subcategory Name is required when parentCategoryId is provided");
         }
     }
+
+
 }
