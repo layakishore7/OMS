@@ -30,6 +30,24 @@ public class CategoryController {
         return APIResponse.created("Category Created Successfully", responses);
     }
 
+    @PutMapping("/categories/{categoryId}")
+    public ResponseEntity<APIResponse> updateCategory(@RequestBody CategoryRequest categoryRequest, @PathVariable Integer categoryId) {
+        CategoryResponse response = categoryService.updateCategory(categoryRequest, categoryId);
+        return APIResponse.updated("Category Updated Successfully", response);
+    }
+
+    @DeleteMapping("/categories/{categoryId}")
+    public ResponseEntity<APIResponse> deleteCategory(@PathVariable Integer categoryId) {
+        categoryService.deleteCategory(categoryId);
+        return APIResponse.success("Category Deleted Successfully");
+    }
+
+    @GetMapping("/categories")
+    public ResponseEntity<APIResponse> getAllCategories(@RequestParam String search, @RequestParam int pageNumber, @RequestParam int pageSize) {
+        List<CategoryResponse> responses = categoryService.getAllCategories(search, pageNumber, pageSize);
+        return APIResponse.success("Categories Fetched Successfully", responses);
+    }
+
 
 }
 
