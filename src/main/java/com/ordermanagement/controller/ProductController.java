@@ -25,9 +25,9 @@ public class ProductController {
 
     @GetMapping("/products")
     public ResponseEntity<APIResponse> getAllProducts(
-            @RequestParam(defaultValue = "") String search,
-            @RequestParam(defaultValue = "0") int pageNumber,
-            @RequestParam(defaultValue = "5") int  size){
+            @RequestParam(name = "search", defaultValue = "") String search,
+            @RequestParam(name = "pageNumber", defaultValue = "0") int pageNumber,
+            @RequestParam(name = "size", defaultValue = "5") int size){
 
             try {
                 ProductsPageResponse products = productService.getAllProducts(search,pageNumber,size);
@@ -45,19 +45,19 @@ public class ProductController {
     }
 
     @GetMapping("/products/{productId}")
-    public ResponseEntity<APIResponse> getProductById(@PathVariable Integer productId) {
+    public ResponseEntity<APIResponse> getProductById(@PathVariable("productId") Integer productId) {
         ProductResponse response = productService.getProductById(productId);
         return APIResponse.success(response);
     }
 
     @PutMapping("/products/{productId}")
-    public ResponseEntity<APIResponse> updateProductById(@PathVariable Integer productId,@RequestBody ProductRequest product) {
+    public ResponseEntity<APIResponse> updateProductById(@PathVariable("productId") Integer productId,@RequestBody ProductRequest product) {
         ProductResponse updatedProduct = productService.updateProduct(productId,product);
         return APIResponse.updated("Product Updated Successfully",updatedProduct);
     }
 
     @DeleteMapping("/products/{productId}")
-    public ResponseEntity<APIResponse> deleteProductById(@PathVariable Integer productId) {
+    public ResponseEntity<APIResponse> deleteProductById(@PathVariable("productId") Integer productId) {
         productService.deleteProduct(productId);
         return APIResponse.success("Product Deleted Successfully");
     }

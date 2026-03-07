@@ -72,10 +72,6 @@
 
         </createTable>
 
-        <rollback>
-            <dropTable tableName="serialized_inventory"/>
-        </rollback>
-
     </changeSet>
 
 </databaseChangeLog>

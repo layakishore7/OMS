@@ -1,5 +1,6 @@
 package com.ordermanagement.domain.misc;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

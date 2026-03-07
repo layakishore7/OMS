@@ -105,9 +105,6 @@
 
         </createTable>
 
-        <rollback>
-            <dropTable tableName="product_stock_log"/>
-        </rollback>
 
     </changeSet>
 

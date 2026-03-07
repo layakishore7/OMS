@@ -15,4 +15,6 @@
     <include file="db/changelog/changes/006-create-serialize-inventory.xml"/>
     <include file="db/changelog/changes/007-create-non-serialize-inventory.xml"/>
     <include file="db/changelog/changes/009-product-stock-log.xml"/>
+    <include file="db/changelog/changes/0010-drop-product-columns.xml"/>
+    <include file="db/changelog/changes/0011-fix-products-schema.xml"/>
 </databaseChangeLog>

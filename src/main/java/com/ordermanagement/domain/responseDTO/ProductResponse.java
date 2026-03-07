@@ -1,7 +1,5 @@
 package com.ordermanagement.domain.responseDTO;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ordermanagement.entity.Category;
 import lombok.*;
 
 @NoArgsConstructor
@@ -9,18 +7,31 @@ import lombok.*;
 @Data
 public class ProductResponse {
 
+    private Integer productId;
 
     private String productName;
 
-    private String sku;
-
-    private Integer price;
+    private Integer shipperId;
 
     private String description;
 
-    private Integer stock;
+    private Integer categoryId;
 
-    private Enum status;
+    private Double length;
 
-    private Category category;
+    private Double breadth;
+
+    private Double height;
+
+    private String dimensionUom;
+
+    private Double weight;
+
+    private String weightUom;
+
+    private Boolean serializable;
+
+    private Integer availableQty;
+
+    private String uploadImage;
 }

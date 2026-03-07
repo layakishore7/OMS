@@ -43,7 +43,10 @@ public class CategoryController {
     }
 
     @GetMapping("/categories")
-    public ResponseEntity<APIResponse> getAllCategories(@RequestParam String search, @RequestParam int pageNumber, @RequestParam int pageSize) {
+    public ResponseEntity<APIResponse> getAllCategories(
+            @RequestParam("search") String search,
+            @RequestParam("pageNumber") int pageNumber,
+            @RequestParam("pageSize") int pageSize) {
         List<CategoryResponse> responses = categoryService.getAllCategories(search, pageNumber, pageSize);
         return APIResponse.success("Categories Fetched Successfully", responses);
     }

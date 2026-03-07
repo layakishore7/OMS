@@ -17,19 +17,29 @@ public class ProductRequest {
 
     private String productName;
 
-    private String sku;
+    private String productUniqueId;
 
-    private Integer categoryId;
-
-    private Integer price;
+    private Integer shipperId;
 
     private String description;
 
-    private Integer stock;
+    @JsonProperty("categoryId")
+    private Integer categoryId;
 
-    private String status;
+    private Double length;
 
-    private Category category;
+    private Double breadth;
 
+    private Double height;
+
+    private String dimensionUom;
+
+    private Double weight;
+
+    private String weightUom;
+
+    private Boolean serializable;
+
+    private String uploadImage;
 
 }

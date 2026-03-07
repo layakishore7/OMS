@@ -53,9 +53,6 @@
                                  referencedColumnNames="id"
                                  onDelete="SET NULL" onUpdate="CASCADE"/>
 
-        <rollback>
-            <dropTable schemaName="public" tableName="warehouse_inventory"/>
-        </rollback>
     </changeSet>
 
 </databaseChangeLog>

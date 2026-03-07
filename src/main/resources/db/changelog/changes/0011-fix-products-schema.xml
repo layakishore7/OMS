@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="0011-fix-products-fk-and-schema" author="dev">
+
+        <!-- 1. Drop the incorrectly defined FK that was on products.id instead of products.category_id -->
+        <dropForeignKeyConstraint baseTableName="products" constraintName="fk_products_category"/>
+
+        <!-- 2. Add the correct FK on the category_id column -->
+        <addForeignKeyConstraint
+                baseTableSchemaName="public" baseTableName="products" baseColumnNames="category_id"
+                constraintName="fk_products_category"
+                referencedTableSchemaName="public" referencedTableName="categories" referencedColumnNames="id"
+                onDelete="RESTRICT" onUpdate="CASCADE"/>
+
+        <!-- 3. Fix dimension_uom: change from INT to VARCHAR to match the Java entity (String) -->
+        <modifyDataType tableName="products" columnName="dimension_uom" newDataType="VARCHAR(50)"/>
+
+        <!-- 4. Fix weight_uom: change from INT to VARCHAR to match the Java entity (String) -->
+        <modifyDataType tableName="products" columnName="weight_uom" newDataType="VARCHAR(50)"/>
+
+    </changeSet>
+
+    <!-- Separate guarded changeset to avoid failure if status column was already added -->
+    <changeSet id="0011b-fix-products-status-column" author="dev">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="products" columnName="status"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="products">
+            <column name="status" type="INT" defaultValueNumeric="0">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

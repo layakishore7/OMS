@@ -7,15 +7,13 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
-@EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "categories")
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
+@Table(name = "categories")
 @Builder
 public class Category extends BaseEntity {
 

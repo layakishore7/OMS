@@ -13,8 +13,10 @@ import java.util.Optional;
 public interface OrganizationRepository extends JpaRepository<Organization, Integer> {
 
 
+    @Query(value = "SELECT * FROM organizations WHERE organization_name = ?1 AND status = 1",nativeQuery = true)
     Optional<Organization> findByOrganizationName(String organizationName);
 
+    @Query(value = "SELECT * FROM organizations WHERE organization_code = ?1 AND status = 1",nativeQuery = true)
     Optional<Organization> findByOrganizationCode(String organizationCode);
 
     @Query(value = "select * from organizations where status =1",nativeQuery = true)

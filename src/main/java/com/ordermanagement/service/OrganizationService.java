@@ -38,7 +38,7 @@ public class OrganizationService {
     private final OrganizationAssociationRepository organizationAssociationRepository;
 
     public OrganizationResponse createOrganization(OrganizationRequest organizationRequest) {
-        // Check if organization with same name already exists
+
         if (organizationRepository.findByOrganizationName(organizationRequest.getOrganizationName()).isPresent()) {
             throw new RuntimeException("Organization with name " + organizationRequest.getOrganizationName() + " already exists");
         }
