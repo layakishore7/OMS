@@ -56,6 +56,7 @@ public class OrganizationMapper {
 
     public OrganizationResponse entityToResponse(Organization organizations) {
         OrganizationResponse response = new OrganizationResponse();
+        response.setOrganizationId(organizations.getId());
         response.setOrganizationName(organizations.getOrganizationName());
         response.setOrganizationCode(organizations.getOrganizationCode());
         response.setOrganizationType(organizations.getOrganizationType());
@@ -72,7 +73,8 @@ public class OrganizationMapper {
         return response;
     }
 
-    public CarrierShipperAssociation convertDtoToCarrierShipperAssociation(Organization carrier, Organization shipperOrganization) {
+    public CarrierShipperAssociation convertDtoToCarrierShipperAssociation(Organization carrier,
+            Organization shipperOrganization) {
         CarrierShipperAssociation carrierShipperAssociation = new CarrierShipperAssociation();
         carrierShipperAssociation.setCarrierOrganization(carrier);
         carrierShipperAssociation.setShipperOrganization(shipperOrganization);
@@ -82,7 +84,8 @@ public class OrganizationMapper {
         return carrierShipperAssociation;
     }
 
-    public OrganizationAssociation convertDtoToOrganizationAssociation(Organization carrier, Organization shipper, Organization warehouse) {
+    public OrganizationAssociation convertDtoToOrganizationAssociation(Organization carrier, Organization shipper,
+            Organization warehouse) {
         OrganizationAssociation organizationAssociation = new OrganizationAssociation();
         organizationAssociation.setCarrierOrganization(carrier);
         organizationAssociation.setShipperOrganization(shipper);
@@ -93,7 +96,8 @@ public class OrganizationMapper {
         return organizationAssociation;
     }
 
-    public CarrierShipperAssociationResponseDto convertCarrierShipperAssociationToResponseDto(CarrierShipperAssociation association) {
+    public CarrierShipperAssociationResponseDto convertCarrierShipperAssociationToResponseDto(
+            CarrierShipperAssociation association) {
         CarrierShipperAssociationResponseDto carrierShipperAssociationResponseDto = new CarrierShipperAssociationResponseDto();
         carrierShipperAssociationResponseDto.setShipperId(association.getCarrierOrganization().getId());
         carrierShipperAssociationResponseDto.setCarrierId(association.getShipperOrganization().getId());
@@ -102,7 +106,8 @@ public class OrganizationMapper {
 
     }
 
-    public CarrierShipperWarehouseAssociationResponseDto convertOrganizationAssociationToResponseDto(OrganizationAssociation association) {
+    public CarrierShipperWarehouseAssociationResponseDto convertOrganizationAssociationToResponseDto(
+            OrganizationAssociation association) {
         CarrierShipperWarehouseAssociationResponseDto organizationAssociationResponseDto = new CarrierShipperWarehouseAssociationResponseDto();
         organizationAssociationResponseDto.setCarrierId(association.getCarrierOrganization().getId());
         organizationAssociationResponseDto.setShipperId(association.getShipperOrganization().getId());

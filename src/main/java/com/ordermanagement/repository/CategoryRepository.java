@@ -14,41 +14,40 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category,Integer> {
+public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
-    boolean existsByCategoryNameAndStatus(String categoryName, Enum.Status active);
+        boolean existsByCategoryNameAndStatus(String categoryName, Enum.Status active);
 
-    @Query(value = "SELECT * FROM categories WHERE category_name = ?1 AND status = 1", nativeQuery = true)
-    Optional<Category> findByCategoryNameAndStatus(String categoryName, Enum.Status active);
+        @Query(value = "SELECT * FROM categories WHERE category_name = ?1 AND status = 1", nativeQuery = true)
+        Optional<Category> findByCategoryNameAndStatus(String categoryName, Enum.Status active);
 
-    @Query(value = "SELECT * FROM categories WHERE status = 1", nativeQuery = true)
-    Page<Category> fetchAllCategories(String search, Pageable pageable);
+        @Query(value = "SELECT * FROM categories WHERE status = 1 " +
+                        "AND (:shipperId IS NULL OR shipper_id = :shipperId) " +
+                        "AND (:search IS NULL OR LOWER(category_name) LIKE LOWER(CONCAT('%', :search, '%')))", nativeQuery = true)
+        Page<Category> fetchCategoriesWithFilters(@Param("search") String search, @Param("shipperId") Integer shipperId,
+                        Pageable pageable);
 
-    @Query(value = "SELECT * FROM categories WHERE status = 1", nativeQuery = true)
-    List<Category> getAllCategories();
+        @Query(value = "SELECT * FROM categories WHERE status = 1", nativeQuery = true)
+        List<Category> getAllCategories();
 
-    Optional<Category> findByCategoryNameAndShipperOrganization(String categoryName, Organization shipperOrganization);
+        Optional<Category> findByCategoryNameAndShipperOrganization(String categoryName,
+                        Organization shipperOrganization);
 
+        Optional<Category> findByCategoryNameAndShipperOrganizationAndParentCategory(String categoryName,
+                        Organization shipperOrganization, Category parentCategory);
 
-    Optional<Category> findByCategoryNameAndShipperOrganizationAndParentCategory(String categoryName, Organization shipperOrganization, Category parentCategory);
+        @Query(value = "SELECT * FROM categories " +
+                        "WHERE id <> :categoryId " +
+                        "AND category_name = :categoryName " +
+                        "AND status = 1", nativeQuery = true)
+        Optional<Category> findByCategoryNameAndStatusExcludingId(
+                        @Param("categoryName") String categoryName,
+                        @Param("categoryId") Integer categoryId);
 
-    @Query(
-            value = "SELECT * FROM categories " +
-                    "WHERE id <> :categoryId " +
-                    "AND category_name = :categoryName " +
-                    "AND status = 1",
-            nativeQuery = true
-    )
-    Optional<Category> findByCategoryNameAndStatusExcludingId(
-            @Param("categoryName") String categoryName,
-            @Param("categoryId") Integer categoryId);
+        @Query(value = "SELECT * FROM categories " +
+                        "WHERE parent_id = :id AND status = 1", nativeQuery = true)
+        Category findByParentCategory(@Param("id") Integer id);
 
-
-    @Query(
-            value = "SELECT * FROM categories " +
-                    "WHERE parent_id = :id AND status = 1",
-            nativeQuery = true
-    )
-    Category findByParentCategory(@Param("id") Integer id);
-
+        @Query(value = "Select * from categories where status = 1 AND shipper_id = :shipperId", nativeQuery = true)
+        List<Category> fetchCategoriesByShipperId(@Param("shipperId") Integer shipperId);
 }

@@ -178,4 +178,12 @@ public class OrganizationService {
         organizationAssociationRepository.saveAll(associations);
     }
 
+    public List<OrganizationResponse> getAllShippers() {
+
+        List<Organization> shippers =  organizationRepository.fetchAllShippers();
+
+        return shippers.stream()
+                .map(organizationMapper::entityToResponse)
+                .toList();
+    }
 }

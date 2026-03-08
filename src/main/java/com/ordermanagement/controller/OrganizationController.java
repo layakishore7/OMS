@@ -7,7 +7,6 @@ import com.ordermanagement.domain.responseDTO.CarrierShipperWarehouseAssociation
 import com.ordermanagement.domain.responseDTO.OrganizationResponse;
 import com.ordermanagement.domain.responseDTO.ProductResponse;
 import com.ordermanagement.domain.responses.OrganizationPageResponse;
-import com.ordermanagement.entity.CarrierShipperAssociation;
 import com.ordermanagement.service.OrganizationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,20 +20,30 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrganizationController {
 
-
     private final OrganizationService organizationService;
 
     @GetMapping("/organizations")
     public ResponseEntity<APIResponse> getAllProducts(
             @RequestParam(defaultValue = "") String search,
             @RequestParam(defaultValue = "0") int pageNumber,
-            @RequestParam(defaultValue = "5") int  size){
+            @RequestParam(defaultValue = "5") int size) {
 
         try {
-            OrganizationPageResponse organizations = organizationService.getAllOrganizations(search,pageNumber,size);
+            OrganizationPageResponse organizations = organizationService.getAllOrganizations(search, pageNumber, size);
             return APIResponse.success(organizations);
         } catch (Exception e) {
-            return APIResponse.error(HttpStatus.BAD_REQUEST,e.getMessage());
+            return APIResponse.error(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
+    @GetMapping("/organizations/shippers")
+    public ResponseEntity<APIResponse> getAllShippers(){
+
+        try {
+            List<OrganizationResponse> shippers = organizationService.getAllShippers();
+            return APIResponse.success(shippers);
+        } catch (Exception e) {
+            return APIResponse.error(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
 
@@ -45,9 +54,10 @@ public class OrganizationController {
     }
 
     @PutMapping("/update-organization/{organizationId}")
-    public ResponseEntity<APIResponse> updateOrganizationById(@PathVariable Integer organizationId,@RequestBody OrganizationRequest organization) {
-        OrganizationResponse updatedOrganization = organizationService.updateOrganization(organizationId,organization);
-        return APIResponse.updated("Organization Updated Successfully",updatedOrganization);
+    public ResponseEntity<APIResponse> updateOrganizationById(@PathVariable Integer organizationId,
+            @RequestBody OrganizationRequest organization) {
+        OrganizationResponse updatedOrganization = organizationService.updateOrganization(organizationId, organization);
+        return APIResponse.updated("Organization Updated Successfully", updatedOrganization);
     }
 
     @DeleteMapping("/delete-organization/{organizationId}")
@@ -57,14 +67,20 @@ public class OrganizationController {
     }
 
     @PostMapping("/link-shipper")
-    public ResponseEntity<APIResponse> linkShipperToCarrierAssociation(@RequestParam(name = "carrierId")Integer carrierId,@RequestBody CarrierShipperAssociationDto associationLinkDto) {
-        List<CarrierShipperAssociationResponseDto> associationResponseDto = organizationService.linkShipperToCarrier(carrierId,associationLinkDto);
+    public ResponseEntity<APIResponse> linkShipperToCarrierAssociation(
+            @RequestParam(name = "carrierId") Integer carrierId,
+            @RequestBody CarrierShipperAssociationDto associationLinkDto) {
+        List<CarrierShipperAssociationResponseDto> associationResponseDto = organizationService
+                .linkShipperToCarrier(carrierId, associationLinkDto);
         return APIResponse.created("Association Created Successfully", associationResponseDto);
     }
 
     @PostMapping("/link-warehouse")
-    public ResponseEntity<APIResponse> linkWarehouseToCarrierAssociation(@RequestParam(name = "carrierId")Integer carrierId,@RequestBody CarrierShipperWarehouseAssociationDto associationLinkDto) {
-        List<CarrierShipperWarehouseAssociationResponseDto> associationResponseDto = organizationService.linkWarehouse(carrierId,associationLinkDto);
+    public ResponseEntity<APIResponse> linkWarehouseToCarrierAssociation(
+            @RequestParam(name = "carrierId") Integer carrierId,
+            @RequestBody CarrierShipperWarehouseAssociationDto associationLinkDto) {
+        List<CarrierShipperWarehouseAssociationResponseDto> associationResponseDto = organizationService
+                .linkWarehouse(carrierId, associationLinkDto);
         return APIResponse.created("Association Created Successfully", associationResponseDto);
     }
 

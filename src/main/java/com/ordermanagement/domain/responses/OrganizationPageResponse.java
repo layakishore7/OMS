@@ -1,7 +1,6 @@
 package com.ordermanagement.domain.responses;
 
 import com.ordermanagement.domain.misc.MetaData;
-import com.ordermanagement.domain.responseDTO.OrganizationResponse;
 import com.ordermanagement.entity.Organization;
 import lombok.AllArgsConstructor;
 import lombok.Data;

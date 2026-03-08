@@ -2,7 +2,6 @@ package com.ordermanagement.domain.responses;
 
 import com.ordermanagement.domain.misc.MetaData;
 import com.ordermanagement.domain.responseDTO.ProductResponse;
-import com.ordermanagement.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

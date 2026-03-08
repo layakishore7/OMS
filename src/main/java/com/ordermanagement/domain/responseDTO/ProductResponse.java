@@ -1,5 +1,6 @@
 package com.ordermanagement.domain.responseDTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @NoArgsConstructor
@@ -8,6 +9,9 @@ import lombok.*;
 public class ProductResponse {
 
     private Integer productId;
+
+    @JsonProperty("productUniqueId")
+    private String productUniqueId;
 
     private String productName;
 

@@ -1,26 +1,24 @@
 package com.ordermanagement.service;
+
 import com.ordermanagement.Enum.Enum;
-import com.ordermanagement.config.AppConfig;
 import com.ordermanagement.domain.mapper.ProductMapper;
 import com.ordermanagement.domain.misc.MetaData;
 import com.ordermanagement.domain.requestDTO.ProductRequest;
+import com.ordermanagement.domain.requestDTO.ProductsBulkDeleteDto;
+import com.ordermanagement.domain.requestDTO.ProductIdsBulkDto;
 import com.ordermanagement.domain.responseDTO.ProductResponse;
-import com.ordermanagement.domain.responses.CategoriesPageResponse;
 import com.ordermanagement.domain.responses.ProductsPageResponse;
 import com.ordermanagement.entity.Category;
 import com.ordermanagement.entity.Organization;
 import com.ordermanagement.entity.Product;
-import com.ordermanagement.exceptions.DeletionException;
 import com.ordermanagement.exceptions.RecordNotFoundException;
 import com.ordermanagement.repository.CategoryRepository;
 import com.ordermanagement.repository.OrganizationRepository;
 import com.ordermanagement.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -43,15 +41,10 @@ public class ProductService {
     @Autowired
     ProductMapper productMapper;
 
-    private final ModelMapper modelMapper;
-
-
-
-
     public ProductsPageResponse getAllProducts(String search, int pageNumber, int pageSize) {
-        PageRequest pageable = PageRequest.of(pageNumber,pageSize)
+        PageRequest pageable = PageRequest.of(pageNumber, pageSize)
                 .withSort(Sort.by("product_name").ascending());
-        Page<Product> products = productRepository.fetchAllProducts(search,pageable);
+        Page<Product> products = productRepository.fetchAllProducts(search, pageable);
 
         List<ProductResponse> productsResponse = products.stream()
                 .map(productMapper::mapToResponse)
@@ -62,16 +55,15 @@ public class ProductService {
         metaData.setPageCount(products.getTotalPages());
         metaData.setRecordCount(products.getTotalElements());
 
-        return new ProductsPageResponse(productsResponse,metaData);
+        return new ProductsPageResponse(productsResponse, metaData);
     }
-
 
     public ProductResponse addProduct(ProductRequest request) {
 
         Organization organization = organizationRepository.findById(request.getShipperId())
                 .orElseThrow(() -> new RuntimeException("Shipper Not Found"));
 
-        if (productRepository.existsByProductNameAndShipperId(request.getProductName(),request.getShipperId())) {
+        if (productRepository.existsByProductNameAndShipperId(request.getProductName(), request.getShipperId())) {
             throw new RuntimeException("Product already exists with name: " + request.getProductName());
         }
 
@@ -85,23 +77,22 @@ public class ProductService {
         return productMapper.entityToResponse(savedProduct);
     }
 
-
     public ProductResponse getProductById(Integer productId) {
         if (productId == null) {
             throw new IllegalArgumentException("Product ID cannot be null");
         }
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Product not found with id: " + productId));
-       return productMapper.entityToResponse(product);
+        return productMapper.entityToResponse(product);
     }
-
 
     public ProductResponse updateProduct(Integer productId, ProductRequest request) {
 
         Organization organization = organizationRepository.findById(request.getShipperId())
                 .orElseThrow(() -> new RuntimeException("Shipper Not Found"));
 
-        if (productRepository.existsByProductNameAndShipperIdExcludingProduct(request.getProductName(),request.getShipperId(),productId)) {
+        if (productRepository.existsByProductNameAndShipperIdExcludingProduct(request.getProductName(),
+                request.getShipperId(), productId)) {
             throw new RuntimeException("Product already exists with name: " + request.getProductName());
         }
 
@@ -110,7 +101,7 @@ public class ProductService {
 
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
-       productMapper.updateEntityFromRequest(product,request,organization,child);
+        productMapper.updateEntityFromRequest(product, request, organization, child);
         if (request.getCategoryId() != null) {
             Category subCat = categoryRepository.findById(request.getCategoryId())
                     .orElseThrow(() -> new RuntimeException("Category not found"));
@@ -121,10 +112,41 @@ public class ProductService {
     }
 
     public void deleteProduct(Integer productId) {
-        Product product = productRepository.findById(productId).orElseThrow(()->new RecordNotFoundException("Product Not Found"));
-            product.setStatus(Enum.Status.INACTIVE);
-            product.setUpdatedAt(LocalDateTime.now());
-            productRepository.save(product);
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RecordNotFoundException("Product Not Found"));
+        product.setStatus(Enum.Status.INACTIVE);
+        product.setUpdatedAt(LocalDateTime.now());
+        productRepository.save(product);
     }
 
+    public void deleteProducts(Integer orgId, ProductsBulkDeleteDto productIds) {
+        Organization organization = organizationRepository.findById(orgId)
+                .orElseThrow(() -> new RuntimeException("Organization Not Found"));
+
+        if (productIds == null || productIds.getProductIds() == null || productIds.getProductIds().isEmpty()) {
+            throw new IllegalArgumentException("Product IDs must be provided");
+        }
+        for (ProductIdsBulkDto link : productIds.getProductIds()) {
+            Integer productId = link.getProductId();
+            Product product = productRepository.findById(productId)
+                    .orElseThrow(() -> new RecordNotFoundException("Product Not Found with id: " + productId));
+            if (!product.getOrganization().getId().equals(orgId)) {
+                throw new RuntimeException("Product id " + productId + " does not belong to organization " + orgId);
+            }
+            product.setStatus(Enum.Status.INACTIVE);
+
+            product.setUpdatedAt(LocalDateTime.now());
+            productRepository.save(product);
+        }
+    }
+
+    public List<ProductResponse> getAllProductsByShipperId(int shipperId) {
+
+       List<Product> products =  productRepository.fetchProductsByShipperId(shipperId);
+
+        return products.stream()
+                 .map(productMapper::mapToResponse)
+                 .toList();
+
+    }
 }

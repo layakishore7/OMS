@@ -1,13 +1,10 @@
 package com.ordermanagement.domain.requestDTO;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.ordermanagement.entity.Category;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 
 @Setter
 @Getter
@@ -19,6 +16,7 @@ public class ProductRequest {
 
     private String productUniqueId;
 
+    @JsonProperty("shipperId")
     private Integer shipperId;
 
     private String description;

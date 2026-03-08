@@ -26,6 +26,7 @@ public class APIResponse {
     public static ResponseEntity<APIResponse> success(String createdSuccessfully, Object data){
         APIResponse response = new APIResponse();
         response.setStatus(HttpStatus.OK);
+        response.setSuccess(true);
         response.setMessage(createdSuccessfully);
         response.setStatusCode(200);
         response.setData(data);
