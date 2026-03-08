@@ -1,13 +1,10 @@
 package com.ordermanagement.domain.requestDTO;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.ordermanagement.entity.Category;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 
 @Setter
 @Getter
@@ -17,19 +14,30 @@ public class ProductRequest {
 
     private String productName;
 
-    private String sku;
+    private String productUniqueId;
 
-    private Integer categoryId;
-
-    private Integer price;
+    @JsonProperty("shipperId")
+    private Integer shipperId;
 
     private String description;
 
-    private Integer stock;
+    @JsonProperty("categoryId")
+    private Integer categoryId;
 
-    private String status;
+    private Double length;
 
-    private Category category;
+    private Double breadth;
 
+    private Double height;
+
+    private String dimensionUom;
+
+    private Double weight;
+
+    private String weightUom;
+
+    private Boolean serializable;
+
+    private String uploadImage;
 
 }

@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class OrganizationResponse {
 
+    private Integer organizationId;
     private String organizationName;
     private String organizationCode;
     private Enum organizationType;

@@ -4,13 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CarrierShipperWarehouseAssociationLinkDto {
+public class ProductsBulkDeleteDto {
 
-    private Integer shipperId;
-    private Integer warehouseId;
-    private String association;
-
+    List<ProductIdsBulkDto> productIds;
 }

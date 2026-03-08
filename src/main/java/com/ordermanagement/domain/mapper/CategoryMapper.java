@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-
 @Component
 public class CategoryMapper {
 
-    public Category convertCategoryRequestToEntity(CategoryRequest categoryRequest, String categoryName, Organization shipperOrganization){
+    public Category convertCategoryRequestToEntity(CategoryRequest categoryRequest, String categoryName,
+            Organization shipperOrganization) {
         Category category = new Category();
         category.setCategoryName(categoryName);
         category.setStatus(Enum.Status.ACTIVE);
@@ -23,21 +23,18 @@ public class CategoryMapper {
         return category;
     }
 
-
-
-    public CategoryResponse convertEntityToCategoryResponse(Category category){
+    public CategoryResponse convertEntityToCategoryResponse(Category category) {
         CategoryResponse categoryResponse = new CategoryResponse();
         categoryResponse.setCategoryId(category.getId());
         categoryResponse.setCategoryName(category.getCategoryName());
-        categoryResponse.setShipperId(category.getShipperOrganization().getId());
+        if (category.getShipperOrganization() != null) {
+            categoryResponse.setShipperId(category.getShipperOrganization().getId());
+        }
         categoryResponse.setParentCategoryId(
-                category.getParentCategory() != null ? category.getParentCategory().getId() : null
-        );
+                category.getParentCategory() != null ? category.getParentCategory().getId() : null);
         categoryResponse.setParentCategoryName(
-                category.getParentCategory() != null ? category.getParentCategory().getCategoryName() : null
-        );
+                category.getParentCategory() != null ? category.getParentCategory().getCategoryName() : null);
         return categoryResponse;
     }
-
 
 }

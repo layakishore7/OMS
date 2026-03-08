@@ -71,9 +71,6 @@
 
         </createTable>
 
-        <rollback>
-            <dropTable tableName="non_serialized_inventory"/>
-        </rollback>
 
     </changeSet>
 

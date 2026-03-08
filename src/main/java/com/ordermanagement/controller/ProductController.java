@@ -2,13 +2,12 @@ package com.ordermanagement.controller;
 
 import com.ordermanagement.domain.misc.APIResponse;
 import com.ordermanagement.domain.requestDTO.ProductRequest;
+import com.ordermanagement.domain.requestDTO.ProductsBulkDeleteDto;
 import com.ordermanagement.domain.responseDTO.ProductResponse;
-import com.ordermanagement.domain.responses.CategoriesPageResponse;
 import com.ordermanagement.domain.responses.ProductsPageResponse;
 import com.ordermanagement.entity.Product;
 import com.ordermanagement.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,45 +21,64 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-
     @GetMapping("/products")
     public ResponseEntity<APIResponse> getAllProducts(
-            @RequestParam(defaultValue = "") String search,
-            @RequestParam(defaultValue = "0") int pageNumber,
-            @RequestParam(defaultValue = "5") int  size){
+            @RequestParam(name = "search", defaultValue = "") String search,
+            @RequestParam(name = "pageNumber", defaultValue = "0") int pageNumber,
+            @RequestParam(name = "size", defaultValue = "5") int size) {
 
-            try {
-                ProductsPageResponse products = productService.getAllProducts(search,pageNumber,size);
-                return APIResponse.success(products);
-            } catch (Exception e) {
-                return APIResponse.error(HttpStatus.BAD_REQUEST,e.getMessage());
-            }
+        try {
+            ProductsPageResponse products = productService.getAllProducts(search, pageNumber, size);
+            return APIResponse.success(products);
+        } catch (Exception e) {
+            return APIResponse.error(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
     }
+
+    @GetMapping("/products/shipper/{shipperId}")
+    public ResponseEntity<APIResponse> getAllProductsByShipper(
+            @PathVariable("shipperId") Integer shipperId) {
+
+        try {
+            List<ProductResponse> products = productService.getAllProductsByShipperId(shipperId);
+            return APIResponse.success(products);
+        } catch (Exception e) {
+            return APIResponse.error(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
 
 
     @PostMapping("/products")
     public ResponseEntity<APIResponse> addProduct(@RequestBody ProductRequest request) {
         ProductResponse response = productService.addProduct(request);
-        return APIResponse.created("Product Created Successfully",response);
+        return APIResponse.created("Product Created Successfully", response);
     }
 
     @GetMapping("/products/{productId}")
-    public ResponseEntity<APIResponse> getProductById(@PathVariable Integer productId) {
+    public ResponseEntity<APIResponse> getProductById(@PathVariable("productId") Integer productId) {
         ProductResponse response = productService.getProductById(productId);
         return APIResponse.success(response);
     }
 
     @PutMapping("/products/{productId}")
-    public ResponseEntity<APIResponse> updateProductById(@PathVariable Integer productId,@RequestBody ProductRequest product) {
-        ProductResponse updatedProduct = productService.updateProduct(productId,product);
-        return APIResponse.updated("Product Updated Successfully",updatedProduct);
+    public ResponseEntity<APIResponse> updateProductById(@PathVariable("productId") Integer productId,
+            @RequestBody ProductRequest product) {
+        ProductResponse updatedProduct = productService.updateProduct(productId, product);
+        return APIResponse.updated("Product Updated Successfully", updatedProduct);
     }
 
     @DeleteMapping("/products/{productId}")
-    public ResponseEntity<APIResponse> deleteProductById(@PathVariable Integer productId) {
+    public ResponseEntity<APIResponse> deleteProductById(@PathVariable("productId") Integer productId) {
         productService.deleteProduct(productId);
         return APIResponse.success("Product Deleted Successfully");
     }
 
+    @DeleteMapping("/products/bulk-delete")
+    public ResponseEntity<APIResponse> deleteProducts(@RequestParam(name = "orgId") Integer orgId,
+            @RequestBody ProductsBulkDeleteDto productIds) {
+        productService.deleteProducts(orgId, productIds);
+        return APIResponse.success("Products Deleted Successfully");
+    }
 
 }

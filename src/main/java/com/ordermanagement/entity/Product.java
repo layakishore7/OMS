@@ -1,15 +1,11 @@
 package com.ordermanagement.entity;
 
 
-import com.ordermanagement.Enum.Enum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -22,13 +18,31 @@ public class Product extends BaseEntity {
     @Column(name = "product_name")
     private String productName;
 
-    private String sku;
-
-    private Integer price;
-
-    private Integer stock;
-
     private String description;
+
+    private String productUniqueId;
+
+    private Integer availableQty;
+
+    private Double length;
+
+    private Double breadth;
+
+    private Double height;
+
+    private String dimensionUom;
+
+    private Double weight;
+
+    private String weightUom;
+
+    private Boolean serializable;
+
+    private String uploadImage;
+
+    @ManyToOne
+    @JoinColumn(name = "shipper_id",nullable = false)
+    private Organization organization;
 
 
     @ManyToOne
