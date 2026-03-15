@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="create-file-upload-log" author="dev">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="file_upload_log"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="file_upload_log">
+
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="file_name" type="VARCHAR(255)"/>
+
+            <column name="file_url" type="VARCHAR(500)"/>
+
+            <column name="file_type" type="VARCHAR(100)"/>
+
+            <column name="file_format" type="VARCHAR(100)"/>
+
+            <column name="carrier_id" type="INT">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="shipper_id" type="INT">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="warehouse_id" type="INT">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="success_count" type="INT" defaultValueNumeric="0">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="failed_count" type="INT" defaultValueNumeric="0">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="success_data" type="JSONB">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="failed_data" type="JSONB">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="uploaded_by" type="VARCHAR(255)"/>
+
+            <column name="file_upload_status" type="VARCHAR(50)"/>
+
+            <column name="created_at" type="TIMESTAMP"/>
+
+            <column name="updated_at" type="TIMESTAMP"/>
+
+        </createTable>
+
+
+        <!-- Carrier FK -->
+        <addForeignKeyConstraint
+                baseTableName="file_upload_log"
+                baseColumnNames="carrier_id"
+                referencedTableName="organizations"
+                referencedColumnNames="id"
+                constraintName="fk_file_upload_log_carrier"
+                onUpdate="CASCADE"
+                onDelete="SET NULL"/>
+
+
+        <!-- Shipper FK -->
+        <addForeignKeyConstraint
+                baseTableName="file_upload_log"
+                baseColumnNames="shipper_id"
+                referencedTableName="organizations"
+                referencedColumnNames="id"
+                constraintName="fk_file_upload_log_shipper"
+                onUpdate="CASCADE"
+                onDelete="SET NULL"/>
+
+
+        <!-- Warehouse FK -->
+        <addForeignKeyConstraint
+                baseTableName="file_upload_log"
+                baseColumnNames="warehouse_id"
+                referencedTableName="organizations"
+                referencedColumnNames="id"
+                constraintName="fk_file_upload_log_warehouse"
+                onUpdate="CASCADE"
+                onDelete="SET NULL"/>
+
+
+        <!-- Indexes for faster filtering -->
+        <createIndex indexName="idx_file_upload_log_carrier" tableName="file_upload_log">
+            <column name="carrier_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_file_upload_log_shipper" tableName="file_upload_log">
+            <column name="shipper_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_file_upload_log_warehouse" tableName="file_upload_log">
+            <column name="warehouse_id"/>
+        </createIndex>
+
+    </changeSet>
+
+    <changeSet id="alter-file-upload-status-type" author="dev">
+
+        <preConditions onFail="MARK_RAN">
+            <columnExists tableName="file_upload_log" columnName="file_upload_status"/>
+        </preConditions>
+
+        <sql>
+            ALTER TABLE file_upload_log
+            ALTER COLUMN file_upload_status
+            TYPE SMALLINT
+            USING file_upload_status::smallint;
+        </sql>
+
+    </changeSet>
+
+</databaseChangeLog>

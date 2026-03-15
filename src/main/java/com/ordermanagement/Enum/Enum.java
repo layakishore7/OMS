@@ -26,6 +26,7 @@ public class Enum {
         NEW
     }
 
+
     public enum OrganizationType {
         CARRIER(0),SHIPPER(1),WAREHOUSE(2);
         private final int value;
@@ -106,5 +107,24 @@ public class Enum {
     public enum Action {
         ADDED,
         REMOVED
+    }
+
+    public enum fileUploadStatus {
+       PROCESSING(0),COMPLETED(1),FAILED(3);
+        private final int value;
+        fileUploadStatus(int value){
+            this.value=value;
+        }
+        public int getValue(){
+            return value;
+        }
+        public static fileUploadStatus fromValues(int value) {
+            for (fileUploadStatus fileUploadStatus: fileUploadStatus.values()){
+                if (fileUploadStatus.getValue()==value){
+                    return fileUploadStatus;
+                }
+            }
+            throw new IllegalArgumentException(("Invalid Inventory Status "+value));
+        }
     }
 }

@@ -21,8 +21,7 @@ public class ProductRequest {
 
     private String description;
 
-    @JsonProperty("categoryId")
-    private Integer categoryId;
+    private String categoryName;
 
     private Double length;
 

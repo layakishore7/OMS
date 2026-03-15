@@ -22,7 +22,7 @@ public class Product extends BaseEntity {
 
     private String productUniqueId;
 
-    private Integer availableQty;
+    private Integer availableQuantity;
 
     private Double length;
 

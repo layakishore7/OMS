@@ -24,6 +24,7 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     List<Product> fetchProductsByShipperId(@Param("shipperId") Integer shipperId);
 
 
+
     @Query(value = """
         SELECT CASE WHEN COUNT(*) > 0 THEN true ELSE false END
         FROM products p
@@ -33,6 +34,18 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     """, nativeQuery = true)
     boolean existsByProductNameAndShipperId(
             @Param("productName") String productName,
+            @Param("shipperId") Integer shipperId
+    );
+
+    @Query(value = """
+        SELECT CASE WHEN COUNT(*) > 0 THEN true ELSE false END
+        FROM products p
+        WHERE p.status = 1
+        AND p.product_unique_id = :productUniqueId
+        AND p.shipper_id = :shipperId
+   \s""", nativeQuery = true)
+    boolean existsByProductUniqueIdAndShipperId(
+            @Param("productUniqueId") String productUniqueId,
             @Param("shipperId") Integer shipperId
     );
 

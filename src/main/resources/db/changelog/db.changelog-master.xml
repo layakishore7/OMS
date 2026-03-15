@@ -17,4 +17,5 @@
     <include file="changes/009-product-stock-log.xml" relativeToChangelogFile="true"/>
     <include file="changes/0010-drop-product-columns.xml" relativeToChangelogFile="true"/>
     <include file="changes/0011-fix-products-schema.xml" relativeToChangelogFile="true"/>
+    <include file="/changes/0012-file-upload-log.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

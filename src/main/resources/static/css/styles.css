@@ -263,6 +263,21 @@ body {
   pointer-events: none;
 }
 
+/* Upload Dropzone */
+.upload-dropzone.dragover {
+  border-color: var(--primary-color) !important;
+  background-color: rgba(99, 102, 241, 0.05) !important;
+}
+
+/* History Nested Rows */
+.history-nested-row {
+  background-color: rgba(15, 23, 42, 0.3) !important;
+}
+.history-nested-row td {
+  padding: 1rem 1.5rem !important;
+  border-bottom: 2px solid var(--border-color) !important;
+}
+
 /* Table */
 table {
   width: 100%;
@@ -273,6 +288,13 @@ th,
 td {
   padding: 1.2rem 1.5rem;
   text-align: left;
+}
+
+/* Compact Table Styles */
+.table-compact th,
+.table-compact td {
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
 }
 
 th {
@@ -290,12 +312,53 @@ td {
   font-size: 0.95rem;
 }
 
+.table-compact td {
+  font-size: 0.85rem;
+}
+
 tr:last-child td {
   border-bottom: none;
 }
 
 tr:hover {
   background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: var(--transition);
+}
+
+.tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.tab-btn.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
 }
 
 /* Pagination */
@@ -544,4 +607,31 @@ textarea:focus {
 
 .toast.error {
   border-left-color: var(--danger-color);
+}
+
+/* Image lightbox overlay */
+#imagePreviewOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+#imagePreviewOverlay.active {
+  display: flex;
+}
+
+/* Dropzone drag-over highlight */
+.upload-dropzone.dragover {
+  border-color: var(--primary-color) !important;
+  background: rgba(99, 102, 241, 0.07) !important;
+}
+
+/* History table nested rows */
+.history-nested-row td {
+  background: rgba(255, 255, 255, 0.02);
+  border-top: none;
 }
