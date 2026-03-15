@@ -6,19 +6,33 @@ import com.ordermanagement.domain.responseDTO.ProductResponse;
 import com.ordermanagement.entity.Category;
 import com.ordermanagement.entity.Organization;
 import com.ordermanagement.entity.Product;
+import com.ordermanagement.repository.CategoryRepository;
+import com.ordermanagement.repository.OrganizationRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
 @Component
+@RequiredArgsConstructor
 public class ProductMapper {
 
+
+    @Autowired
+    CategoryRepository categoryRepository;
+
+    @Autowired
+    OrganizationRepository organizationRepository;
+
     // Convert ProductRequest to Product entity
-    public Product requestToEntity(ProductRequest request, Category category, Organization organization) {
+    public Product requestToEntity(ProductRequest request, Integer organizationId) {
         Product product = new Product();
         product.setProductName(request.getProductName());
         product.setDescription(request.getDescription());
+        Organization organization = organizationRepository.findById(organizationId).orElseThrow();
         product.setOrganization(organization);
+        Category category = categoryRepository.findByCategoryNameAndStatus(request.getCategoryName()).orElseThrow();
         product.setCategory(category);
         product.setLength(request.getLength());
         product.setBreadth(request.getBreadth());
@@ -27,7 +41,7 @@ public class ProductMapper {
         product.setWeight(request.getWeight());
         product.setWeightUom(request.getWeightUom());
         product.setSerializable(request.getSerializable());
-        product.setAvailableQty(0);
+        product.setAvailableQuantity(0);
         // Set ProductUniqueId: use from request if provided, else auto-generate
         if (request.getProductUniqueId() != null && !request.getProductUniqueId().isBlank()) {
             product.setProductUniqueId(request.getProductUniqueId());
@@ -55,7 +69,8 @@ public class ProductMapper {
         response.setWeight(product.getWeight());
         response.setWeightUom(product.getWeightUom());
         response.setSerializable(product.getSerializable());
-        response.setAvailableQty(product.getAvailableQty());
+        response.setAvailableQty(product.getAvailableQuantity());
+        response.setUploadImage(product.getUploadImage());
         return response;
     }
 
@@ -91,7 +106,7 @@ public class ProductMapper {
         response.setWeight(product.getWeight());
         response.setWeightUom(product.getWeightUom());
         response.setSerializable(product.getSerializable());
-        response.setAvailableQty(product.getAvailableQty());
+        response.setAvailableQty(product.getAvailableQuantity());
         return response;
     }
 
@@ -110,7 +125,7 @@ public class ProductMapper {
         response.setWeight(product.getWeight());
         response.setWeightUom(product.getWeightUom());
         response.setSerializable(product.getSerializable());
-        response.setAvailableQty(product.getAvailableQty());
+        response.setAvailableQty(product.getAvailableQuantity());
         response.setUploadImage(product.getUploadImage());
         return response;
     }
