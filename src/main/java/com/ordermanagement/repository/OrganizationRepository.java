@@ -17,9 +17,15 @@ public interface OrganizationRepository extends JpaRepository<Organization, Inte
     @Query(value = "SELECT * FROM organizations WHERE organization_code = ?1 AND status = 1", nativeQuery = true)
     Optional<Organization> findByOrganizationCode(String organizationCode);
 
-    @Query(value = "select * from organizations where status =1", nativeQuery = true)
+    @Query(value = "SELECT * FROM organizations WHERE status = 1", nativeQuery = true)
     Page<Organization> fetchAllOrganizations(String search, PageRequest pageable);
 
-    @Query(value = "select * from organizations where status =1 AND organization_type = 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM organizations WHERE status = 1 AND organization_type = 1", nativeQuery = true)
     List<Organization> fetchAllShippers();
+
+    @Query(value = "SELECT * FROM organizations WHERE status = 1 AND organization_type = 2", nativeQuery = true)
+    List<Organization> fetchAllWarehouses();
+
+    @Query(value = "SELECT * FROM organizations WHERE status = 1 AND organization_type = 0", nativeQuery = true)
+    List<Organization> fetchAllCarriers();
 }

@@ -1,5 +1,6 @@
 package com.ordermanagement.domain.responseDTO;
 
+import com.ordermanagement.Enum.Enum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ public class OrganizationResponse {
     private Integer organizationId;
     private String organizationName;
     private String organizationCode;
-    private Enum organizationType;
+    private Enum.OrganizationType organizationType;
     private String contactEmail;
     private String address;
     private String state;
@@ -22,7 +23,8 @@ public class OrganizationResponse {
     private String country;
     private String zipCode;
     private boolean inventory;
-    private Enum status;
+    private Enum.Status status;
+    private String association;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

@@ -121,7 +121,7 @@ public class ProductService {
         return productMapper.entityToResponse(product);
     }
 
-    public ProductResponse updateProduct(Integer productId, ProductRequest request) {
+    public ProductResponse updateProduct(Integer productId, ProductRequest request, MultipartFile image) {
 
         Organization organization = organizationRepository.findById(request.getShipperId())
                 .orElseThrow(() -> new RuntimeException("Shipper Not Found"));
@@ -141,6 +141,10 @@ public class ProductService {
             Category subCat = categoryRepository.findByCategoryNameAndStatus(request.getCategoryName())
                     .orElseThrow(() -> new RuntimeException("Category not found"));
             product.setCategory(subCat);
+        }
+        if (image!= null && !image.isEmpty()) {
+            String imageUrl = imageService.uploadImage(image);
+            product.setUploadImage(imageUrl);
         }
         Product savedProduct = productRepository.save(product);
         return productMapper.UpdateEntityToResponse(savedProduct);
@@ -186,7 +190,7 @@ public class ProductService {
     }
 
     public ByteArrayInputStream exportProducts() {
-        List<Product> products = productRepository.findAll();
+        List<Product> products = productRepository.fetchAllProducts();
         return ExcelUtil.productsToExcel(products);
     }
 
@@ -313,7 +317,7 @@ public class ProductService {
 
         Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 
-        return "http://localhost:8080/uploads/" + fileName;
+        return "/uploads/" + fileName;
     }
 
 
@@ -339,7 +343,6 @@ public class ProductService {
         log.setSuccessData(emptyArray);   // important
         log.setFailedData(emptyArray);
         log.setFileUploadStatus(Enum.fileUploadStatus.PROCESSING);
-
         log = fileUploadLogRepository.save(log);
 
         processImport(log.getId(),file,organizationId);

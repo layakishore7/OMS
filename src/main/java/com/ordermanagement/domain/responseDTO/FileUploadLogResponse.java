@@ -1,5 +1,6 @@
 package com.ordermanagement.domain.responseDTO;
 
+import com.ordermanagement.Enum.AppEnums;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.*;
 
@@ -21,4 +22,5 @@ public class FileUploadLogResponse {
     private JsonNode successData;
     private JsonNode failedData;
     private LocalDateTime createdAt;
+    private AppEnums.FileUploadStatus fileUploadStatus;
 }

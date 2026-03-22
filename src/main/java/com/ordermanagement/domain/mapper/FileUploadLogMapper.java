@@ -15,12 +15,17 @@ public class FileUploadLogMapper {
         fileUploadLogResponse.setFileUrl(fileUploadLog.getFileUrl());
         fileUploadLogResponse.setFileFormat(fileUploadLog.getFileFormat());
         fileUploadLogResponse.setFileType(fileUploadLog.getFileType());
-        fileUploadLogResponse.setShipperOrganization(fileUploadLog.getShipperOrganization().getOrganizationName());
+        fileUploadLogResponse.setShipperOrganization(
+                fileUploadLog.getShipperOrganization() != null 
+                ? fileUploadLog.getShipperOrganization().getOrganizationName() 
+                : null
+        );
         fileUploadLogResponse.setSuccessCount(fileUploadLog.getSuccessCount());
         fileUploadLogResponse.setFailedCount(fileUploadLog.getFailedCount());
         fileUploadLogResponse.setSuccessData(fileUploadLog.getSuccessData());
         fileUploadLogResponse.setFailedData(fileUploadLog.getFailedData());
         fileUploadLogResponse.setCreatedAt(fileUploadLog.getCreatedAt());
+        fileUploadLogResponse.setFileUploadStatus(fileUploadLog.getFileUploadStatus());
         return fileUploadLogResponse;
     }
 }

@@ -40,6 +40,7 @@
                 <constraints nullable="false"/>
             </column>
 
+
             <column name="updated_user" type="VARCHAR(255)"/>
 
             <column name="association" type="SMALLINT"/>
@@ -60,4 +61,22 @@
 
     </changeSet>
 
+
+    <changeSet id="1892739" author="Kishore">
+        <preConditions onFail="MARK_RAN">
+            <columnExists tableName="organizations" columnName="record_status"/>
+        </preConditions>
+        <dropColumn tableName="organizations" columnName="record_status"/>
+    </changeSet>
+
+    <changeSet id="882992" author="Kishore">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="organizations" columnName="status"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="organizations">
+            <column name="status" type="INT" defaultValueNumeric="1"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

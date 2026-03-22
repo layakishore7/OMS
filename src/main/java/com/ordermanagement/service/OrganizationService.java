@@ -28,7 +28,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class OrganizationService {
 
-
     private final OrganizationRepository organizationRepository;
 
     private final OrganizationMapper organizationMapper;
@@ -40,11 +39,13 @@ public class OrganizationService {
     public OrganizationResponse createOrganization(OrganizationRequest organizationRequest) {
 
         if (organizationRepository.findByOrganizationName(organizationRequest.getOrganizationName()).isPresent()) {
-            throw new RuntimeException("Organization with name " + organizationRequest.getOrganizationName() + " already exists");
+            throw new RuntimeException(
+                    "Organization with name " + organizationRequest.getOrganizationName() + " already exists");
         }
 
         if (organizationRepository.findByOrganizationCode(organizationRequest.getOrganizationCode()).isPresent()) {
-            throw new RuntimeException("Organization with code " + organizationRequest.getOrganizationCode() + " already exists");
+            throw new RuntimeException(
+                    "Organization with code " + organizationRequest.getOrganizationCode() + " already exists");
         }
         Organization organization = organizationMapper.requestToEntity(organizationRequest);
         organization = organizationRepository.save(organization);
@@ -52,11 +53,13 @@ public class OrganizationService {
     }
 
     public OrganizationPageResponse getAllOrganizations(String search, int pageNumber, int pageSize) {
-        PageRequest pageable = PageRequest.of(pageNumber,pageSize)
+        PageRequest pageable = PageRequest.of(pageNumber, pageSize)
                 .withSort(Sort.by("organization_name").ascending());
-        Page<Organization> organizations = organizationRepository.fetchAllOrganizations(search,pageable);
+        Page<Organization> organizations = organizationRepository.fetchAllOrganizations(search, pageable);
 
-        List<Organization> organizationsResponse = organizations.stream().toList();
+        List<OrganizationResponse> organizationsResponse = organizations.stream()
+                .map(organizationMapper::entityToResponse)
+                .toList();
 
         MetaData metaData = new MetaData();
         metaData.setPageNumber(pageNumber);
@@ -64,7 +67,7 @@ public class OrganizationService {
         metaData.setPageCount(organizations.getTotalPages());
         metaData.setRecordCount(organizations.getTotalElements());
 
-        return new OrganizationPageResponse(organizationsResponse,metaData);
+        return new OrganizationPageResponse(organizationsResponse, metaData);
     }
 
     public OrganizationResponse updateOrganization(Integer organizationId, OrganizationRequest request) {
@@ -83,9 +86,9 @@ public class OrganizationService {
         organizationRepository.save(organization);
     }
 
-    public Organization checkOrganizationExistsById(int id){
+    public Organization checkOrganizationExistsById(int id) {
         return organizationRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Organization not found "+id));
+                .orElseThrow(() -> new RuntimeException("Organization not found " + id));
     }
 
     public List<CarrierShipperAssociationResponseDto> linkShipperToCarrier(
@@ -119,8 +122,8 @@ public class OrganizationService {
     }
 
     private void updateOrganizationAssociationStatusForShipper(int carrierId, int shipperId, Enum.Status status) {
-        List<OrganizationAssociation> associations =
-                organizationAssociationRepository.fetchByCarrierAndShipper(carrierId, shipperId);
+        List<OrganizationAssociation> associations = organizationAssociationRepository
+                .fetchByCarrierAndShipper(carrierId, shipperId);
 
         for (OrganizationAssociation association : associations) {
             association.setStatus(status);
@@ -137,20 +140,21 @@ public class OrganizationService {
 
         List<OrganizationAssociation> warehouseAssociationsToSave = new ArrayList<>();
 
-        for (CarrierShipperWarehouseAssociationLinkDto warehouseDto :
-                carrierShipperWarehouseAssociationDto.getOrganizations()) {
+        for (CarrierShipperWarehouseAssociationLinkDto warehouseDto : carrierShipperWarehouseAssociationDto
+                .getOrganizations()) {
 
             Organization shipper = checkOrganizationExistsById(warehouseDto.getShipperId());
             Organization warehouse = checkOrganizationExistsById(warehouseDto.getWarehouseId());
             Enum.Status status = Enum.Status.valueOf(warehouseDto.getAssociation());
 
-            Optional<OrganizationAssociation> existingAssociation =
-                    organizationAssociationRepository.fetchByCarrierAndShipperAndWarehouse(
-                                    carrierId, shipper.getId(), warehouse.getId())
-                            .stream().findFirst();
+            Optional<OrganizationAssociation> existingAssociation = organizationAssociationRepository
+                    .fetchByCarrierAndShipperAndWarehouse(
+                            carrierId, shipper.getId(), warehouse.getId())
+                    .stream().findFirst();
 
             OrganizationAssociation warehouseAssociation = existingAssociation
-                    .orElseGet(() -> organizationMapper.convertDtoToOrganizationAssociation(carrier, shipper, warehouse));
+                    .orElseGet(
+                            () -> organizationMapper.convertDtoToOrganizationAssociation(carrier, shipper, warehouse));
 
             warehouseAssociation.setStatus(status);
 
@@ -166,11 +170,10 @@ public class OrganizationService {
                 .collect(Collectors.toList());
     }
 
-
-    private void updateOrganizationAssociationStatusForWarehouse(int carrierId, int shipperId, int warehouseId, Enum.Status status) {
-        List<OrganizationAssociation> associations =
-                organizationAssociationRepository.fetchByCarrierAndShipperAndWarehouse
-                        (carrierId, shipperId,warehouseId);
+    private void updateOrganizationAssociationStatusForWarehouse(int carrierId, int shipperId, int warehouseId,
+            Enum.Status status) {
+        List<OrganizationAssociation> associations = organizationAssociationRepository
+                .fetchByCarrierAndShipperAndWarehouse(carrierId, shipperId, warehouseId);
 
         for (OrganizationAssociation association : associations) {
             association.setStatus(status);
@@ -178,12 +181,59 @@ public class OrganizationService {
         organizationAssociationRepository.saveAll(associations);
     }
 
-    public List<OrganizationResponse> getAllShippers() {
+    public List<OrganizationResponse> getAllShippers(Integer carrierId) {
 
-        List<Organization> shippers =  organizationRepository.fetchAllShippers();
+        List<Organization> shippers = organizationRepository.fetchAllShippers();
 
         return shippers.stream()
-                .map(organizationMapper::entityToResponse)
+                .map(shipper -> {
+                    OrganizationResponse response = organizationMapper.entityToResponse(shipper);
+                    if (carrierId != null) {
+                        Optional<CarrierShipperAssociation> association = carrierShipperAssociationRepository
+                                .findByCarrierIdAndShipperId(carrierId, shipper.getId());
+                        response.setAssociation(association.map(a -> a.getStatus().name()).orElse("INACTIVE"));
+                    }
+                    return response;
+                })
+                .toList();
+    }
+
+    public List<OrganizationResponse> getAllCarriers(Integer shipperId) {
+
+        List<Organization> carriers = organizationRepository.fetchAllCarriers();
+
+        return carriers.stream()
+                .map(carrier -> {
+                    OrganizationResponse response = organizationMapper.entityToResponse(carrier);
+                    if (shipperId != null) {
+                        Optional<CarrierShipperAssociation> association = carrierShipperAssociationRepository
+                                .findByCarrierIdAndShipperId(carrier.getId(), shipperId);
+                        response.setAssociation(association.map(a -> a.getStatus().name()).orElse("INACTIVE"));
+                    }
+                    return response;
+                })
+                .toList();
+    }
+
+    public List<OrganizationResponse> getAllWarehouses(Integer carrierId) {
+
+        List<Organization> warehouses = organizationRepository.fetchAllWarehouses();
+
+        return warehouses.stream()
+                .map(warehouse -> {
+                    OrganizationResponse response = organizationMapper.entityToResponse(warehouse);
+                    if (carrierId != null) {
+                        // For simplicity, checking if ANY association exists for this carrier and warehouse
+                        // In a real scenario, this might need to be filtered by shipper too if needed
+                        // But the requirement says "carrier and shipper association in the warehouse tab"
+                        // I'll check if there's any association for this carrier and warehouse.
+                        List<OrganizationAssociation> associations = organizationAssociationRepository
+                                .fetchByCarrierAndWarehouse(carrierId, warehouse.getId());
+                        boolean isActive = associations.stream().anyMatch(a -> a.getStatus() == Enum.Status.ACTIVE);
+                        response.setAssociation(isActive ? "ACTIVE" : "INACTIVE");
+                    }
+                    return response;
+                })
                 .toList();
     }
 }

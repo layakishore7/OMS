@@ -5,7 +5,7 @@ import com.ordermanagement.domain.requestDTO.*;
 import com.ordermanagement.domain.responseDTO.CarrierShipperAssociationResponseDto;
 import com.ordermanagement.domain.responseDTO.CarrierShipperWarehouseAssociationResponseDto;
 import com.ordermanagement.domain.responseDTO.OrganizationResponse;
-import com.ordermanagement.domain.responseDTO.ProductResponse;
+
 import com.ordermanagement.domain.responses.OrganizationPageResponse;
 import com.ordermanagement.service.OrganizationService;
 import lombok.RequiredArgsConstructor;
@@ -23,10 +23,10 @@ public class OrganizationController {
     private final OrganizationService organizationService;
 
     @GetMapping("/organizations")
-    public ResponseEntity<APIResponse> getAllProducts(
-            @RequestParam(defaultValue = "") String search,
-            @RequestParam(defaultValue = "0") int pageNumber,
-            @RequestParam(defaultValue = "5") int size) {
+    public ResponseEntity<APIResponse> getAllOrganizations(
+            @RequestParam(name = "search", defaultValue = "") String search,
+            @RequestParam(name = "pageNumber", defaultValue = "0") int pageNumber,
+            @RequestParam(name = "size", defaultValue = "5") int size) {
 
         try {
             OrganizationPageResponse organizations = organizationService.getAllOrganizations(search, pageNumber, size);
@@ -37,11 +37,36 @@ public class OrganizationController {
     }
 
     @GetMapping("/organizations/shippers")
-    public ResponseEntity<APIResponse> getAllShippers(){
+    public ResponseEntity<APIResponse> getAllShippers(
+            @RequestParam(name = "carrierId", required = false) Integer carrierId) {
 
         try {
-            List<OrganizationResponse> shippers = organizationService.getAllShippers();
+            List<OrganizationResponse> shippers = organizationService.getAllShippers(carrierId);
             return APIResponse.success(shippers);
+        } catch (Exception e) {
+            return APIResponse.error(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
+    @GetMapping("/organizations/carriers")
+    public ResponseEntity<APIResponse> getAllCarriers(
+            @RequestParam(name = "shipperId", required = false) Integer shipperId) {
+
+        try {
+            List<OrganizationResponse> carriers = organizationService.getAllCarriers(shipperId);
+            return APIResponse.success(carriers);
+        } catch (Exception e) {
+            return APIResponse.error(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
+    @GetMapping("/organizations/warehouses")
+    public ResponseEntity<APIResponse> getAllWarehouses(
+            @RequestParam(name = "carrierId", required = false) Integer carrierId) {
+
+        try {
+            List<OrganizationResponse> warehouses = organizationService.getAllWarehouses(carrierId);
+            return APIResponse.success(warehouses);
         } catch (Exception e) {
             return APIResponse.error(HttpStatus.BAD_REQUEST, e.getMessage());
         }

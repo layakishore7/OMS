@@ -23,6 +23,9 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     @Query(value = "select * from products where status =1 AND shipper_id = :shipperId", nativeQuery = true)
     List<Product> fetchProductsByShipperId(@Param("shipperId") Integer shipperId);
 
+    @Query(value = "select * from products where status =1", nativeQuery = true)
+    List<Product> fetchAllProducts();
+
 
 
     @Query(value = """

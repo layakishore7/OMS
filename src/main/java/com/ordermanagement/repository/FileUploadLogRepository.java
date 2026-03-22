@@ -17,7 +17,6 @@ public interface FileUploadLogRepository extends JpaRepository<FileUploadLog,Int
         SELECT * FROM file_upload_log
         WHERE shipper_id = :shipperId
         AND LOWER(file_name) LIKE LOWER(CONCAT('%',:search,'%'))
-        ORDER BY id DESC
         """,
             countQuery = """
         SELECT COUNT(*) FROM file_upload_log

@@ -17,5 +17,8 @@
     <include file="changes/009-product-stock-log.xml" relativeToChangelogFile="true"/>
     <include file="changes/0010-drop-product-columns.xml" relativeToChangelogFile="true"/>
     <include file="changes/0011-fix-products-schema.xml" relativeToChangelogFile="true"/>
-    <include file="/changes/0012-file-upload-log.xml" relativeToChangelogFile="true"/>
+    <include file="changes/0012-file-upload-log.xml" relativeToChangelogFile="true"/>
+    <include file="changes/0013-add-file-upload-log-status.xml" relativeToChangelogFile="true"/>
+    <include file="changes/0014-fix-existing-urls.xml" relativeToChangelogFile="true"/>
+    <include file="changes/015-standardize-status-column.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
