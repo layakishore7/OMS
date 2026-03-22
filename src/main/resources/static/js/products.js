@@ -254,10 +254,11 @@ function clearImagePreview() {
 function showImagePreview(url) {
     const overlay = document.getElementById('imagePreviewOverlay');
     document.getElementById('imagePreviewImg').src = url;
-    overlay.classList.add('active');
+    overlay.style.display = 'flex';
 }
 function closeImagePreview() {
-    document.getElementById('imagePreviewOverlay').classList.remove('active');
+    const overlay = document.getElementById('imagePreviewOverlay');
+    overlay.style.display = 'none';
 }
 
 // ------------------- Save Product ------------------
@@ -279,6 +280,13 @@ async function saveProduct() {
     const catId   = document.getElementById('categoryId').value;
     const catName  = catId ? (categories.find(c => c.categoryId == catId) || {}).categoryName || null : null;
 
+    const preview = document.getElementById('productImagePreview');
+    let currentImageUrl = null;
+    // If preview is visible and its src is a real URL (not a data: string), it's the current stored image
+    if (preview && preview.style.display !== 'none' && preview.src && !preview.src.startsWith('data:')) {
+        currentImageUrl = preview.src;
+    }
+
     const productPayload = {
         productName:      name,
         productUniqueId:  document.getElementById('productUniqueId').value,
@@ -291,26 +299,28 @@ async function saveProduct() {
         weight:           document.getElementById('weight').value      ? parseFloat(document.getElementById('weight').value)  : null,
         weightUom:        document.getElementById('weightUom').value,
         description:      document.getElementById('description').value,
-        serializable:     document.getElementById('serializable').checked
+        serializable:     document.getElementById('serializable').checked,
+        uploadImage:      currentImageUrl
     };
+
+    const fd = new FormData();
+    fd.append('product', new Blob([JSON.stringify(productPayload)], { type: 'application/json' }));
+    if (imgInput && imgInput.files && imgInput.files[0]) {
+        fd.append('image', imgInput.files[0]);
+    }
 
     try {
         let res;
         if (isEditing) {
-            // PUT uses JSON (backend: @RequestBody ProductRequest)
             res = await fetch(`/api/products/${id}`, {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(productPayload)
+                body: fd
             });
         } else {
-            // POST uses multipart/form-data (backend: @RequestPart("product") + @RequestPart("image"))
-            const fd = new FormData();
-            fd.append('product', new Blob([JSON.stringify(productPayload)], { type: 'application/json' }));
-            if (imgInput && imgInput.files && imgInput.files[0]) {
-                fd.append('image', imgInput.files[0]);
-            }
-            res = await fetch('/api/products', { method: 'POST', body: fd });
+            res = await fetch('/api/products', { 
+                method: 'POST', 
+                body: fd 
+            });
         }
 
         const result = await res.json();
@@ -529,58 +539,89 @@ function renderFileLogs(logs) {
         return;
     }
     logs.forEach((log, i) => {
-        const failed = log.failedCount > 0 || log.fileUploadStatus === 'FAILED';
-        const chevron = failed
-            ? `<svg class="expand-icon" id="icon-${i}" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform 0.2s;cursor:pointer;" onclick="toggleRow(${i})"><polyline points="9 18 15 12 9 6"></polyline></svg>`
-            : `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--secondary-color)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+        const chevron = `<svg class="expand-icon" id="icon-${i}" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform 0.2s;cursor:pointer;" onclick="toggleRow(${i})"><polyline points="9 18 15 12 9 6"></polyline></svg>`;
+
+        // File download icon next to file name
+        const fileDownload = log.fileUrl
+            ? `<a href="${log.fileUrl}" download title="Download file" style="color:var(--primary-color);vertical-align:middle;margin-left:6px;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              </a>`
+            : '';
+
+        const statusBadge = log.fileUploadStatus === 'PROCESSING'
+            ? `<span style="font-size:0.72rem;background:rgba(255,193,7,0.15);color:#ffc107;padding:1px 6px;border-radius:10px;margin-left:6px;">Processing…</span>`
+            : '';
 
         const tr = document.createElement('tr');
-        if (failed) { tr.style.cursor = 'pointer'; tr.onclick = e => { if (e.target.tagName !== 'BUTTON') toggleRow(i); }; }
+        tr.style.cursor = 'pointer';
+        tr.onclick = e => { if (e.target.tagName !== 'A') toggleRow(i); };
         tr.innerHTML = `
             <td style="text-align:center;">${chevron}</td>
-            <td style="font-weight:500;">${log.fileName || 'Unknown'}</td>
+            <td style="font-weight:500;">${log.fileName || 'Unknown'}${fileDownload}${statusBadge}</td>
             <td>${log.shipperOrganization || '-'}</td>
-            <td>${log.successCount || 0}</td>
+            <td style="color:var(--secondary-color);font-weight:${log.successCount > 0 ? 600 : 'normal'}">${log.successCount || 0}</td>
             <td style="color:${log.failedCount > 0 ? 'var(--danger-color)' : 'inherit'};font-weight:${log.failedCount > 0 ? 600 : 'normal'};">${log.failedCount || 0}</td>
             <td style="color:var(--text-secondary);">${log.createdAt ? log.createdAt.replace('T',' ').substring(0,19) : '-'}</td>`;
         tbody.appendChild(tr);
 
-        if (failed) {
-            const ntr = document.createElement('tr');
-            ntr.id = `nested-${i}`;
-            ntr.className = 'history-nested-row';
-            ntr.style.display = 'none';
-            let failRows = '';
-            try {
-                let fd = log.failedData;
-                if (typeof fd === 'string') fd = JSON.parse(fd);
-                if (Array.isArray(fd) && fd.length > 0) {
-                    fd.forEach(err => {
-                        failRows += `<tr>
-                            <td style="padding:0.4rem 0.8rem;border-bottom:1px solid var(--border-color);font-size:0.82rem;">${err.rowNumber || '-'}</td>
-                            <td style="padding:0.4rem 0.8rem;border-bottom:1px solid var(--border-color);font-size:0.82rem;">${err.productName || err.productUniqueId || '-'}</td>
-                            <td style="padding:0.4rem 0.8rem;border-bottom:1px solid var(--border-color);font-size:0.82rem;color:var(--danger-color);">${err.errorMessage || err.error || 'Unknown error'}</td>
-                        </tr>`;
-                    });
-                } else { failRows = `<tr><td colspan="3" style="padding:0.4rem 0.8rem;font-size:0.82rem;">No detailed records.</td></tr>`; }
-            } catch (_) { failRows = `<tr><td colspan="3" style="padding:0.4rem 0.8rem;font-size:0.82rem;color:var(--text-secondary);">Error parsing failure details.</td></tr>`; }
+        // Expandable detail row — present for every log entry
+        const ntr = document.createElement('tr');
+        ntr.id = `nested-${i}`;
+        ntr.className = 'history-nested-row';
+        ntr.style.display = 'none';
 
-            ntr.innerHTML = `<td colspan="6"><div style="padding:0.75rem;">
-                <p style="margin:0 0 0.4rem;font-size:0.85rem;color:var(--text-secondary);">${log.successCount > 0 ? `✓ ${log.successCount} successful records` : 'No successful records'}</p>
-                <strong style="display:block;margin-bottom:0.4rem;font-size:0.85rem;">Failed Records:</strong>
-                <table style="width:100%;border:1px solid var(--border-color);border-radius:6px;overflow:hidden;">
-                    <thead style="background:rgba(255,255,255,0.05);">
-                        <tr>
-                            <th style="padding:0.4rem 0.8rem;font-size:0.78rem;border-bottom:1px solid var(--border-color);">Row</th>
-                            <th style="padding:0.4rem 0.8rem;font-size:0.78rem;border-bottom:1px solid var(--border-color);">Product</th>
-                            <th style="padding:0.4rem 0.8rem;font-size:0.78rem;border-bottom:1px solid var(--border-color);">Error</th>
-                        </tr>
-                    </thead>
-                    <tbody>${failRows}</tbody>
-                </table>
-            </div></td>`;
-            tbody.appendChild(ntr);
+        // Build success list
+        let successRows = '';
+        try {
+            let sd = log.successData;
+            if (typeof sd === 'string') sd = JSON.parse(sd);
+            if (Array.isArray(sd) && sd.length > 0) {
+                sd.forEach(s => {
+                    successRows += `<div style="font-size:0.82rem;padding:2px 0;color:var(--text-secondary);">• ${s.productName || s.productUniqueId || JSON.stringify(s)}</div>`;
+                });
+            } else {
+                successRows = `<span style="font-size:0.82rem;color:var(--text-secondary);">No Successful Records Found</span>`;
+            }
+        } catch (_) {
+            successRows = `<span style="font-size:0.82rem;color:var(--text-secondary);">No Successful Records Found</span>`;
         }
+
+        // Build failed table rows
+        let failRows = '';
+        try {
+            let fd = log.failedData;
+            if (typeof fd === 'string') fd = JSON.parse(fd);
+            if (Array.isArray(fd) && fd.length > 0) {
+                fd.forEach(err => {
+                    failRows += `<tr>
+                        <td style="padding:0.4rem 0.8rem;border-bottom:1px solid var(--border-color);font-size:0.82rem;">${err.rowNumber || '-'}</td>
+                        <td style="padding:0.4rem 0.8rem;border-bottom:1px solid var(--border-color);font-size:0.82rem;">${err.productName || err.productUniqueId || '-'}</td>
+                        <td style="padding:0.4rem 0.8rem;border-bottom:1px solid var(--border-color);font-size:0.82rem;color:var(--danger-color);">${err.errorMessage || err.error || 'Unknown error'}</td>
+                    </tr>`;
+                });
+            } else {
+                failRows = `<tr><td colspan="3" style="padding:0.5rem 0.8rem;font-size:0.82rem;color:var(--text-secondary);">No Failed Records Found</td></tr>`;
+            }
+        } catch (_) {
+            failRows = `<tr><td colspan="3" style="padding:0.4rem 0.8rem;font-size:0.82rem;color:var(--text-secondary);">Error parsing failure details.</td></tr>`;
+        }
+
+        ntr.innerHTML = `<td colspan="6"><div style="padding:0.75rem 1rem;background:rgba(255,255,255,0.02);border-top:1px solid var(--border-color);">
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;font-weight:600;">Successfully Uploaded:</p>
+            <div style="margin-bottom:0.75rem;padding-left:0.5rem;">${successRows}</div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;font-weight:600;">Failed Uploaded:</p>
+            <table style="width:100%;border:1px solid var(--border-color);border-radius:6px;overflow:hidden;">
+                <thead style="background:rgba(255,255,255,0.05);">
+                    <tr>
+                        <th style="padding:0.4rem 0.8rem;font-size:0.78rem;border-bottom:1px solid var(--border-color);">Row Number</th>
+                        <th style="padding:0.4rem 0.8rem;font-size:0.78rem;border-bottom:1px solid var(--border-color);">Product Name</th>
+                        <th style="padding:0.4rem 0.8rem;font-size:0.78rem;border-bottom:1px solid var(--border-color);">Error Message</th>
+                    </tr>
+                </thead>
+                <tbody>${failRows}</tbody>
+            </table>
+        </div></td>`;
+        tbody.appendChild(ntr);
     });
 }
 

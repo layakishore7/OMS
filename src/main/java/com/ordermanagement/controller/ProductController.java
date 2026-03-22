@@ -37,7 +37,6 @@ public class ProductController {
     @Autowired
     FileUploadLogRepository fileUploadLogRepository;
 
-
     @GetMapping("/products")
     public ResponseEntity<APIResponse> getAllProducts(
             @RequestParam(name = "search", defaultValue = "") String search,
@@ -64,7 +63,6 @@ public class ProductController {
         }
     }
 
-
     @PostMapping(value = "/products", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<APIResponse> addProduct(
             @RequestPart("product") String productJson,
@@ -84,10 +82,17 @@ public class ProductController {
         return APIResponse.success(response);
     }
 
-    @PutMapping("/products/{productId}")
-    public ResponseEntity<APIResponse> updateProductById(@PathVariable("productId") Integer productId,
-                                                         @RequestBody ProductRequest product) {
-        ProductResponse updatedProduct = productService.updateProduct(productId, product);
+    @PutMapping(value = "/products/{productId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<APIResponse> updateProductById(
+            @PathVariable("productId") Integer productId,
+            @RequestPart("product") String productJson,
+            @RequestPart(value = "image", required = false) MultipartFile image) throws Exception {
+
+        ObjectMapper mapper = new ObjectMapper();
+        ProductRequest request = mapper.readValue(productJson, ProductRequest.class);
+
+        ProductResponse updatedProduct = productService.updateProduct(productId, request, image);
+
         return APIResponse.updated("Product Updated Successfully", updatedProduct);
     }
 
@@ -99,7 +104,7 @@ public class ProductController {
 
     @DeleteMapping("/products/bulk-delete")
     public ResponseEntity<APIResponse> deleteProducts(@RequestParam(name = "orgId") Integer orgId,
-                                                      @RequestBody ProductsBulkDeleteDto productIds) {
+            @RequestBody ProductsBulkDeleteDto productIds) {
         productService.deleteProducts(orgId, productIds);
         return APIResponse.success("Products Deleted Successfully");
     }
@@ -138,21 +143,19 @@ public class ProductController {
 
         return ResponseEntity.ok(Map.of(
                 "message", "File Upload Started",
-                "logId", logId
-        ));
+                "logId", logId));
     }
 
     @GetMapping("/products/file-logs/{shipperId}")
     public ResponseEntity<APIResponse> getFileLogs(
-            @PathVariable Integer shipperId,
+            @PathVariable("shipperId") Integer shipperId,
             @RequestParam(name = "search", defaultValue = "") String search,
             @RequestParam(name = "pageNumber", defaultValue = "0") int pageNumber,
             @RequestParam(name = "size", defaultValue = "5") int size) {
 
         try {
 
-            FileUploadPageResponse response =
-                    productService.getImportFileLogs(search, pageNumber, size, shipperId);
+            FileUploadPageResponse response = productService.getImportFileLogs(search, pageNumber, size, shipperId);
 
             return APIResponse.success(response);
 

@@ -1,6 +1,6 @@
 package com.ordermanagement.Enum;
 
-public class Enum {
+public class AppEnums {
 
     public enum ProductStatus {
         ACTIVE,
@@ -26,95 +26,81 @@ public class Enum {
         NEW
     }
 
+
     public enum OrganizationType {
-        CARRIER(0), SHIPPER(1), WAREHOUSE(2);
-
+        CARRIER(0),SHIPPER(1),WAREHOUSE(2);
         private final int value;
-
         OrganizationType(int value) {
-            this.value = value;
+            this.value=value;
         }
-
         public int getValue() {
             return value;
         }
-
         public static OrganizationType fromValue(int value) {
             for (OrganizationType organizationType : OrganizationType.values()) {
-                if (organizationType.getValue() == value) {
+                if (organizationType.getValue()==value){
                     return organizationType;
                 }
             }
-            throw new IllegalArgumentException(("Invalid OrganizationType " + value));
+            throw new IllegalArgumentException(("Invalid OrganizationType "+ value));
         }
     }
 
     public enum Status {
-        INACTIVE(0), ACTIVE(1);
-
+        INACTIVE(0),ACTIVE(1);
         private final int value;
-
         Status(int value) {
-            this.value = value;
+            this.value=value;
         }
-
         public int getValue() {
             return value;
         }
-
         public static Status fromValue(int value) {
             for (Status status : Status.values()) {
-                if (status.getValue() == value) {
+                if (status.getValue()==value){
                     return status;
                 }
             }
-            throw new IllegalArgumentException(("Invalid Status " + value));
+            throw new IllegalArgumentException(("Invalid Status "+ value));
         }
     }
 
+
     public enum StorageType {
-        RACK(0), FLOOR(1), COLD_STORAGE(2);
-
+        RACK(0),FLOOR(1),COLD_STORAGE(2);
         private final int value;
-
         StorageType(int value) {
-            this.value = value;
+            this.value=value;
         }
-
         public int getValue() {
             return value;
         }
-
         public static StorageType fromValues(int value) {
-            for (StorageType storageType : StorageType.values()) {
-                if (storageType.getValue() == value) {
+            for (StorageType storageType: StorageType.values()) {
+                if (storageType.getValue()==value) {
                     return storageType;
                 }
             }
-            throw new IllegalArgumentException("Invalid StorageType " + value);
+            throw new IllegalArgumentException("Invalid StorageType "+ value);
         }
     }
 
     public enum InventoryStatus {
-        NEW(0), ON_HOLD(1), DAMAGED(2), STAGING(3), COMPLETED(4);
-
+        NEW(0), ON_HOLD(1),DAMAGED(2),STAGING(3),COMPLETED(4);
         private final int value;
-
-        InventoryStatus(int value) {
-            this.value = value;
+        InventoryStatus(int value){
+            this.value=value;
         }
-
-        public int getValue() {
+        public int getValue(){
             return value;
         }
-
         public static InventoryStatus fromValues(int value) {
-            for (InventoryStatus inventoryStatus : InventoryStatus.values()) {
-                if (inventoryStatus.getValue() == value) {
+            for (InventoryStatus inventoryStatus: InventoryStatus.values()){
+                if (inventoryStatus.getValue()==value){
                     return inventoryStatus;
                 }
             }
-            throw new IllegalArgumentException(("Invalid Inventory Status " + value));
+            throw new IllegalArgumentException(("Invalid Inventory Status "+value));
         }
     }
 
@@ -123,26 +109,22 @@ public class Enum {
         REMOVED
     }
 
-    public enum fileUploadStatus {
-        PROCESSING(0), COMPLETED(1), FAILED(3);
-
+    public enum FileUploadStatus {
+       PROCESSING(0),COMPLETED(1),FAILED(3);
         private final int value;
-
-        fileUploadStatus(int value) {
-            this.value = value;
+        FileUploadStatus(int value){
+            this.value=value;
         }
-
-        public int getValue() {
+        public int getValue(){
             return value;
         }
-
-        public static fileUploadStatus fromValues(int value) {
-            for (fileUploadStatus fileUploadStatus : fileUploadStatus.values()) {
-                if (fileUploadStatus.getValue() == value) {
-                    return fileUploadStatus;
+        public static FileUploadStatus fromValues(int value) {
+            for (FileUploadStatus status: FileUploadStatus.values()){
+                if (status.getValue()==value){
+                    return status;
                 }
             }
-            throw new IllegalArgumentException(("Invalid Inventory Status " + value));
+            throw new IllegalArgumentException(("Invalid FileUpload Status "+value));
         }
     }
 }

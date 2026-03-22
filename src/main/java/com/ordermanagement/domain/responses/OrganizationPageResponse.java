@@ -1,7 +1,7 @@
 package com.ordermanagement.domain.responses;
 
 import com.ordermanagement.domain.misc.MetaData;
-import com.ordermanagement.entity.Organization;
+import com.ordermanagement.domain.responseDTO.OrganizationResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 public class OrganizationPageResponse {
 
-    private List<Organization> organizations;
+    private List<OrganizationResponse> organizations;
 
     private MetaData metaData;
 }

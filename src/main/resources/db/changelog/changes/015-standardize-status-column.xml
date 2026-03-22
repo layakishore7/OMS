@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="015-rename-record-status-to-status-categories" author="dev">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <tableExists tableName="categories"/>
+                <columnExists tableName="categories" columnName="record_status"/>
+                <not>
+                    <columnExists tableName="categories" columnName="status"/>
+                </not>
+            </and>
+        </preConditions>
+        <renameColumn tableName="categories" oldColumnName="record_status" newColumnName="status" columnDataType="INT"/>
+    </changeSet>
+
+    <changeSet id="015-rename-record-status-to-status-carrier-shipper" author="dev">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <tableExists tableName="carrier_shipper_association"/>
+                <columnExists tableName="carrier_shipper_association" columnName="record_status"/>
+                <not>
+                    <columnExists tableName="carrier_shipper_association" columnName="status"/>
+                </not>
+            </and>
+        </preConditions>
+        <renameColumn tableName="carrier_shipper_association" oldColumnName="record_status" newColumnName="status" columnDataType="SMALLINT"/>
+    </changeSet>
+
+    <changeSet id="015-rename-record-status-to-status-org-assoc" author="dev">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <tableExists tableName="organization_association"/>
+                <columnExists tableName="organization_association" columnName="record_status"/>
+                <not>
+                    <columnExists tableName="organization_association" columnName="status"/>
+                </not>
+            </and>
+        </preConditions>
+        <renameColumn tableName="organization_association" oldColumnName="record_status" newColumnName="status" columnDataType="SMALLINT"/>
+    </changeSet>
+
+    <changeSet id="015-rename-record-status-to-status-serialized-inv" author="dev">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <tableExists tableName="serialized_inventory"/>
+                <columnExists tableName="serialized_inventory" columnName="record_status"/>
+                <not>
+                    <columnExists tableName="serialized_inventory" columnName="status"/>
+                </not>
+            </and>
+        </preConditions>
+        <renameColumn tableName="serialized_inventory" oldColumnName="record_status" newColumnName="status" columnDataType="TINYINT"/>
+    </changeSet>
+
+    <changeSet id="015-rename-record-status-to-status-non-serialized-inv" author="dev">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <tableExists tableName="non_serialized_inventory"/>
+                <columnExists tableName="non_serialized_inventory" columnName="record_status"/>
+                <not>
+                    <columnExists tableName="non_serialized_inventory" columnName="status"/>
+                </not>
+            </and>
+        </preConditions>
+        <renameColumn tableName="non_serialized_inventory" oldColumnName="record_status" newColumnName="status" columnDataType="TINYINT"/>
+    </changeSet>
+
+    <changeSet id="015-rename-record-status-to-status-warehouse-inv" author="dev">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <tableExists tableName="warehouse_inventory"/>
+                <columnExists tableName="warehouse_inventory" columnName="record_status"/>
+                <not>
+                    <columnExists tableName="warehouse_inventory" columnName="status"/>
+                </not>
+            </and>
+        </preConditions>
+        <renameColumn tableName="warehouse_inventory" oldColumnName="record_status" newColumnName="status" columnDataType="SMALLINT"/>
+    </changeSet>
+
+    <changeSet id="015-rename-record-status-to-status-product-stock-log" author="dev">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <tableExists tableName="product_stock_log"/>
+                <columnExists tableName="product_stock_log" columnName="record_status"/>
+                <not>
+                    <columnExists tableName="product_stock_log" columnName="status"/>
+                </not>
+            </and>
+        </preConditions>
+        <renameColumn tableName="product_stock_log" oldColumnName="record_status" newColumnName="status" columnDataType="TINYINT"/>
+    </changeSet>
+
+</databaseChangeLog>

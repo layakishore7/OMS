@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="fix-hardcoded-localhost-urls" author="dev">
+        <comment>Strip hardcoded localhost:8080 from product images and file upload URLs</comment>
+        
+        <sql>
+            UPDATE products 
+            SET upload_image = REPLACE(upload_image, 'http://localhost:8080', '')
+            WHERE upload_image LIKE 'http://localhost:8080%';
+
+            UPDATE file_upload_log 
+            SET file_url = REPLACE(file_url, 'http://localhost:8080', '')
+            WHERE file_url LIKE 'http://localhost:8080%';
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

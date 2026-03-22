@@ -99,11 +99,10 @@ public class OrganizationMapper {
     public CarrierShipperAssociationResponseDto convertCarrierShipperAssociationToResponseDto(
             CarrierShipperAssociation association) {
         CarrierShipperAssociationResponseDto carrierShipperAssociationResponseDto = new CarrierShipperAssociationResponseDto();
-        carrierShipperAssociationResponseDto.setShipperId(association.getCarrierOrganization().getId());
-        carrierShipperAssociationResponseDto.setCarrierId(association.getShipperOrganization().getId());
+        carrierShipperAssociationResponseDto.setShipperId(association.getShipperOrganization().getId());
+        carrierShipperAssociationResponseDto.setCarrierId(association.getCarrierOrganization().getId());
         carrierShipperAssociationResponseDto.setAssociation(association.getStatus().name());
         return carrierShipperAssociationResponseDto;
-
     }
 
     public CarrierShipperWarehouseAssociationResponseDto convertOrganizationAssociationToResponseDto(

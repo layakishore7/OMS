@@ -88,6 +88,7 @@ public class ProductMapper {
         product.setWeightUom(request.getWeightUom());
         product.setSerializable(request.getSerializable());
         product.setProductUniqueId(request.getProductUniqueId());
+        product.setUploadImage(request.getUploadImage());
         product.setStatus(Enum.Status.ACTIVE);
     }
 
@@ -107,6 +108,7 @@ public class ProductMapper {
         response.setWeightUom(product.getWeightUom());
         response.setSerializable(product.getSerializable());
         response.setAvailableQty(product.getAvailableQuantity());
+        response.setUploadImage(product.getUploadImage());
         return response;
     }
 

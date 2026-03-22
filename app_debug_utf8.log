@@ -1,0 +1,1454 @@
+﻿[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< com.ordermanagement:order-management >----------------
+[INFO] Building order-management 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.3:run (default-cli) > test-compile @ order-management >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ order-management ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 24 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ order-management ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ order-management ---
+[INFO] skip non existing resourceDirectory D:\PROJECTS\OMS\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ order-management ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] <<< spring-boot:3.5.3:run (default-cli) < test-compile @ order-management <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.3:run (default-cli) @ order-management ---
+[INFO] Attaching agents: []
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.3)
+
+2026-03-22T11:08:57.812+05:30  INFO 17224 --- [order-management] [           main] c.o.OrderManagementApplication           : Starting OrderManagementApplication using Java 21.0.4 with PID 17224 (D:\PROJECTS\OMS\target\classes started by laya kishore in D:\PROJECTS\OMS)
+2026-03-22T11:08:57.814+05:30  INFO 17224 --- [order-management] [           main] c.o.OrderManagementApplication           : No active profile set, falling back to 1 default profile: "default"
+2026-03-22T11:08:58.560+05:30  INFO 17224 --- [order-management] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-22T11:08:58.645+05:30  INFO 17224 --- [order-management] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78 ms. Found 6 JPA repository interfaces.
+2026-03-22T11:08:59.160+05:30  INFO 17224 --- [order-management] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-22T11:08:59.175+05:30  INFO 17224 --- [order-management] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-22T11:08:59.176+05:30  INFO 17224 --- [order-management] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2026-03-22T11:08:59.242+05:30  INFO 17224 --- [order-management] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-22T11:08:59.242+05:30  INFO 17224 --- [order-management] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1375 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+2026-03-22T11:08:59.365+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.configuration.AutoloadedConfigurations instance liquibase.GlobalConfiguration
+2026-03-22T11:08:59.368+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.configuration.AutoloadedConfigurations instance liquibase.integration.commandline.LiquibaseCommandLineConfiguration
+2026-03-22T11:08:59.368+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.configuration.AutoloadedConfigurations instance liquibase.logging.core.DefaultLoggerConfiguration
+2026-03-22T11:08:59.368+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.configuration.AutoloadedConfigurations instance liquibase.sql.SqlConfiguration
+2026-03-22T11:08:59.368+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.configuration.AutoloadedConfigurations instance liquibase.parser.ChangeLogParserConfiguration
+2026-03-22T11:08:59.368+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.configuration.AutoloadedConfigurations instance liquibase.analytics.configuration.AnalyticsArgs
+2026-03-22T11:08:59.368+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.configuration.AutoloadedConfigurations instance liquibase.license.LicenseTrackingArgs
+2026-03-22T11:08:59.368+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Found ConfigurationDefinitions in liquibase.GlobalConfiguration
+2026-03-22T11:08:59.368+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Found ConfigurationDefinitions in liquibase.integration.commandline.LiquibaseCommandLineConfiguration
+2026-03-22T11:08:59.368+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Found ConfigurationDefinitions in liquibase.logging.core.DefaultLoggerConfiguration
+2026-03-22T11:08:59.368+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Found ConfigurationDefinitions in liquibase.sql.SqlConfiguration
+2026-03-22T11:08:59.368+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Found ConfigurationDefinitions in liquibase.parser.ChangeLogParserConfiguration
+2026-03-22T11:08:59.368+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Found ConfigurationDefinitions in liquibase.analytics.configuration.AnalyticsArgs
+2026-03-22T11:08:59.368+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Found ConfigurationDefinitions in liquibase.license.LicenseTrackingArgs
+2026-03-22T11:08:59.373+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.configuration.ConfigurationValueProvider instance liquibase.configuration.core.DeprecatedConfigurationValueProvider
+2026-03-22T11:08:59.374+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.configuration.ConfigurationValueProvider instance liquibase.configuration.core.SystemPropertyValueProvider
+2026-03-22T11:08:59.374+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.configuration.ConfigurationValueProvider instance liquibase.configuration.core.ScopeValueProvider
+2026-03-22T11:08:59.374+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.configuration.ConfigurationValueProvider instance liquibase.configuration.core.EnvironmentValueProvider
+2026-03-22T11:08:59.378+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.logging.LogService instance liquibase.logging.core.BufferedLogService
+2026-03-22T11:08:59.378+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.logging.LogService instance liquibase.logging.core.CompositeLogService
+2026-03-22T11:08:59.378+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.logging.LogService instance liquibase.logging.core.JavaLogService
+2026-03-22T11:08:59.379+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.servicelocator.ServiceLocator instance liquibase.servicelocator.StandardServiceLocator
+2026-03-22T11:08:59.405+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.shouldRun aka should.run found
+2026-03-22T11:08:59.405+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.shouldRun is using the default value of true
+2026-03-22T11:08:59.408+05:30  INFO 17224 --- [order-management] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-22T11:08:59.726+05:30  INFO 17224 --- [order-management] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@e9474f
+2026-03-22T11:08:59.729+05:30  INFO 17224 --- [order-management] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-22T11:08:59.737+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.jvm.ConnectionPatterns instance liquibase.database.jvm.JdbcConnectionPatterns
+2026-03-22T11:08:59.745+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.CockroachDatabase
+2026-03-22T11:08:59.747+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.DB2Database
+2026-03-22T11:08:59.747+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.Db2zDatabase
+2026-03-22T11:08:59.749+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.DerbyDatabase
+2026-03-22T11:08:59.750+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.EnterpriseDBDatabase
+2026-03-22T11:08:59.750+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.FirebirdDatabase
+2026-03-22T11:08:59.750+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.H2Database
+2026-03-22T11:08:59.752+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.HsqlDatabase
+2026-03-22T11:08:59.752+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.InformixDatabase
+2026-03-22T11:08:59.755+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.Ingres9Database
+2026-03-22T11:08:59.755+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.MSSQLDatabase
+2026-03-22T11:08:59.758+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.MariaDBDatabase
+2026-03-22T11:08:59.760+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.MockDatabase
+2026-03-22T11:08:59.760+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.MySQLDatabase
+2026-03-22T11:08:59.760+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.OracleDatabase
+2026-03-22T11:08:59.760+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.PostgresDatabase
+2026-03-22T11:08:59.760+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.SQLiteDatabase
+2026-03-22T11:08:59.762+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.SybaseASADatabase
+2026-03-22T11:08:59.762+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.SybaseDatabase
+2026-03-22T11:08:59.764+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.UnsupportedDatabase
+2026-03-22T11:08:59.764+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.Database instance liquibase.database.core.SnowflakeDatabase
+2026-03-22T11:08:59.775+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.database                       : Connected to postgres@jdbc:postgresql://localhost:5432/OMS
+2026-03-22T11:08:59.775+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.database                       : Setting auto commit to false from true
+2026-03-22T11:08:59.791+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.preserveSchemaCase found
+2026-03-22T11:08:59.791+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.preserveSchemaCase is using the default value of false
+2026-03-22T11:08:59.794+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.supportPropertyEscaping aka enableEscaping found
+2026-03-22T11:08:59.794+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.supportPropertyEscaping is using the default value of false
+2026-03-22T11:08:59.808+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.UpdateTestingRollbackCommandStep
+2026-03-22T11:08:59.810+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.RollbackCountCommandStep
+2026-03-22T11:08:59.810+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.UpdateCountSqlCommandStep
+2026-03-22T11:08:59.810+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.InternalSnapshotCommandStep
+2026-03-22T11:08:59.816+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.HistoryCommandStep
+2026-03-22T11:08:59.817+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.ReleaseLocksCommandStep
+2026-03-22T11:08:59.817+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.ChangelogSyncToTagSqlCommandStep
+2026-03-22T11:08:59.821+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.DiffChangelogCommandStep
+2026-03-22T11:08:59.821+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.ExecuteSqlCommandStep
+2026-03-22T11:08:59.824+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.StartH2CommandStep
+2026-03-22T11:08:59.825+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.FutureRollbackFromTagSqlCommandStep
+2026-03-22T11:08:59.826+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.UpdateToTagSqlCommandStep
+2026-03-22T11:08:59.826+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.RollbackToDateCommandStep
+2026-03-22T11:08:59.826+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.RollbackCountSqlCommandStep
+2026-03-22T11:08:59.828+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.DropAllCommandStep
+2026-03-22T11:08:59.828+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.CalculateChecksumCommandStep
+2026-03-22T11:08:59.828+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.DbDocCommandStep
+2026-03-22T11:08:59.828+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.RollbackToDateSqlCommandStep
+2026-03-22T11:08:59.832+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.TagCommandStep
+2026-03-22T11:08:59.833+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.FutureRollbackSqlCommandStep
+2026-03-22T11:08:59.833+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.ChangelogSyncCommandStep
+2026-03-22T11:08:59.834+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.GenerateChangelogCommandStep
+2026-03-22T11:08:59.835+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.ClearChecksumsCommandStep
+2026-03-22T11:08:59.836+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.StatusCommandStep
+2026-03-22T11:08:59.836+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.TagExistsCommandStep
+2026-03-22T11:08:59.836+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.UpdateSqlCommandStep
+2026-03-22T11:08:59.836+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.SnapshotReferenceCommandStep
+2026-03-22T11:08:59.836+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.ChangelogSyncSqlCommandStep
+2026-03-22T11:08:59.839+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.DiffCommandStep
+2026-03-22T11:08:59.842+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.UnexpectedChangesetsCommandStep
+2026-03-22T11:08:59.842+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.UpdateCountCommandStep
+2026-03-22T11:08:59.842+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.MarkNextChangesetRanSqlCommandStep
+2026-03-22T11:08:59.842+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.SnapshotCommandStep
+2026-03-22T11:08:59.845+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.DiffOutputControlCommandStep
+2026-03-22T11:08:59.847+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.ShowSummaryArgument
+2026-03-22T11:08:59.848+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.DatabaseChangelogCommandStep
+2026-03-22T11:08:59.848+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.DiffArgumentsCommandStep
+2026-03-22T11:08:59.848+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.LockServiceCommandStep
+2026-03-22T11:08:59.850+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.ReferenceDatabaseOutputWriterCommandStep
+2026-03-22T11:08:59.850+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.OutputWriterCommandStep
+2026-03-22T11:08:59.852+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.DbUrlConnectionCommandStep
+2026-03-22T11:08:59.852+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.DbUrlConnectionArgumentsCommandStep
+2026-03-22T11:08:59.852+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.ChangeExecListenerCommandStep
+2026-03-22T11:08:59.854+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.ReferenceDbUrlConnectionCommandStep
+2026-03-22T11:08:59.854+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.PreCompareCommandStep
+2026-03-22T11:08:59.854+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.MarkNextChangesetRanCommandStep
+2026-03-22T11:08:59.854+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.StopH2CommandStep
+2026-03-22T11:08:59.854+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.RollbackCommandStep
+2026-03-22T11:08:59.858+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.init.InitCopyCommandStep
+2026-03-22T11:08:59.860+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.init.InitProjectCommandStep
+2026-03-22T11:08:59.860+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.ChangelogSyncToTagCommandStep
+2026-03-22T11:08:59.860+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.ListLocksCommandStep
+2026-03-22T11:08:59.860+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.UpdateCommandStep
+2026-03-22T11:08:59.860+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.FutureRollbackCountSqlCommandStep
+2026-03-22T11:08:59.863+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.ValidateCommandStep
+2026-03-22T11:08:59.863+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.UpdateToTagCommandStep
+2026-03-22T11:08:59.864+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.command.CommandStep instance liquibase.command.core.RollbackSqlCommandStep
+2026-03-22T11:08:59.868+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.logging.mdc.MdcManager instance liquibase.logging.mdc.NoOpMdcManager
+2026-03-22T11:08:59.879+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.strict found
+2026-03-22T11:08:59.879+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.strict is using the default value of false
+2026-03-22T11:08:59.885+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.update.changeExecListener found
+2026-03-22T11:08:59.886+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.changeExecListener found
+2026-03-22T11:08:59.886+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.update.changeExecListenerClass found
+2026-03-22T11:08:59.886+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.changeExecListenerClass found
+2026-03-22T11:08:59.886+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.update.changeExecListenerPropertiesFile found
+2026-03-22T11:08:59.886+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.changeExecListenerPropertiesFile found
+2026-03-22T11:08:59.890+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Found 'liquibase.command.update.changelogFile' configuration of 'classpath:db/changelog/db.changelog-master.xml'
+    command argument 'changelogFile' of 'classpath:db/changelog/db.changelog-master.xml'
+2026-03-22T11:08:59.890+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Found 'liquibase.command.update.changelogParameters' configuration of 'liquibase.changelog.ChangeLogParameters@6e8fdd19'
+    command argument 'changelogParameters' of 'liquibase.changelog.ChangeLogParameters@6e8fdd19'
+2026-03-22T11:08:59.891+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.update.contextFilter aka liquibase.command.update.contexts found
+2026-03-22T11:08:59.892+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.contextFilter aka liquibase.command.contexts found
+2026-03-22T11:08:59.892+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Found 'liquibase.command.update.database' configuration of 'postgres @ jdbc:postgresql://localhost:5432/OMS (Default Schema: public)'
+    command argument 'database' of 'postgres @ jdbc:postgresql://localhost:5432/OMS (Default Schema: public)'
+2026-03-22T11:08:59.892+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.update.databaseChangelog found
+2026-03-22T11:08:59.892+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.databaseChangelog found
+2026-03-22T11:08:59.892+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.update.defaultCatalogName found
+2026-03-22T11:08:59.895+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.defaultCatalogName found
+2026-03-22T11:08:59.895+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.update.defaultSchemaName found
+2026-03-22T11:08:59.895+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.defaultSchemaName found
+2026-03-22T11:08:59.895+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.update.driver found
+2026-03-22T11:08:59.895+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.driver found
+2026-03-22T11:08:59.895+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.update.driverPropertiesFile found
+2026-03-22T11:08:59.895+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.driverPropertiesFile found
+2026-03-22T11:08:59.898+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.update.labelFilter aka liquibase.command.update.labels found
+2026-03-22T11:08:59.898+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.labelFilter aka liquibase.command.labels found
+2026-03-22T11:08:59.898+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.update.password found
+2026-03-22T11:08:59.900+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.password found
+2026-03-22T11:08:59.900+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.update.showSummary found
+2026-03-22T11:08:59.900+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.command.update.showSummary is using the default value of SUMMARY
+2026-03-22T11:08:59.900+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.showSummary found
+2026-03-22T11:08:59.900+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.command.showSummary is using the default value of SUMMARY
+2026-03-22T11:08:59.900+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Found 'liquibase.command.update.showSummaryOutput' configuration of 'LOG'
+    command argument 'showSummaryOutput' of 'LOG'
+2026-03-22T11:08:59.900+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.update.skipDatabaseStep found
+2026-03-22T11:08:59.900+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.command.update.skipDatabaseStep is using the default value of false
+2026-03-22T11:08:59.900+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.skipDatabaseStep found
+2026-03-22T11:08:59.900+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.command.skipDatabaseStep is using the default value of false
+2026-03-22T11:08:59.900+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.update.updateNullChecksums found
+2026-03-22T11:08:59.900+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.command.update.updateNullChecksums is using the default value of false
+2026-03-22T11:08:59.900+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.updateNullChecksums found
+2026-03-22T11:08:59.900+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.command.updateNullChecksums is using the default value of false
+2026-03-22T11:08:59.900+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.update.url found
+2026-03-22T11:08:59.900+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.url found
+2026-03-22T11:08:59.905+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.update.username found
+2026-03-22T11:08:59.905+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.command.username found
+2026-03-22T11:08:59.905+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.command                        : Pipeline for command 'update: liquibase.command.core.helpers.DbUrlConnectionArgumentsCommandStep then liquibase.command.core.helpers.ShowSummaryArgument then liquibase.command.core.helpers.DbUrlConnectionCommandStep then liquibase.command.core.helpers.DatabaseChangelogCommandStep then liquibase.command.core.helpers.ChangeExecListenerCommandStep then liquibase.command.core.UpdateCommandStep
+2026-03-22T11:08:59.905+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.outputFile found
+2026-03-22T11:08:59.905+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.outputFileEncoding found
+2026-03-22T11:08:59.905+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.outputFileEncoding is using the default value of UTF-8
+2026-03-22T11:08:59.905+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.command                        : Writing output with encoding 'UTF-8'
+2026-03-22T11:08:59.905+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.command                        : Executing internal command dbUrlConnectionArguments
+2026-03-22T11:08:59.905+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.command                        : Executing internal command showSummary
+2026-03-22T11:08:59.905+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.command.update.showSummary is using the default value of SUMMARY
+2026-03-22T11:08:59.908+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.command.showSummary is using the default value of SUMMARY
+2026-03-22T11:08:59.908+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.command                        : Executing internal command dbUrlConnectionCommandStep
+2026-03-22T11:08:59.908+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.command.update.skipDatabaseStep is using the default value of false
+2026-03-22T11:08:59.908+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.command.skipDatabaseStep is using the default value of false
+2026-03-22T11:08:59.910+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.liquibaseCatalogName aka liquibase.catalogName found
+2026-03-22T11:08:59.911+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.license.utility.enabled found
+2026-03-22T11:08:59.911+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.license.utility.enabled is using the default value of false
+2026-03-22T11:08:59.911+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.command                        : Executing internal command changelogCommandStep
+2026-03-22T11:08:59.921+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.parser.ChangeLogParser instance liquibase.parser.core.formattedsql.FormattedSqlChangeLogParser
+2026-03-22T11:08:59.925+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.parser.ChangeLogParser instance liquibase.parser.core.json.JsonChangeLogParser
+2026-03-22T11:08:59.925+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.parser.ChangeLogParser instance liquibase.parser.core.sql.SqlChangeLogParser
+2026-03-22T11:08:59.928+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.validateXmlChangelogFiles found
+2026-03-22T11:08:59.928+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.validateXmlChangelogFiles is using the default value of true
+2026-03-22T11:08:59.928+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.secureParsing found
+2026-03-22T11:08:59.928+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.secureParsing is using the default value of true
+2026-03-22T11:08:59.928+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.parser.ChangeLogParser instance liquibase.parser.core.xml.XMLChangeLogSAXParser
+2026-03-22T11:08:59.932+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.parser.ChangeLogParser instance liquibase.parser.core.yaml.YamlChangeLogParser
+2026-03-22T11:08:59.934+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Matched file 'classpath:db/changelog/db.changelog-master.xml' to parser 'XMLChangeLogSAXParser'
+2026-03-22T11:08:59.960+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.CustomPreconditionWrapper
+2026-03-22T11:08:59.960+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.AndPrecondition
+2026-03-22T11:08:59.960+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.ChangeLogPropertyDefinedPrecondition
+2026-03-22T11:08:59.960+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.ChangeSetExecutedPrecondition
+2026-03-22T11:08:59.960+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.ColumnExistsPrecondition
+2026-03-22T11:08:59.960+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.DBMSPrecondition
+2026-03-22T11:08:59.960+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.ForeignKeyExistsPrecondition
+2026-03-22T11:08:59.964+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.IndexExistsPrecondition
+2026-03-22T11:08:59.964+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.NotPrecondition
+2026-03-22T11:08:59.964+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.ObjectQuotingStrategyPrecondition
+2026-03-22T11:08:59.964+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.OrPrecondition
+2026-03-22T11:08:59.964+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.PreconditionContainer
+2026-03-22T11:08:59.964+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.PrimaryKeyExistsPrecondition
+2026-03-22T11:08:59.964+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.RowCountPrecondition
+2026-03-22T11:08:59.964+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.RunningAsPrecondition
+2026-03-22T11:08:59.964+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.SequenceExistsPrecondition
+2026-03-22T11:08:59.967+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.SqlPrecondition
+2026-03-22T11:08:59.967+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.TableExistsPrecondition
+2026-03-22T11:08:59.967+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.TableIsEmptyPrecondition
+2026-03-22T11:08:59.967+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.UniqueConstraintExistsPrecondition
+2026-03-22T11:08:59.968+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.precondition.Precondition instance liquibase.precondition.core.ViewExistsPrecondition
+2026-03-22T11:09:00.005+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Resolving XML entity name='null', publicId='null', baseURI='null', systemId='http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd'
+2026-03-22T11:09:00.094+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.preserveClasspathPrefixInNormalizedPaths found
+2026-03-22T11:09:00.094+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.preserveClasspathPrefixInNormalizedPaths is using the default value of false
+2026-03-22T11:09:00.103+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Matched file 'db/changelog/changes/002-create-organizations-table.xml' to parser 'XMLChangeLogSAXParser'
+2026-03-22T11:09:00.108+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Resolving XML entity name='null', publicId='null', baseURI='null', systemId='http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd'
+2026-03-22T11:09:00.123+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.changeset.ChangeSetService instance liquibase.changeset.StandardChangeSetService
+2026-03-22T11:09:00.128+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.AddAutoIncrementChange
+2026-03-22T11:09:00.129+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.AddColumnChange
+2026-03-22T11:09:00.129+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.AddDefaultValueChange
+2026-03-22T11:09:00.133+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.AddForeignKeyConstraintChange
+2026-03-22T11:09:00.134+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.AddLookupTableChange
+2026-03-22T11:09:00.134+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.AddNotNullConstraintChange
+2026-03-22T11:09:00.134+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.AddPrimaryKeyChange
+2026-03-22T11:09:00.136+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.AddUniqueConstraintChange
+2026-03-22T11:09:00.136+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.AlterSequenceChange
+2026-03-22T11:09:00.139+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.CreateIndexChange
+2026-03-22T11:09:00.142+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.CreateProcedureChange
+2026-03-22T11:09:00.142+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.CreateSequenceChange
+2026-03-22T11:09:00.144+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.CreateTableChange
+2026-03-22T11:09:00.146+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.CreateViewChange
+2026-03-22T11:09:00.150+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.DeleteDataChange
+2026-03-22T11:09:00.152+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.DropAllForeignKeyConstraintsChange
+2026-03-22T11:09:00.154+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.DropColumnChange
+2026-03-22T11:09:00.154+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.DropDefaultValueChange
+2026-03-22T11:09:00.154+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.DropForeignKeyConstraintChange
+2026-03-22T11:09:00.154+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.DropIndexChange
+2026-03-22T11:09:00.158+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.DropNotNullConstraintChange
+2026-03-22T11:09:00.158+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.DropPrimaryKeyChange
+2026-03-22T11:09:00.160+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.DropProcedureChange
+2026-03-22T11:09:00.160+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.DropSequenceChange
+2026-03-22T11:09:00.162+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.DropTableChange
+2026-03-22T11:09:00.162+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.DropUniqueConstraintChange
+2026-03-22T11:09:00.164+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.DropViewChange
+2026-03-22T11:09:00.164+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.EmptyChange
+2026-03-22T11:09:00.167+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.ExecuteShellCommandChange
+2026-03-22T11:09:00.167+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.InsertDataChange
+2026-03-22T11:09:00.174+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.LoadDataChange
+2026-03-22T11:09:00.176+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.LoadUpdateDataChange
+2026-03-22T11:09:00.176+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.MergeColumnChange
+2026-03-22T11:09:00.176+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.ModifyDataTypeChange
+2026-03-22T11:09:00.178+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.OutputChange
+2026-03-22T11:09:00.178+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.RawSQLChange
+2026-03-22T11:09:00.180+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.RenameColumnChange
+2026-03-22T11:09:00.180+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.RenameSequenceChange
+2026-03-22T11:09:00.180+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.RenameTableChange
+2026-03-22T11:09:00.183+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.RenameViewChange
+2026-03-22T11:09:00.184+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.SQLFileChange
+2026-03-22T11:09:00.184+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.SetColumnRemarksChange
+2026-03-22T11:09:00.184+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.SetTableRemarksChange
+2026-03-22T11:09:00.184+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.StopChange
+2026-03-22T11:09:00.184+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.TagDatabaseChange
+2026-03-22T11:09:00.187+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.core.UpdateDataChange
+2026-03-22T11:09:00.189+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.change.Change instance liquibase.change.custom.CustomChangeWrapper
+2026-03-22T11:09:00.293+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.changelog.ChangeLogHistoryService instance liquibase.changelog.MockChangeLogHistoryService
+2026-03-22T11:09:00.295+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.changelog.ChangeLogHistoryService instance liquibase.changelog.StandardChangeLogHistoryService
+2026-03-22T11:09:00.300+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.snapshot.SnapshotGenerator instance liquibase.snapshot.jvm.CatalogSnapshotGenerator
+2026-03-22T11:09:00.300+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.snapshot.SnapshotGenerator instance liquibase.snapshot.jvm.ColumnSnapshotGenerator
+2026-03-22T11:09:00.300+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.snapshot.SnapshotGenerator instance liquibase.snapshot.jvm.ColumnSnapshotGeneratorH2
+2026-03-22T11:09:00.300+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.snapshot.SnapshotGenerator instance liquibase.snapshot.jvm.ColumnSnapshotGeneratorInformix
+2026-03-22T11:09:00.300+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.snapshot.SnapshotGenerator instance liquibase.snapshot.jvm.ColumnSnapshotGeneratorOracle
+2026-03-22T11:09:00.305+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.snapshot.SnapshotGenerator instance liquibase.snapshot.jvm.DataSnapshotGenerator
+2026-03-22T11:09:00.305+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.snapshot.SnapshotGenerator instance liquibase.snapshot.jvm.ForeignKeySnapshotGenerator
+2026-03-22T11:09:00.308+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.snapshot.SnapshotGenerator instance liquibase.snapshot.jvm.IndexSnapshotGenerator
+2026-03-22T11:09:00.309+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.snapshot.SnapshotGenerator instance liquibase.snapshot.jvm.PrimaryKeySnapshotGenerator
+2026-03-22T11:09:00.309+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.snapshot.SnapshotGenerator instance liquibase.snapshot.jvm.SchemaSnapshotGenerator
+2026-03-22T11:09:00.309+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.snapshot.SnapshotGenerator instance liquibase.snapshot.jvm.SequenceSnapshotGenerator
+2026-03-22T11:09:00.310+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.snapshot.SnapshotGenerator instance liquibase.snapshot.jvm.TableSnapshotGenerator
+2026-03-22T11:09:00.312+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.snapshot.SnapshotGenerator instance liquibase.snapshot.jvm.UniqueConstraintSnapshotGenerator
+2026-03-22T11:09:00.312+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.snapshot.SnapshotGenerator instance liquibase.snapshot.jvm.ViewSnapshotGenerator
+2026-03-22T11:09:00.312+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.snapshot.SnapshotGenerator instance liquibase.snapshot.jvm.SchemaSnapshotGeneratorSnowflake
+2026-03-22T11:09:00.312+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.snapshot.SnapshotGenerator instance liquibase.snapshot.jvm.SequenceSnapshotGeneratorSnowflake
+2026-03-22T11:09:00.312+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.snapshot.SnapshotGenerator instance liquibase.snapshot.jvm.UniqueConstraintSnapshotGeneratorSnowflake
+2026-03-22T11:09:00.315+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.supportsMethodValidationLevel found
+2026-03-22T11:09:00.315+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.supportsMethodValidationLevel is using the default value of WARN
+2026-03-22T11:09:00.317+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 1774157940317 as ddf7ddf630a410b2a0bf99e64d53f74d
+2026-03-22T11:09:00.349+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.database.LiquibaseTableNames instance liquibase.database.StandardLiquibaseTableNames
+2026-03-22T11:09:00.367+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.diff.compare.DatabaseObjectComparator instance liquibase.diff.compare.core.CatalogComparator
+2026-03-22T11:09:00.367+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.diff.compare.DatabaseObjectComparator instance liquibase.diff.compare.core.ColumnComparator
+2026-03-22T11:09:00.369+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.diff.compare.DatabaseObjectComparator instance liquibase.diff.compare.core.DefaultDatabaseObjectComparator
+2026-03-22T11:09:00.369+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.diff.compare.DatabaseObjectComparator instance liquibase.diff.compare.core.ForeignKeyComparator
+2026-03-22T11:09:00.369+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.diff.compare.DatabaseObjectComparator instance liquibase.diff.compare.core.IndexComparator
+2026-03-22T11:09:00.369+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.diff.compare.DatabaseObjectComparator instance liquibase.diff.compare.core.PrimaryKeyComparator
+2026-03-22T11:09:00.369+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.diff.compare.DatabaseObjectComparator instance liquibase.diff.compare.core.SchemaComparator
+2026-03-22T11:09:00.369+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.diff.compare.DatabaseObjectComparator instance liquibase.diff.compare.core.TableComparator
+2026-03-22T11:09:00.371+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.diff.compare.DatabaseObjectComparator instance liquibase.diff.compare.core.UniqueConstraintComparator
+2026-03-22T11:09:00.373+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.includeCatalogInSpecification found
+2026-03-22T11:09:00.373+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.includeCatalogInSpecification is using the default value of false
+2026-03-22T11:09:00.376+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.executor.Executor instance liquibase.executor.jvm.JdbcExecutor
+2026-03-22T11:09:00.376+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.executor.Executor instance liquibase.executor.jvm.SnowflakeJdbcExecutor
+2026-03-22T11:09:00.382+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddAutoIncrementGenerator
+2026-03-22T11:09:00.382+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddAutoIncrementGeneratorDB2
+2026-03-22T11:09:00.384+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddAutoIncrementGeneratorHsqlH2
+2026-03-22T11:09:00.384+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddAutoIncrementGeneratorInformix
+2026-03-22T11:09:00.384+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddAutoIncrementGeneratorMySQL
+2026-03-22T11:09:00.384+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddAutoIncrementGeneratorSQLite
+2026-03-22T11:09:00.384+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddColumnGenerator
+2026-03-22T11:09:00.386+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddColumnGeneratorDefaultClauseBeforeNotNull
+2026-03-22T11:09:00.386+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddColumnGeneratorSQLite
+2026-03-22T11:09:00.386+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddDefaultValueGenerator
+2026-03-22T11:09:00.386+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddDefaultValueGeneratorDerby
+2026-03-22T11:09:00.386+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddDefaultValueGeneratorHsqldb
+2026-03-22T11:09:00.389+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddDefaultValueGeneratorInformix
+2026-03-22T11:09:00.389+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddDefaultValueGeneratorMSSQL
+2026-03-22T11:09:00.389+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddDefaultValueGeneratorMySQL
+2026-03-22T11:09:00.389+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddDefaultValueGeneratorOracle
+2026-03-22T11:09:00.389+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddDefaultValueGeneratorPostgres
+2026-03-22T11:09:00.389+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddDefaultValueGeneratorSQLite
+2026-03-22T11:09:00.391+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddDefaultValueGeneratorSybase
+2026-03-22T11:09:00.393+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddDefaultValueGeneratorSybaseASA
+2026-03-22T11:09:00.393+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddForeignKeyConstraintGenerator
+2026-03-22T11:09:00.394+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddPrimaryKeyGenerator
+2026-03-22T11:09:00.395+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddPrimaryKeyGeneratorInformix
+2026-03-22T11:09:00.395+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddUniqueConstraintGenerator
+2026-03-22T11:09:00.395+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddUniqueConstraintGeneratorInformix
+2026-03-22T11:09:00.395+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AddUniqueConstraintGeneratorTDS
+2026-03-22T11:09:00.395+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.AlterSequenceGenerator
+2026-03-22T11:09:00.395+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.BatchDmlExecutablePreparedStatementGenerator
+2026-03-22T11:09:00.395+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.ClearDatabaseChangeLogTableGenerator
+2026-03-22T11:09:00.395+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.CommentGenerator
+2026-03-22T11:09:00.395+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.CopyRowsGenerator
+2026-03-22T11:09:00.399+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.CreateDatabaseChangeLogLockTableGenerator
+2026-03-22T11:09:00.399+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.CreateDatabaseChangeLogTableGenerator
+2026-03-22T11:09:00.399+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.CreateDatabaseChangeLogTableGeneratorSybase
+2026-03-22T11:09:00.400+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.CreateIndexGenerator
+2026-03-22T11:09:00.400+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.CreateIndexGeneratorFirebird
+2026-03-22T11:09:00.400+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.CreateIndexGeneratorPostgres
+2026-03-22T11:09:00.400+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.CreateProcedureGenerator
+2026-03-22T11:09:00.404+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.CreateSequenceGenerator
+2026-03-22T11:09:00.404+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.CreateTableGenerator
+2026-03-22T11:09:00.404+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.CreateTableGeneratorInformix
+2026-03-22T11:09:00.404+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.CreateViewGenerator
+2026-03-22T11:09:00.404+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.CreateViewGeneratorInformix
+2026-03-22T11:09:00.404+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.DeleteGenerator
+2026-03-22T11:09:00.404+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.DropColumnGenerator
+2026-03-22T11:09:00.408+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.DropDefaultValueGenerator
+2026-03-22T11:09:00.410+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.DropForeignKeyConstraintGenerator
+2026-03-22T11:09:00.410+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.DropIndexGenerator
+2026-03-22T11:09:00.410+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.DropPrimaryKeyGenerator
+2026-03-22T11:09:00.410+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.DropProcedureGenerator
+2026-03-22T11:09:00.410+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.DropSequenceGenerator
+2026-03-22T11:09:00.410+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.DropTableGenerator
+2026-03-22T11:09:00.410+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.DropUniqueConstraintGenerator
+2026-03-22T11:09:00.410+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.DropViewGenerator
+2026-03-22T11:09:00.410+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.GetNextChangeSetSequenceValueGenerator
+2026-03-22T11:09:00.410+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.GetViewDefinitionGenerator
+2026-03-22T11:09:00.410+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.GetViewDefinitionGeneratorDB2
+2026-03-22T11:09:00.414+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.GetViewDefinitionGeneratorDerby
+2026-03-22T11:09:00.414+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.GetViewDefinitionGeneratorFirebird
+2026-03-22T11:09:00.414+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.GetViewDefinitionGeneratorHsql
+2026-03-22T11:09:00.414+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.GetViewDefinitionGeneratorInformix
+2026-03-22T11:09:00.414+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.GetViewDefinitionGeneratorMSSQL
+2026-03-22T11:09:00.417+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.GetViewDefinitionGeneratorOracle
+2026-03-22T11:09:00.417+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.GetViewDefinitionGeneratorPostgres
+2026-03-22T11:09:00.417+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.GetViewDefinitionGeneratorSybase
+2026-03-22T11:09:00.417+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.GetViewDefinitionGeneratorSybaseASA
+2026-03-22T11:09:00.417+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.InitializeDatabaseChangeLogLockTableGenerator
+2026-03-22T11:09:00.417+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.InsertDataChangeGenerator
+2026-03-22T11:09:00.417+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.InsertGenerator
+2026-03-22T11:09:00.420+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.InsertOrUpdateGeneratorDB2
+2026-03-22T11:09:00.420+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.InsertOrUpdateGeneratorH2
+2026-03-22T11:09:00.420+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.InsertOrUpdateGeneratorHsql
+2026-03-22T11:09:00.420+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.InsertOrUpdateGeneratorInformix
+2026-03-22T11:09:00.420+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.InsertOrUpdateGeneratorMSSQL
+2026-03-22T11:09:00.420+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.InsertOrUpdateGeneratorMySQL
+2026-03-22T11:09:00.420+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.InsertOrUpdateGeneratorOracle
+2026-03-22T11:09:00.420+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.InsertOrUpdateGeneratorPostgres
+2026-03-22T11:09:00.423+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.InsertOrUpdateGeneratorSQLite
+2026-03-22T11:09:00.423+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.InsertOrUpdateGeneratorSybaseASA
+2026-03-22T11:09:00.424+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.InsertSetGenerator
+2026-03-22T11:09:00.428+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.LockDatabaseChangeLogGenerator
+2026-03-22T11:09:00.428+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.MarkChangeSetRanGenerator
+2026-03-22T11:09:00.428+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.ModifyDataTypeGenerator
+2026-03-22T11:09:00.432+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.RawParameterizedSqlGenerator
+2026-03-22T11:09:00.434+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.RawSqlGenerator
+2026-03-22T11:09:00.434+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.ReindexGeneratorSQLite
+2026-03-22T11:09:00.434+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.RemoveChangeSetRanStatusGenerator
+2026-03-22T11:09:00.435+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.RenameColumnGenerator
+2026-03-22T11:09:00.435+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.RenameSequenceGenerator
+2026-03-22T11:09:00.435+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.RenameTableGenerator
+2026-03-22T11:09:00.435+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.RenameViewGenerator
+2026-03-22T11:09:00.436+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.ReorganizeTableGeneratorDB2
+2026-03-22T11:09:00.436+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.RuntimeGenerator
+2026-03-22T11:09:00.436+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.SelectFromDatabaseChangeLogGenerator
+2026-03-22T11:09:00.436+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.SelectFromDatabaseChangeLogLockGenerator
+2026-03-22T11:09:00.436+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.SetColumnRemarksGenerator
+2026-03-22T11:09:00.436+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.SetNullableGenerator
+2026-03-22T11:09:00.436+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.SetTableRemarksGenerator
+2026-03-22T11:09:00.439+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.SetViewRemarksGenerator
+2026-03-22T11:09:00.439+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.StoredProcedureGenerator
+2026-03-22T11:09:00.439+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.TableIsEmptyGenerator
+2026-03-22T11:09:00.439+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.TableRowCountGenerator
+2026-03-22T11:09:00.439+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.TagDatabaseGenerator
+2026-03-22T11:09:00.441+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.UnlockDatabaseChangeLogGenerator
+2026-03-22T11:09:00.441+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.UpdateChangeSetChecksumGenerator
+2026-03-22T11:09:00.442+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.UpdateChangeSetFilenameGenerator
+2026-03-22T11:09:00.443+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.UpdateDataChangeGenerator
+2026-03-22T11:09:00.443+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.UpdateGenerator
+2026-03-22T11:09:00.443+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.CreateSequenceGeneratorSnowflake
+2026-03-22T11:09:00.445+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.DropDefaultValueGeneratorSnowflake
+2026-03-22T11:09:00.445+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.DropProcedureGeneratorSnowflake
+2026-03-22T11:09:00.445+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.InsertOrUpdateGeneratorSnowflake
+2026-03-22T11:09:00.445+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.RenameTableGeneratorSnowflake
+2026-03-22T11:09:00.445+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.RenameViewGeneratorSnowflake
+2026-03-22T11:09:00.445+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.SetColumnRemarksGeneratorSnowflake
+2026-03-22T11:09:00.445+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.SetTableRemarksGeneratorSnowflake
+2026-03-22T11:09:00.445+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.sqlgenerator.SqlGenerator instance liquibase.sqlgenerator.core.GetViewDefinitionGeneratorSnowflake
+2026-03-22T11:09:00.460+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.executor                       : Changelog query completed.
+2026-03-22T11:09:00.467+05:30  INFO 17224 --- [order-management] [           main] liquibase.changelog                      : Reading from public.databasechangelog
+2026-03-22T11:09:00.473+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.executor                       : Changelog query completed.
+2026-03-22T11:09:00.476+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Matched file 'db/changelog/changes/003-create-carrier-shipper-association.xml' to parser 'XMLChangeLogSAXParser'
+2026-03-22T11:09:00.478+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Resolving XML entity name='null', publicId='null', baseURI='null', systemId='http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd'
+2026-03-22T11:09:00.492+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Matched file 'db/changelog/changes/004-create-organization-association-table.xml' to parser 'XMLChangeLogSAXParser'
+2026-03-22T11:09:00.495+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Resolving XML entity name='null', publicId='null', baseURI='null', systemId='http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd'
+2026-03-22T11:09:00.506+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Matched file 'db/changelog/changes/001-create-categories-table.xml' to parser 'XMLChangeLogSAXParser'
+2026-03-22T11:09:00.508+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Resolving XML entity name='null', publicId='null', baseURI='null', systemId='http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd'
+2026-03-22T11:09:00.517+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Matched file 'db/changelog/changes/005-create-products-table.xml' to parser 'XMLChangeLogSAXParser'
+2026-03-22T11:09:00.521+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Resolving XML entity name='null', publicId='null', baseURI='null', systemId='http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd'
+2026-03-22T11:09:00.531+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Matched file 'db/changelog/changes/008-warehouse-inventory.xml' to parser 'XMLChangeLogSAXParser'
+2026-03-22T11:09:00.534+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Resolving XML entity name='null', publicId='null', baseURI='null', systemId='http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd'
+2026-03-22T11:09:00.543+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Matched file 'db/changelog/changes/006-create-serialize-inventory.xml' to parser 'XMLChangeLogSAXParser'
+2026-03-22T11:09:00.545+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Resolving XML entity name='null', publicId='null', baseURI='null', systemId='http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd'
+2026-03-22T11:09:00.562+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Matched file 'db/changelog/changes/007-create-non-serialize-inventory.xml' to parser 'XMLChangeLogSAXParser'
+2026-03-22T11:09:00.565+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Resolving XML entity name='null', publicId='null', baseURI='null', systemId='http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd'
+2026-03-22T11:09:00.567+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Matched file 'db/changelog/changes/009-product-stock-log.xml' to parser 'XMLChangeLogSAXParser'
+2026-03-22T11:09:00.576+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Resolving XML entity name='null', publicId='null', baseURI='null', systemId='http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd'
+2026-03-22T11:09:00.592+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Matched file 'db/changelog/changes/0010-drop-product-columns.xml' to parser 'XMLChangeLogSAXParser'
+2026-03-22T11:09:00.596+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Resolving XML entity name='null', publicId='null', baseURI='null', systemId='http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd'
+2026-03-22T11:09:00.605+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Matched file 'db/changelog/changes/0011-fix-products-schema.xml' to parser 'XMLChangeLogSAXParser'
+2026-03-22T11:09:00.608+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Resolving XML entity name='null', publicId='null', baseURI='null', systemId='http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd'
+2026-03-22T11:09:00.617+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Matched file 'db/changelog/changes/0012-file-upload-log.xml' to parser 'XMLChangeLogSAXParser'
+2026-03-22T11:09:00.617+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Resolving XML entity name='null', publicId='null', baseURI='null', systemId='http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd'
+2026-03-22T11:09:00.633+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Matched file 'db/changelog/changes/0013-add-file-upload-log-status.xml' to parser 'XMLChangeLogSAXParser'
+2026-03-22T11:09:00.635+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Resolving XML entity name='null', publicId='null', baseURI='null', systemId='http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd'
+2026-03-22T11:09:00.642+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Matched file 'db/changelog/changes/0014-fix-existing-urls.xml' to parser 'XMLChangeLogSAXParser'
+2026-03-22T11:09:00.645+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Resolving XML entity name='null', publicId='null', baseURI='null', systemId='http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd'
+2026-03-22T11:09:00.654+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Matched file 'db/changelog/changes/015-standardize-status-column.xml' to parser 'XMLChangeLogSAXParser'
+2026-03-22T11:09:00.657+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.parser                         : Resolving XML entity name='null', publicId='null', baseURI='null', systemId='http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd'
+2026-03-22T11:09:00.679+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Found 'liquibase.command.update.updateNullChecksums' configuration of 'true'
+    command argument 'updateNullChecksums' of 'true'
+2026-03-22T11:09:00.687+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.lockservice.LockService instance liquibase.lockservice.LockServiceImpl
+2026-03-22T11:09:00.690+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.lockservice.LockService instance liquibase.lockservice.MockLockService
+2026-03-22T11:09:00.690+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.lockservice.LockService instance liquibase.lockservice.OfflineLockService
+2026-03-22T11:09:00.690+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.lockservice.LockService instance liquibase.lockservice.StandardLockService
+2026-03-22T11:09:00.696+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.executor                       : Changelog query completed.
+2026-03-22T11:09:00.700+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.allowDuplicatedChangesetIdentifiers found
+2026-03-22T11:09:00.700+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.allowDuplicatedChangesetIdentifiers is using the default value of false
+2026-03-22T11:09:00.700+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.changelog.visitor.ValidatingVisitorGenerator instance liquibase.changelog.visitor.StandardValidatingVisitorGenerator
+2026-03-22T11:09:00.743+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createTable:[
+    columns=[
+        [
+            [
+                nullable="false"
+                primaryKey="true"
+            ]
+            autoIncrement="true"
+            name="id"
+            type="INT"
+        ],
+        [
+            [
+                nullable="true"
+            ]
+            name="organization_name"
+            type="VARCHAR(50)"
+        ],
+        [
+            name="organization_code"
+            type="VARCHAR(50)"
+        ],
+        [
+            name="organization... [truncated in log] as 93460a11e083cc9e731dddee7a1a17ec
+2026-03-22T11:09:00.745+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createIndex:[
+    columns=[
+        [
+            name="organization_code"
+        ]
+    ]
+    indexName="idx_org_code"
+    tableName="organizations"
+] as 2da1a410274da470e77f897355643c99
+2026-03-22T11:09:00.745+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createIndex:[
+    columns=[
+        [
+            name="organization_type"
+        ]
+    ]
+    indexName="idx_org_type"
+    tableName="organizations"
+] as 0c62c156b5e48d0db166d4063dd48fda
+2026-03-22T11:09:00.745+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:93460a11e083cc9e731dddee7a1a17ec:9:2da1a410274da470e77f897355643c99:9:0c62c156b5e48d0db166d4063dd48fda: as 3e5347435c500e295e02229bfaab78ae
+2026-03-22T11:09:00.745+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for dropColumn:[
+    columnName="record_status"
+    tableName="organizations"
+] as 96483e50e6510e2c96338c510b97265a
+2026-03-22T11:09:00.745+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:96483e50e6510e2c96338c510b97265a: as 21d236c032ee576c3e6f2d82cc8ef8dc
+2026-03-22T11:09:00.762+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createTable:[
+    columns=[
+        [
+            [
+                nullable="false"
+                primaryKey="true"
+            ]
+            autoIncrement="true"
+            name="id"
+            type="BIGINT"
+        ],
+        [
+            [
+                nullable="false"
+            ]
+            defaultValueComputed="CURRENT_TIMESTAMP"
+            name="created_at"
+            type="TIMESTAMP"
+        ],
+        [
+            [
+                nullable="false"
+            ]
+          ... [truncated in log] as 51290e7a559fbd641947a7dca97f511f
+2026-03-22T11:09:00.763+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addForeignKeyConstraint:[
+    baseColumnNames="carrier_id"
+    baseTableName="carrier_shipper_association"
+    constraintName="fk_csa_carrier_org"
+    onDelete="CASCADE"
+    onUpdate="CASCADE"
+    referencedColumnNames="id"
+    referencedTableName="organizations"
+] as c0d801c353f11bc775767e3b9eb3139f
+2026-03-22T11:09:00.763+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addForeignKeyConstraint:[
+    baseColumnNames="shipper_id"
+    baseTableName="carrier_shipper_association"
+    constraintName="fk_csa_shipper_org"
+    onDelete="CASCADE"
+    onUpdate="CASCADE"
+    referencedColumnNames="id"
+    referencedTableName="organizations"
+] as 9d115c075160380d17e03885ac1dbce2
+2026-03-22T11:09:00.763+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addUniqueConstraint:[
+    columnNames="carrier_id, shipper_id"
+    constraintName="idx_carrier_shipper_unique"
+    tableName="carrier_shipper_association"
+] as 66c7664533848b19b40baf622745f531
+2026-03-22T11:09:00.763+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createIndex:[
+    columns=[
+        [
+            name="carrier_id"
+        ]
+    ]
+    indexName="idx_csa_carrier_org"
+    tableName="carrier_shipper_association"
+] as 5a148c62de2c10c651855c98218aa3bd
+2026-03-22T11:09:00.765+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createIndex:[
+    columns=[
+        [
+            name="shipper_id"
+        ]
+    ]
+    indexName="idx_csa_shipper_org"
+    tableName="carrier_shipper_association"
+] as 66e747edf329a23cfc6874fab15f5de5
+2026-03-22T11:09:00.765+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:51290e7a559fbd641947a7dca97f511f:9:c0d801c353f11bc775767e3b9eb3139f:9:9d115c075160380d17e03885ac1dbce2:9:66c7664533848b19b40baf622745f531:9:5a148c62de2c10c651855c98218aa3bd:9:66e747edf329a23cfc6874fab15f5de5: as 2f0e5d5ec158d72c4317ff00683e0ab0
+2026-03-22T11:09:00.767+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createTable:[
+    columns=[
+        [
+            [
+                nullable="false"
+                primaryKey="true"
+            ]
+            autoIncrement="true"
+            name="id"
+            type="BIGINT"
+        ],
+        [
+            [
+                nullable="false"
+            ]
+            defaultValueComputed="CURRENT_TIMESTAMP"
+            name="created_at"
+            type="TIMESTAMP"
+        ],
+        [
+            [
+                nullable="false"
+            ]
+          ... [truncated in log] as 54de891a3860bc7c6bee0ec58ef44063
+2026-03-22T11:09:00.770+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addForeignKeyConstraint:[
+    baseColumnNames="carrier_id"
+    baseTableName="organization_association"
+    constraintName="fk_org_assoc_carrier"
+    onDelete="CASCADE"
+    onUpdate="CASCADE"
+    referencedColumnNames="id"
+    referencedTableName="organizations"
+] as 9e89e304601a1324536e1622f3cb945d
+2026-03-22T11:09:00.771+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addForeignKeyConstraint:[
+    baseColumnNames="shipper_id"
+    baseTableName="organization_association"
+    constraintName="fk_org_assoc_shipper"
+    onDelete="CASCADE"
+    onUpdate="CASCADE"
+    referencedColumnNames="id"
+    referencedTableName="organizations"
+] as 37762287c05db9ad00128db3098886f4
+2026-03-22T11:09:00.771+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addForeignKeyConstraint:[
+    baseColumnNames="warehouse_id"
+    baseTableName="organization_association"
+    constraintName="fk_org_assoc_warehouse"
+    onDelete="CASCADE"
+    onUpdate="CASCADE"
+    referencedColumnNames="id"
+    referencedTableName="organizations"
+] as 9e9e8bf4a55d567652ce7572e9487fab
+2026-03-22T11:09:00.773+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createIndex:[
+    columns=[
+        [
+            name="carrier_id"
+        ],
+        [
+            name="shipper_id"
+        ],
+        [
+            name="warehouse_id"
+        ]
+    ]
+    indexName="idx_org_assoc_carrier_shipper_warehouse"
+    tableName="organization_association"
+] as bd631fc3a257770ffc799583f20972fe
+2026-03-22T11:09:00.773+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:54de891a3860bc7c6bee0ec58ef44063:9:9e89e304601a1324536e1622f3cb945d:9:37762287c05db9ad00128db3098886f4:9:9e9e8bf4a55d567652ce7572e9487fab:9:bd631fc3a257770ffc799583f20972fe: as 7a0c579c374c10328de7933dd71a0f39
+2026-03-22T11:09:00.776+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createTable:[
+    columns=[
+        [
+            [
+                nullable="false"
+                primaryKey="true"
+            ]
+            autoIncrement="true"
+            name="id"
+            type="INT"
+        ],
+        [
+            [
+                nullable="false"
+            ]
+            name="shipper_id"
+            type="INT"
+        ],
+        [
+            [
+                nullable="false"
+            ]
+            name="category_name"
+            type="VARCHAR(255)"
+       ... [truncated in log] as b3ace81622fa1ec6d8697fd0f52ac9b4
+2026-03-22T11:09:00.777+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addForeignKeyConstraint:[
+    baseColumnNames="shipper_id"
+    baseTableName="categories"
+    baseTableSchemaName="public"
+    constraintName="fk_categories_shipper"
+    onDelete="RESTRICT"
+    onUpdate="CASCADE"
+    referencedColumnNames="id"
+    referencedTableName="organizations"
+    referencedTableSchemaName="public"
+] as 024a56f2c85a86c6bf63d503d53c87b2
+2026-03-22T11:09:00.777+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addUniqueConstraint:[
+    columnNames="parent_id, category_name"
+    constraintName="uk_category_parent_name"
+    tableName="categories"
+] as d788529c47dbf48828ac2976f9c2906f
+2026-03-22T11:09:00.777+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createIndex:[
+    columns=[
+        [
+            name="parent_id"
+        ]
+    ]
+    indexName="idx_category_parent_id"
+    tableName="categories"
+] as a0aa3df3651bcbc95828d28ec166363b
+2026-03-22T11:09:00.778+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:b3ace81622fa1ec6d8697fd0f52ac9b4:9:024a56f2c85a86c6bf63d503d53c87b2:9:d788529c47dbf48828ac2976f9c2906f:9:a0aa3df3651bcbc95828d28ec166363b: as a04e1d4c4921ed78f90bce55716e5d6c
+2026-03-22T11:09:00.778+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createTable:[
+    columns=[
+        [
+            [
+                nullable="false"
+                primaryKey="true"
+                primaryKeyName="pk_products"
+            ]
+            autoIncrement="true"
+            name="id"
+            type="INT"
+        ],
+        [
+            [
+                nullable="false"
+            ]
+            name="shipper_id"
+            type="INT"
+        ],
+        [
+            [
+                nullable="false"
+            ]
+            name="product_u... [truncated in log] as 3f169f8420b90055b01175e84fca9f1e
+2026-03-22T11:09:00.778+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addForeignKeyConstraint:[
+    baseColumnNames="shipper_id"
+    baseTableName="products"
+    baseTableSchemaName="public"
+    constraintName="fk_products_shipper"
+    onDelete="RESTRICT"
+    onUpdate="CASCADE"
+    referencedColumnNames="id"
+    referencedTableName="organizations"
+    referencedTableSchemaName="public"
+] as 307279e78b73b196df1c680955060bcd
+2026-03-22T11:09:00.778+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addForeignKeyConstraint:[
+    baseColumnNames="parent_category_id"
+    baseTableName="products"
+    baseTableSchemaName="public"
+    constraintName="fk_products_parent_category"
+    onDelete="RESTRICT"
+    onUpdate="CASCADE"
+    referencedColumnNames="id"
+    referencedTableName="categories"
+    referencedTableSchemaName="public"
+] as 3c6e51ad8678f5a64d9c1732dbd76f97
+2026-03-22T11:09:00.782+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addForeignKeyConstraint:[
+    baseColumnNames="id"
+    baseTableName="products"
+    baseTableSchemaName="public"
+    constraintName="fk_products_category"
+    onDelete="RESTRICT"
+    onUpdate="CASCADE"
+    referencedColumnNames="id"
+    referencedTableName="categories"
+    referencedTableSchemaName="public"
+] as 7efa643e9a08f7f8a9c7d1229088e13d
+2026-03-22T11:09:00.785+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createIndex:[
+    columns=[
+        [
+            name="shipper_id"
+        ]
+    ]
+    indexName="idx_products_shipper_id"
+    schemaName="public"
+    tableName="products"
+] as 988d91cc5ee45bcfee78e22d33d5b8ac
+2026-03-22T11:09:00.785+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createIndex:[
+    columns=[
+        [
+            name="parent_category_id"
+        ]
+    ]
+    indexName="idx_products_parent_category_id"
+    schemaName="public"
+    tableName="products"
+] as 864939ca4ff0d630fb6b72fbdcffaaaf
+2026-03-22T11:09:00.785+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createIndex:[
+    columns=[
+        [
+            name="id"
+        ]
+    ]
+    indexName="idx_products_category_id"
+    schemaName="public"
+    tableName="products"
+] as a3b9ef71dd57f60346979ccd92b3d7f8
+2026-03-22T11:09:00.785+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:3f169f8420b90055b01175e84fca9f1e:9:307279e78b73b196df1c680955060bcd:9:3c6e51ad8678f5a64d9c1732dbd76f97:9:7efa643e9a08f7f8a9c7d1229088e13d:9:988d91cc5ee45bcfee78e22d33d5b8ac:9:864939ca4ff0d630fb6b72fbdcffaaaf:9:a3b9ef71dd57f60346979ccd92b3d7f8: as c1cbcd09ca927df2c31e7c2b5f43f200
+2026-03-22T11:09:00.786+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createTable:[
+    columns=[
+        [
+            [
+                nullable="false"
+                primaryKey="true"
+                primaryKeyName="pk_warehouse_inventory"
+            ]
+            autoIncrement="true"
+            name="id"
+            type="INT"
+        ],
+        [
+            [
+                nullable="true"
+            ]
+            name="product_id"
+            type="INT"
+        ],
+        [
+            [
+                nullable="true"
+            ]
+            name="... [truncated in log] as cdd3d8156243ab297e062c3cd3bfe1b6
+2026-03-22T11:09:00.786+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addForeignKeyConstraint:[
+    baseColumnNames="product_id"
+    baseTableName="warehouse_inventory"
+    baseTableSchemaName="public"
+    constraintName="FK_WI_PRODUCT"
+    onDelete="SET NULL"
+    onUpdate="CASCADE"
+    referencedColumnNames="id"
+    referencedTableName="products"
+    referencedTableSchemaName="public"
+] as ff3ee79d7c060c444871cf31f03ccf2b
+2026-03-22T11:09:00.786+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addForeignKeyConstraint:[
+    baseColumnNames="warehouse_id"
+    baseTableName="warehouse_inventory"
+    baseTableSchemaName="public"
+    constraintName="FK_WI_ORGANIZATION"
+    onDelete="SET NULL"
+    onUpdate="CASCADE"
+    referencedColumnNames="id"
+    referencedTableName="organizations"
+    referencedTableSchemaName="public"
+] as 07128ef2d4474328c66c077858bcebbe
+2026-03-22T11:09:00.786+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:cdd3d8156243ab297e062c3cd3bfe1b6:9:ff3ee79d7c060c444871cf31f03ccf2b:9:07128ef2d4474328c66c077858bcebbe: as 2b9a488a4a5787b6a28871ebeaaa5d3b
+2026-03-22T11:09:00.791+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createTable:[
+    columns=[
+        [
+            [
+                primaryKey="true"
+            ]
+            autoIncrement="true"
+            name="id"
+            type="int"
+        ],
+        [
+            [
+                foreignKeyName="FK_PRODUCT_ID"
+                nullable="true"
+                referencedColumnNames="id"
+                referencedTableName="products"
+            ]
+            name="product_id"
+            type="int"
+        ],
+        [
+            [
+                ... [truncated in log] as e19e7d946679025721b0fce4e20a4771
+2026-03-22T11:09:00.792+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:e19e7d946679025721b0fce4e20a4771: as 741cda9bdc04d551faae5faba0451038
+2026-03-22T11:09:00.795+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createTable:[
+    columns=[
+        [
+            [
+                primaryKey="true"
+            ]
+            autoIncrement="true"
+            name="id"
+            type="int"
+        ],
+        [
+            [
+                foreignKeyName="FK_PRODUCT_ID"
+                nullable="true"
+                referencedColumnNames="id"
+                referencedTableName="products"
+            ]
+            name="product_id"
+            type="int"
+        ],
+        [
+            [
+                ... [truncated in log] as d5d03e4336d330dfbdd5458212cea850
+2026-03-22T11:09:00.795+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:d5d03e4336d330dfbdd5458212cea850: as 9d96cf41238f3e3333d15bc049f841e3
+2026-03-22T11:09:00.804+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createTable:[
+    columns=[
+        [
+            [
+                primaryKey="true"
+            ]
+            autoIncrement="true"
+            name="id"
+            type="int"
+        ],
+        [
+            name="action"
+            type="int"
+        ],
+        [
+            [
+                foreignKeyName="FK_LOG_PRODUCT_ID"
+                nullable="true"
+                referencedColumnNames="id"
+                referencedTableName="products"
+            ]
+            name="product_id"
+... [truncated in log] as be98ac0636576cf93fd0f086425dde3c
+2026-03-22T11:09:00.804+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:be98ac0636576cf93fd0f086425dde3c: as caaa92afcd4109ce26f1604abe188442
+2026-03-22T11:09:00.804+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for dropColumn:[
+    columnName="parent_category_id"
+    tableName="products"
+] as 90915e081136a971e8e4d9424711c4b3
+2026-03-22T11:09:00.804+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for dropColumn:[
+    columnName="category_name"
+    tableName="products"
+] as 7bc2101bbeb0cf603d4a3d6b8d05b9c1
+2026-03-22T11:09:00.804+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for dropColumn:[
+    columnName="parent_category_name"
+    tableName="products"
+] as 18c37642b59d89d2670af4aeb3da9546
+2026-03-22T11:09:00.804+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:90915e081136a971e8e4d9424711c4b3:9:7bc2101bbeb0cf603d4a3d6b8d05b9c1:9:18c37642b59d89d2670af4aeb3da9546: as fb81b9216f22b46e72a34adba1cc866c
+2026-03-22T11:09:00.804+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for dropForeignKeyConstraint:[
+    baseTableName="products"
+    constraintName="fk_products_category"
+] as b24184263f29d42ad6251c6c5d865758
+2026-03-22T11:09:00.804+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addForeignKeyConstraint:[
+    baseColumnNames="category_id"
+    baseTableName="products"
+    baseTableSchemaName="public"
+    constraintName="fk_products_category"
+    onDelete="RESTRICT"
+    onUpdate="CASCADE"
+    referencedColumnNames="id"
+    referencedTableName="categories"
+    referencedTableSchemaName="public"
+] as 14dfd7b0e9e1a13bba1dac11971ac49a
+2026-03-22T11:09:00.808+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for modifyDataType:[
+    columnName="dimension_uom"
+    newDataType="VARCHAR(50)"
+    tableName="products"
+] as b27320949d6f51c6202d47ade105c86e
+2026-03-22T11:09:00.808+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for modifyDataType:[
+    columnName="weight_uom"
+    newDataType="VARCHAR(50)"
+    tableName="products"
+] as 706324eec5395781d60689ff3e91210e
+2026-03-22T11:09:00.808+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:b24184263f29d42ad6251c6c5d865758:9:14dfd7b0e9e1a13bba1dac11971ac49a:9:b27320949d6f51c6202d47ade105c86e:9:706324eec5395781d60689ff3e91210e: as 6b98e0944908c71a9bfb46c8693a3e8b
+2026-03-22T11:09:00.810+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addColumn:[
+    columns=[
+        [
+            [
+                nullable="true"
+            ]
+            defaultValueNumeric="0"
+            name="status"
+            type="INT"
+        ]
+    ]
+    tableName="products"
+] as 24bd7feaa0c05f9b87f51034d9e659a3
+2026-03-22T11:09:00.811+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:24bd7feaa0c05f9b87f51034d9e659a3: as a7ca18bcbad37e070d1087533f28141d
+2026-03-22T11:09:00.815+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createTable:[
+    columns=[
+        [
+            [
+                nullable="false"
+                primaryKey="true"
+            ]
+            autoIncrement="true"
+            name="id"
+            type="INT"
+        ],
+        [
+            name="file_name"
+            type="VARCHAR(255)"
+        ],
+        [
+            name="file_url"
+            type="VARCHAR(500)"
+        ],
+        [
+            name="file_type"
+            type="VARCHAR(100)"
+        ],
+        [
+            name="file_... [truncated in log] as ac9fbd3ef6736e64e55b346c555bebd4
+2026-03-22T11:09:00.818+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addForeignKeyConstraint:[
+    baseColumnNames="carrier_id"
+    baseTableName="file_upload_log"
+    constraintName="fk_file_upload_log_carrier"
+    onDelete="SET NULL"
+    onUpdate="CASCADE"
+    referencedColumnNames="id"
+    referencedTableName="organizations"
+] as c394099c5f0873df57738380f8c7f335
+2026-03-22T11:09:00.818+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addForeignKeyConstraint:[
+    baseColumnNames="shipper_id"
+    baseTableName="file_upload_log"
+    constraintName="fk_file_upload_log_shipper"
+    onDelete="SET NULL"
+    onUpdate="CASCADE"
+    referencedColumnNames="id"
+    referencedTableName="organizations"
+] as 79b0b6c4bd8821b9e8c8e8074f49edca
+2026-03-22T11:09:00.818+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addForeignKeyConstraint:[
+    baseColumnNames="warehouse_id"
+    baseTableName="file_upload_log"
+    constraintName="fk_file_upload_log_warehouse"
+    onDelete="SET NULL"
+    onUpdate="CASCADE"
+    referencedColumnNames="id"
+    referencedTableName="organizations"
+] as 8009a8512a9776d74644867d620450c6
+2026-03-22T11:09:00.818+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createIndex:[
+    columns=[
+        [
+            name="carrier_id"
+        ]
+    ]
+    indexName="idx_file_upload_log_carrier"
+    tableName="file_upload_log"
+] as b82f7d5004e207350f45ece396dddb8d
+2026-03-22T11:09:00.818+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createIndex:[
+    columns=[
+        [
+            name="shipper_id"
+        ]
+    ]
+    indexName="idx_file_upload_log_shipper"
+    tableName="file_upload_log"
+] as 908ea97b74127b9fa9f66deb3e046df4
+2026-03-22T11:09:00.818+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for createIndex:[
+    columns=[
+        [
+            name="warehouse_id"
+        ]
+    ]
+    indexName="idx_file_upload_log_warehouse"
+    tableName="file_upload_log"
+] as e65e745d657590eedd356229bc3518ae
+2026-03-22T11:09:00.820+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:ac9fbd3ef6736e64e55b346c555bebd4:9:c394099c5f0873df57738380f8c7f335:9:79b0b6c4bd8821b9e8c8e8074f49edca:9:8009a8512a9776d74644867d620450c6:9:b82f7d5004e207350f45ece396dddb8d:9:908ea97b74127b9fa9f66deb3e046df4:9:e65e745d657590eedd356229bc3518ae: as d317e5df57bed01413654bf16172ec6e
+2026-03-22T11:09:00.820+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.fileEncoding found
+2026-03-22T11:09:00.820+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.fileEncoding is using the default value of UTF-8
+2026-03-22T11:09:00.821+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for inputStream as 170f8b6342d884eb102cf91a8db85234
+2026-03-22T11:09:00.821+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:170f8b6342d884eb102cf91a8db85234: as 77573f79399ae7f801de20424cc7a780
+2026-03-22T11:09:00.821+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for  as d41d8cd98f00b204e9800998ecf8427e
+2026-03-22T11:09:00.822+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for inputStream as 96389d57df2c04073aca8259857b1f8f
+2026-03-22T11:09:00.822+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:96389d57df2c04073aca8259857b1f8f: as 50a86d1de51eeac4a1c26773cc7af5c4
+2026-03-22T11:09:00.836+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.command                        : Executing internal command changeExecListener
+2026-03-22T11:09:00.838+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.command                        : Executing internal command update migrate
+2026-03-22T11:09:00.879+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.changelogLockWaitTimeInMinutes aka liquibase.changeLogLockWaitTimeInMinutes found
+2026-03-22T11:09:00.879+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.changelogLockWaitTimeInMinutes is using the default value of 5
+2026-03-22T11:09:00.882+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.executor                       : Changelog query completed.
+2026-03-22T11:09:00.889+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.executor                       : Changelog query completed.
+2026-03-22T11:09:00.890+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.executor                       : Lock Database
+2026-03-22T11:09:00.895+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.BigIntType
+2026-03-22T11:09:00.895+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.BlobType
+2026-03-22T11:09:00.895+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.BooleanType
+2026-03-22T11:09:00.899+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.CharType
+2026-03-22T11:09:00.902+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.ClobType
+2026-03-22T11:09:00.903+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.CurrencyType
+2026-03-22T11:09:00.903+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.DatabaseFunctionType
+2026-03-22T11:09:00.905+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.DateTimeType
+2026-03-22T11:09:00.905+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.DateType
+2026-03-22T11:09:00.905+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.DecimalType
+2026-03-22T11:09:00.905+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.DoubleType
+2026-03-22T11:09:00.905+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.FloatType
+2026-03-22T11:09:00.905+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.IntType
+2026-03-22T11:09:00.908+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.MediumIntType
+2026-03-22T11:09:00.909+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.NCharType
+2026-03-22T11:09:00.909+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.NVarcharType
+2026-03-22T11:09:00.910+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.NumberType
+2026-03-22T11:09:00.910+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.SmallIntType
+2026-03-22T11:09:00.913+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.TimeType
+2026-03-22T11:09:00.917+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.TimestampType
+2026-03-22T11:09:00.917+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.TinyIntType
+2026-03-22T11:09:00.917+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.UUIDType
+2026-03-22T11:09:00.917+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.UnknownType
+2026-03-22T11:09:00.917+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.VarcharType
+2026-03-22T11:09:00.917+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.XMLType
+2026-03-22T11:09:00.917+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.TextDataTypeSnowflake
+2026-03-22T11:09:00.917+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.TimestampNTZTypeSnowflake
+2026-03-22T11:09:00.917+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.DoubleDataTypeSnowflake
+2026-03-22T11:09:00.922+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.BinaryTypeSnowflake
+2026-03-22T11:09:00.923+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.ClobTypeSnowflake
+2026-03-22T11:09:00.924+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.DateTypeSnowflake
+2026-03-22T11:09:00.924+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.TimeTypeSnowflake
+2026-03-22T11:09:00.925+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.datatype.LiquibaseDataType instance liquibase.datatype.core.TimestampTypeSnowflake
+2026-03-22T11:09:00.930+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.executor                       : Changelog query completed.
+2026-03-22T11:09:00.933+05:30  INFO 17224 --- [order-management] [           main] liquibase.lockservice                    : Successfully acquired change log lock
+2026-03-22T11:09:00.934+05:30  INFO 17224 --- [order-management] [           main] liquibase.command                        : Using deploymentId: 4157939380
+2026-03-22T11:09:00.936+05:30  INFO 17224 --- [order-management] [           main] liquibase.changelog                      : Reading from public.databasechangelog
+2026-03-22T11:09:00.939+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.executor                       : Changelog query completed.
+2026-03-22T11:09:00.945+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addColumn:[
+    columns=[
+        [
+            defaultValueNumeric="1"
+            name="status"
+            type="INT"
+        ]
+    ]
+    tableName="organizations"
+] as a59f6c8943b06d205150d3052e12ebb1
+2026-03-22T11:09:00.945+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:a59f6c8943b06d205150d3052e12ebb1: as 1223f991dee7b0e5f05fc3971d86c2c8
+2026-03-22T11:09:00.951+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for renameColumn:[
+    columnDataType="INT"
+    newColumnName="status"
+    oldColumnName="record_status"
+    tableName="categories"
+] as fbb0c1ca8537ac66a9302e3c5b1a4978
+2026-03-22T11:09:00.951+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:fbb0c1ca8537ac66a9302e3c5b1a4978: as edb0ed7493cdd608cf5982e23ddac957
+2026-03-22T11:09:00.951+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for renameColumn:[
+    columnDataType="SMALLINT"
+    newColumnName="status"
+    oldColumnName="record_status"
+    tableName="carrier_shipper_association"
+] as e0f3517a08899d487c8fab737e8f60e7
+2026-03-22T11:09:00.951+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:e0f3517a08899d487c8fab737e8f60e7: as 5fc28615aa42679eff8e408278fdf115
+2026-03-22T11:09:00.951+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for renameColumn:[
+    columnDataType="SMALLINT"
+    newColumnName="status"
+    oldColumnName="record_status"
+    tableName="organization_association"
+] as 0215636ed4bfa159e61541c84de4a8cc
+2026-03-22T11:09:00.951+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:0215636ed4bfa159e61541c84de4a8cc: as 66574d33a0763dc9c9c5b290b8e0be32
+2026-03-22T11:09:00.951+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for renameColumn:[
+    columnDataType="TINYINT"
+    newColumnName="status"
+    oldColumnName="record_status"
+    tableName="serialized_inventory"
+] as f4003006eb3927a6f8e42ab7295eafd2
+2026-03-22T11:09:00.951+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:f4003006eb3927a6f8e42ab7295eafd2: as 6c58042040a14a2db9589d2f6d9ea7c6
+2026-03-22T11:09:00.951+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for renameColumn:[
+    columnDataType="TINYINT"
+    newColumnName="status"
+    oldColumnName="record_status"
+    tableName="non_serialized_inventory"
+] as c0a3ae822d0a4ff4e53a4a66881daac2
+2026-03-22T11:09:00.951+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:c0a3ae822d0a4ff4e53a4a66881daac2: as 4e5c4d3ee5d28b5ad234577c0f3b852a
+2026-03-22T11:09:00.951+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for renameColumn:[
+    columnDataType="SMALLINT"
+    newColumnName="status"
+    oldColumnName="record_status"
+    tableName="warehouse_inventory"
+] as 667b12a2bc40cb686af52687e0cebb99
+2026-03-22T11:09:00.951+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:667b12a2bc40cb686af52687e0cebb99: as 7f15c2116c9339415b6b686e746fc5e7
+2026-03-22T11:09:00.951+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for renameColumn:[
+    columnDataType="TINYINT"
+    newColumnName="status"
+    oldColumnName="record_status"
+    tableName="product_stock_log"
+] as fbe8a1736a09029a64283b8fca9f360b
+2026-03-22T11:09:00.951+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:fbe8a1736a09029a64283b8fca9f360b: as 83e03da0c6ecaaea602c0886f2f6d390
+2026-03-22T11:09:00.961+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for addColumn:[
+    columns=[
+        [
+            defaultValueNumeric="1"
+            name="status"
+            type="INT"
+        ]
+    ]
+    tableName="organizations"
+] as a59f6c8943b06d205150d3052e12ebb1
+2026-03-22T11:09:00.961+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for 9:a59f6c8943b06d205150d3052e12ebb1: as 1223f991dee7b0e5f05fc3971d86c2c8
+2026-03-22T11:09:00.961+05:30  INFO 17224 --- [order-management] [           main] liquibase.ui                             : Running Changeset: db/changelog/changes/002-create-organizations-table.xml::882992::Kishore
+2026-03-22T11:09:00.961+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.changelog                      : Running Changeset: db/changelog/changes/002-create-organizations-table.xml::882992::Kishore
+2026-03-22T11:09:00.964+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.executor                       : Changeset db/changelog/changes/002-create-organizations-table.xml::882992::Kishore
+2026-03-22T11:09:00.965+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.changelog                      : Reading ChangeSet: db/changelog/changes/002-create-organizations-table.xml::882992::Kishore
+2026-03-22T11:09:00.972+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.executor                       : Executing Statement: 
+liquibase.statement.core.AddColumnStatement@5ef2cbe6
+2026-03-22T11:09:00.974+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.sql.logLevel found
+2026-03-22T11:09:00.974+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.sql.logLevel is using the default value of FINE
+2026-03-22T11:09:00.974+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.executor                       : 
+ALTER TABLE public.organizations ADD status INTEGER DEFAULT 1
+2026-03-22T11:09:00.979+05:30 ERROR 17224 --- [order-management] [           main] liquibase.changelog                      : ChangeSet db/changelog/changes/002-create-organizations-table.xml::882992::Kishore encountered an exception.
+
+liquibase.exception.DatabaseException: ERROR: column "status" of relation "organizations" already exists [Failed SQL: (0) ALTER TABLE public.organizations ADD status INTEGER DEFAULT 1]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:520) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:85) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:188) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:148) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1198) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:816) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:127) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:71) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:216) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:225) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:215) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:194) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.lambda$run$1(ChangeLogIterator.java:122) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:216) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:225) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:215) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:194) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:282) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:286) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:91) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:114) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:216) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:225) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:215) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:194) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:100) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:263) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:225) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:201) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:251) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:216) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:216) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:225) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:215) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:194) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1366) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:205) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:188) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:327) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:279) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:216) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:225) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:215) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:194) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:272) ~[liquibase-core-4.33.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.3.jar:3.5.3]
+	at com.ordermanagement.OrderManagementApplication.main(OrderManagementApplication.java:12) ~[classes/:na]
+Caused by: org.postgresql.util.PSQLException: ERROR: column "status" of relation "organizations" already exists
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2734) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2421) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:372) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:518) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:435) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:357) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:342) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:318) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:313) ~[postgresql-42.7.7.jar:42.7.7]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-6.3.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-6.3.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:512) ~[liquibase-core-4.33.0.jar:na]
+	... 65 common frames omitted
+
+2026-03-22T11:09:01.017+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.report.ShowSummaryGenerator instance liquibase.report.StandardShowSummaryGenerator
+2026-03-22T11:09:01.019+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.util                           : Computed checksum for  as d41d8cd98f00b204e9800998ecf8427e
+2026-03-22T11:09:01.030+05:30  INFO 17224 --- [order-management] [           main] liquibase.util                           : UPDATE SUMMARY
+2026-03-22T11:09:01.030+05:30  INFO 17224 --- [order-management] [           main] liquibase.util                           : Run:                          0
+2026-03-22T11:09:01.030+05:30  INFO 17224 --- [order-management] [           main] liquibase.util                           : Previously run:              17
+2026-03-22T11:09:01.030+05:30  INFO 17224 --- [order-management] [           main] liquibase.util                           : Filtered out:                 0
+2026-03-22T11:09:01.030+05:30  INFO 17224 --- [order-management] [           main] liquibase.util                           : -------------------------------
+2026-03-22T11:09:01.030+05:30  INFO 17224 --- [order-management] [           main] liquibase.util                           : Total change sets:           25
+2026-03-22T11:09:01.030+05:30  INFO 17224 --- [order-management] [           main] liquibase.util                           : Update summary generated
+2026-03-22T11:09:01.035+05:30  INFO 17224 --- [order-management] [           main] liquibase.command                        : Update command encountered an exception.
+2026-03-22T11:09:01.035+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.executor                       : Release Database Lock
+2026-03-22T11:09:01.043+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.executor                       : Changelog query completed.
+2026-03-22T11:09:01.045+05:30  INFO 17224 --- [order-management] [           main] liquibase.lockservice                    : Successfully released change log lock
+2026-03-22T11:09:01.045+05:30  INFO 17224 --- [order-management] [           main] liquibase.command                        : Logging exception.
+2026-03-22T11:09:01.045+05:30  INFO 17224 --- [order-management] [           main] liquibase.ui                             : ERROR: Exception Details
+2026-03-22T11:09:01.045+05:30  INFO 17224 --- [order-management] [           main] liquibase.ui                             : ERROR: Exception Primary Class:  PSQLException
+2026-03-22T11:09:01.045+05:30  INFO 17224 --- [order-management] [           main] liquibase.ui                             : ERROR: Exception Primary Reason:  ERROR: column "status" of relation "organizations" already exists
+2026-03-22T11:09:01.045+05:30  INFO 17224 --- [order-management] [           main] liquibase.ui                             : ERROR: Exception Primary Source:  PostgreSQL 17.5
+2026-03-22T11:09:01.045+05:30  INFO 17224 --- [order-management] [           main] liquibase.command                        : Command execution complete
+2026-03-22T11:09:01.051+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.analytics.AnalyticsListener instance liquibase.analytics.NoOpAnalyticsListener
+2026-03-22T11:09:01.052+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.analytics.AnalyticsListener instance liquibase.analytics.LiquibaseAnalyticsListener
+2026-03-22T11:09:01.055+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.analytics.devOverride found
+2026-03-22T11:09:01.057+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.analytics.devOverride is using the default value of false
+2026-03-22T11:09:01.057+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.analytics.configEndpointUrl found
+2026-03-22T11:09:01.057+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.analytics.configEndpointUrl is using the default value of https://config.liquibase.com/analytics.yaml
+2026-03-22T11:09:01.058+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.analytics.enabled found
+2026-03-22T11:09:01.065+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.analytics.configCacheTimeoutMillis found
+2026-03-22T11:09:01.065+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.analytics.configCacheTimeoutMillis is using the default value of 3600000
+2026-03-22T11:09:01.065+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.servicelocator                 : Loaded liquibase.analytics.configuration.AnalyticsConfiguration instance liquibase.analytics.configuration.LiquibaseRemoteAnalyticsConfiguration
+2026-03-22T11:09:01.067+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.analytics.logLevel found
+2026-03-22T11:09:01.067+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.analytics.logLevel is using the default value of OFF
+2026-03-22T11:09:01.243+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : No configuration value for liquibase.analytics.configEndpointTimeoutMillis found
+2026-03-22T11:09:01.243+05:30 DEBUG 17224 --- [order-management] [           main] liquibase.configuration                  : Configuration liquibase.analytics.configEndpointTimeoutMillis is using the default value of 1500
+2026-03-22T11:09:02.329+05:30  WARN 17224 --- [order-management] [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changes/002-create-organizations-table.xml::882992::Kishore:
+     Reason: liquibase.exception.DatabaseException: ERROR: column "status" of relation "organizations" already exists [Failed SQL: (0) ALTER TABLE public.organizations ADD status INTEGER DEFAULT 1]
+2026-03-22T11:09:02.329+05:30  INFO 17224 --- [order-management] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-22T11:09:02.332+05:30  INFO 17224 --- [order-management] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-22T11:09:02.336+05:30  INFO 17224 --- [order-management] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-03-22T11:09:02.346+05:30  INFO 17224 --- [order-management] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-22T11:09:02.360+05:30 ERROR 17224 --- [order-management] [           main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changes/002-create-organizations-table.xml::882992::Kishore:
+     Reason: liquibase.exception.DatabaseException: ERROR: column "status" of relation "organizations" already exists [Failed SQL: (0) ALTER TABLE public.organizations ADD status INTEGER DEFAULT 1]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:328) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.3.jar:3.5.3]
+	at com.ordermanagement.OrderManagementApplication.main(OrderManagementApplication.java:12) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changes/002-create-organizations-table.xml::882992::Kishore:
+     Reason: liquibase.exception.DatabaseException: ERROR: column "status" of relation "organizations" already exists [Failed SQL: (0) ALTER TABLE public.organizations ADD status INTEGER DEFAULT 1]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-6.2.8.jar:6.2.8]
+	... 10 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changes/002-create-organizations-table.xml::882992::Kishore:
+     Reason: liquibase.exception.DatabaseException: ERROR: column "status" of relation "organizations" already exists [Failed SQL: (0) ALTER TABLE public.organizations ADD status INTEGER DEFAULT 1]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:289) ~[liquibase-core-4.33.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822) ~[spring-beans-6.2.8.jar:6.2.8]
+	... 17 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changes/002-create-organizations-table.xml::882992::Kishore:
+     Reason: liquibase.exception.DatabaseException: ERROR: column "status" of relation "organizations" already exists [Failed SQL: (0) ALTER TABLE public.organizations ADD status INTEGER DEFAULT 1]
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:310) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:225) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:201) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:251) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:216) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:216) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:225) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:215) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:194) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1366) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:205) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:188) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:327) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:279) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:216) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:225) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:215) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:194) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:272) ~[liquibase-core-4.33.0.jar:na]
+	... 19 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changes/002-create-organizations-table.xml::882992::Kishore:
+     Reason: liquibase.exception.DatabaseException: ERROR: column "status" of relation "organizations" already exists [Failed SQL: (0) ALTER TABLE public.organizations ADD status INTEGER DEFAULT 1]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:155) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:114) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:216) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:225) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:215) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:194) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:100) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:263) ~[liquibase-core-4.33.0.jar:na]
+	... 37 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changes/002-create-organizations-table.xml::882992::Kishore:
+     Reason: liquibase.exception.DatabaseException: ERROR: column "status" of relation "organizations" already exists [Failed SQL: (0) ALTER TABLE public.organizations ADD status INTEGER DEFAULT 1]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:873) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:127) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:71) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:216) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:225) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:215) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:194) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.lambda$run$1(ChangeLogIterator.java:122) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:216) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:225) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:215) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:194) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:282) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.Scope.child(Scope.java:286) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:91) ~[liquibase-core-4.33.0.jar:na]
+	... 45 common frames omitted
+Caused by: liquibase.exception.DatabaseException: ERROR: column "status" of relation "organizations" already exists [Failed SQL: (0) ALTER TABLE public.organizations ADD status INTEGER DEFAULT 1]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:520) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:85) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:188) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:148) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1198) ~[liquibase-core-4.33.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:816) ~[liquibase-core-4.33.0.jar:na]
+	... 60 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ERROR: column "status" of relation "organizations" already exists
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2734) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2421) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:372) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:518) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:435) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:357) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:342) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:318) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:313) ~[postgresql-42.7.7.jar:42.7.7]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-6.3.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-6.3.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:512) ~[liquibase-core-4.33.0.jar:na]
+	... 65 common frames omitted
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.487 s
+[INFO] Finished at: 2026-03-22T11:09:02+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.3:run (default-cli) on project order-management: Process terminated with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

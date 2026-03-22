@@ -71,24 +71,49 @@ public class ExcelUtil {
             for (int i = 0; i < HEADERS.length; i++) {
                 headerRow.createCell(i).setCellValue(HEADERS[i]);
             }
+
             int rowIdx = 1;
 
             for (Product product : products) {
 
                 Row row = sheet.createRow(rowIdx++);
 
-                row.createCell(0).setCellValue(product.getProductName());
-                row.createCell(1).setCellValue(product.getProductUniqueId());
-                row.createCell(2).setCellValue(product.getDescription());
-                row.createCell(3).setCellValue(product.getCategory().getCategoryName());
-                row.createCell(4).setCellValue(product.getLength());
-                row.createCell(5).setCellValue(product.getBreadth());
-                row.createCell(6).setCellValue(product.getHeight());
-                row.createCell(7).setCellValue(product.getDimensionUom());
-                row.createCell(8).setCellValue(product.getWeight());
-                row.createCell(9).setCellValue(product.getWeightUom());
-                row.createCell(10).setCellValue(product.getSerializable());
-                row.createCell(11).setCellValue(product.getAvailableQuantity());
+                row.createCell(0).setCellValue(
+                        product.getProductName() != null ? product.getProductName() : "");
+
+                row.createCell(1).setCellValue(
+                        product.getProductUniqueId() != null ? product.getProductUniqueId() : "");
+
+                row.createCell(2).setCellValue(
+                        product.getDescription() != null ? product.getDescription() : "");
+
+                row.createCell(3).setCellValue(
+                        product.getCategory() != null ? product.getCategory().getCategoryName() : "");
+
+                // ✅ FIXED NULL HANDLING FOR NUMBERS
+                row.createCell(4).setCellValue(
+                        product.getLength() != null ? product.getLength() : 0.0);
+
+                row.createCell(5).setCellValue(
+                        product.getBreadth() != null ? product.getBreadth() : 0.0);
+
+                row.createCell(6).setCellValue(
+                        product.getHeight() != null ? product.getHeight() : 0.0);
+
+                row.createCell(7).setCellValue(
+                        product.getDimensionUom() != null ? product.getDimensionUom() : "");
+
+                row.createCell(8).setCellValue(
+                        product.getWeight() != null ? product.getWeight() : 0.0);
+
+                row.createCell(9).setCellValue(
+                        product.getWeightUom() != null ? product.getWeightUom() : "");
+
+                row.createCell(10).setCellValue(
+                        product.getSerializable() != null ? product.getSerializable() : false);
+
+                row.createCell(11).setCellValue(
+                        product.getAvailableQuantity() != null ? product.getAvailableQuantity() : 0);
             }
 
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -97,7 +122,7 @@ public class ExcelUtil {
             return new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
 
         } catch (IOException e) {
-            throw new RuntimeException("Failed to Export the Excel File");
+            throw new RuntimeException("Failed to Export the Excel File", e);
         }
     }
 

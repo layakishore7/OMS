@@ -21,4 +21,10 @@ public interface OrganizationAssociationRepository extends JpaRepository<Organiz
             @Param("shipperId") Integer shipperId,
             @Param("warehouseId") Integer warehouseId
     );
+
+    @Query(value = "SELECT oa.* FROM organization_association oa WHERE oa.carrier_id = :carrierId AND oa.warehouse_id = :warehouseId", nativeQuery = true)
+    List<OrganizationAssociation> fetchByCarrierAndWarehouse(
+            @Param("carrierId") Integer carrierId,
+            @Param("warehouseId") Integer warehouseId
+    );
 }
